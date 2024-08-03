@@ -12,12 +12,16 @@ config_version=5
 
 config/name="ESUT Brain Trainer"
 config/version="0.0"
-run/main_scene="res://Scenes/StartUp.tscn"
+run/main_scene="res://Scenes/UI/StartUp.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://Icons/icon.png"
 boot_splash/fullsize=false
 config/icon="res://Icons/icon.png"
+
+[autoload]
+
+GlobalRef="*res://Scripts/GlobalRef.gd"
 
 [display]
 

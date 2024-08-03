@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_g5yri"]
 [ext_resource type="Script" path="res://Scripts/tutorial_endManager.gd" id="2_gcetw"]
 [ext_resource type="Texture2D" uid="uid://bxxfuokpyqtoo" path="res://Textures/progress_bar.svg" id="2_uorc7"]
-[ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/EPQ.tscn" id="4_026bl"]
+[ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="4_026bl"]
 [ext_resource type="AudioStream" uid="uid://b5rni8uv1hfjp" path="res://Sound/whoosh.wav" id="4_124vn"]
 
 [node name="TutorialEnd" type="Control"]

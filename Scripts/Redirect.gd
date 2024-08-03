@@ -2,9 +2,6 @@ extends Panel
 
 var File = FileAccess
 
-var filePath = "user://UserData.tres"
-var fileData: UserData
-
 var newScores = {
 	"agility": 0,
 	"average": 0,
@@ -21,34 +18,34 @@ var newScores = {
 func _ready():
 	var check = userDataCheck()
 	if check:
-		fileData = load(filePath) as UserData
+		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 		
-		fileData.HighScores = Helper.updateDictionary(fileData.HighScores, newScores)
+		GlobalRef.fileData.HighScores = Helper.updateDictionary(GlobalRef.fileData.HighScores, newScores)
 		
-		ResourceSaver.save(fileData, filePath)
+		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 	else:
-		fileData = UserData.new()
+		GlobalRef.fileData = UserData.new()
 		
-		fileData.HighScores = Helper.updateDictionary(fileData.HighScores, newScores)
+		GlobalRef.fileData.HighScores = Helper.updateDictionary(GlobalRef.fileData.HighScores, newScores)
 		
-		ResourceSaver.save(fileData, filePath)
+		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 	
-	fileData = load(filePath) as UserData
-	if fileData.isTutorialDone:
+	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+	if GlobalRef.fileData.isTutorialDone:
 		call_deferred("load_main_menu")
 	else:
 		call_deferred("load_tutorial")
 
 func userDataCheck():
-	if File.file_exists(filePath):
+	if File.file_exists(GlobalRef.gamefilePath):
 		return true
 	else:
 		return false
 
 func load_main_menu():
-	var target_scene = "res://Scenes/main_menu_ui.tscn"
+	var target_scene = GlobalRef.scenes["mainmenu"]
 	get_tree().change_scene_to_file(target_scene)
 
 func load_tutorial():
-	var target_scene = "res://Scenes/tutorial.tscn"
+	var target_scene = GlobalRef.scenes["tutorial"]
 	get_tree().change_scene_to_file(target_scene)

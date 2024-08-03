@@ -95,18 +95,15 @@ func checkCheckedCheckboxes():
 	return any_checked
 
 func savePersonalization():
-	var filePath = "user://UserData.tres"
-	
-	var data: UserData = load(filePath) as UserData
+	var data: UserData = load(GlobalRef.gamefilePath) as UserData
 	data.Writing = $"Page 4/MarginContainer/VBoxContainer/CheckButton1".button_pressed
 	data.Speaking = $"Page 4/MarginContainer/VBoxContainer/CheckButton2".button_pressed
 	data.Reading = $"Page 4/MarginContainer/VBoxContainer/CheckButton3".button_pressed
 	data.Maths = $"Page 4/MarginContainer/VBoxContainer/CheckButton4".button_pressed
 	data.Memory = $"Page 4/MarginContainer/VBoxContainer/CheckButton5".button_pressed
 	
-	ResourceSaver.save(data, filePath)
+	ResourceSaver.save(data, GlobalRef.gamefilePath)
 
 # page5
 func _on_Page5NextButton_pressed():
-	var target_scene = "res://Scenes/tutorial_game.tscn"
-	get_tree().change_scene_to_file(target_scene)
+	get_tree().change_scene_to_file(GlobalRef.scenes["tutorialgame"])

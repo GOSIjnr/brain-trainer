@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/TabManager.gd" id="2_dinno"]
 [ext_resource type="Script" path="res://Scripts/Content4Manager.gd" id="2_gksrj"]
 [ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="2_qldd6"]
-[ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/EPQ.tscn" id="2_qr02r"]
+[ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="2_qr02r"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="2_uebkm"]
 [ext_resource type="Texture2D" uid="uid://rwap0figpeoj" path="res://Textures/workout.webp" id="3_wctgd"]
 [ext_resource type="ButtonGroup" uid="uid://d07incokcfi6e" path="res://Styles/TabGroup.tres" id="3_x07ne"]
@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bgxaympyjpim2" path="res://Icons/game_fill.svg" id="24_4vb3p"]
 [ext_resource type="Texture2D" uid="uid://cwj4yaltxmng" path="res://Icons/user.svg" id="25_w2cdg"]
 [ext_resource type="Texture2D" uid="uid://8ufa7hmthdak" path="res://Icons/user_fill.svg" id="26_eag25"]
-[ext_resource type="PackedScene" uid="uid://c636q8i344dnj" path="res://Scenes/selected_game.tscn" id="28_n0sa0"]
+[ext_resource type="PackedScene" uid="uid://c636q8i344dnj" path="res://Scenes/UI/selected_game.tscn" id="28_n0sa0"]
 [ext_resource type="Script" path="res://Scripts/DeleteAccount.gd" id="29_2t8mh"]
 
 [sub_resource type="Gradient" id="Gradient_8hb12"]

@@ -21,9 +21,9 @@ func setGame(resource :Games):
 	var gameRef = ["writing", "speaking", "reading", "maths", "memory"]
 	gameType.text = gameRef[resource.gameType]
 	
-	if not Game.gameScene == null:
-		disabledBG.visible = false
+	if Game.isLocked == true:
+		disabledBG.visible = true
 
 func _on_pressed():
-	if not Game.gameScene == null:
+	if Game.isLocked == false:
 		parent.showSelectedTab(Game)

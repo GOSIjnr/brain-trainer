@@ -2,7 +2,7 @@ extends Control
 
 var gameLocation := "res://Resources/Games/"
 var gameLibary :Array
-var gamePlaceHolder = load("res://Scenes/gameList.tscn") as PackedScene
+var gamePlaceHolder = load("res://Scenes/UI/gameList.tscn") as PackedScene
 
 @onready var gameBar = %GameBar
 @onready var filterGroup = %Filter

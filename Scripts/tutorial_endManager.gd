@@ -38,17 +38,14 @@ func _on_page3Button_pressed():
 
 #page4
 func _on_page4Button_pressed():
-	var filePath = "user://UserData.tres"
-	var fileData: UserData
+	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 	
-	fileData = load(filePath) as UserData
+	GlobalRef.fileData.UserName = userName
+	GlobalRef.fileData.isTutorialDone = true
 	
-	fileData.UserName = userName
-	fileData.isTutorialDone = true
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 	
-	ResourceSaver.save(fileData, filePath)
-	
-	var target_scene = "res://Scenes/main_menu_ui.tscn"
+	var target_scene = GlobalRef.scenes["mainmenu"]
 	get_tree().change_scene_to_file(target_scene)
 
 func _on_line_edit_text_changed(new_text):

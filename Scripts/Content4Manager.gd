@@ -8,40 +8,37 @@ extends Control
 @onready var maths_cb = %MathsCB
 @onready var memory_cb = %MemoryCB
 
-var filePath = "user://UserData.tres"
-var fileData: UserData
-
 func _ready():
-	fileData = load(filePath) as UserData
+	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 	
-	user_name.text = fileData.UserName
-	workout_counter.text = str(fileData.Workouts)
+	user_name.text = GlobalRef.fileData.UserName
+	workout_counter.text = str(GlobalRef.fileData.Workouts)
 	
-	writing_cb.button_pressed = fileData.Writing
-	speaking_cb.button_pressed = fileData.Speaking
-	reading_cb.button_pressed = fileData.Reading
-	maths_cb.button_pressed = fileData.Maths
-	memory_cb.button_pressed = fileData.Memory
+	writing_cb.button_pressed = GlobalRef.fileData.Writing
+	speaking_cb.button_pressed = GlobalRef.fileData.Speaking
+	reading_cb.button_pressed = GlobalRef.fileData.Reading
+	maths_cb.button_pressed = GlobalRef.fileData.Maths
+	memory_cb.button_pressed = GlobalRef.fileData.Memory
 
 func _on_check_button_1_toggled(toggled_on):
-	fileData.Writing = toggled_on
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData.Writing = toggled_on
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 
 func _on_check_button_2_toggled(toggled_on):
-	fileData.Speaking = toggled_on
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData.Speaking = toggled_on
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 
 func _on_check_button_3_toggled(toggled_on):
-	fileData.Reading = toggled_on
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData.Reading = toggled_on
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 
 func _on_check_button_4_toggled(toggled_on):
-	fileData.Maths = toggled_on
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData.Maths = toggled_on
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 
 func _on_check_button_5_toggled(toggled_on):
-	fileData.Memory = toggled_on
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData.Memory = toggled_on
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 
 func _on_delete_account_pressed():
 	%DeleteAccount.visible = true

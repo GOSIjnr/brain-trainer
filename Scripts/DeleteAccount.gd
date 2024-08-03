@@ -1,14 +1,10 @@
 extends Control
 
-var filePath = "user://UserData.tres"
-var fileData: UserData
-
 func _on_yes_pressed():
-	fileData = UserData.new()
-	ResourceSaver.save(fileData, filePath)
+	GlobalRef.fileData = UserData.new()
+	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 	
-	var target_scene = "res://Scenes/StartUp.tscn"
-	get_tree().change_scene_to_file(target_scene)
+	get_tree().change_scene_to_file(GlobalRef.scenes["startup"])
 
 func _on_no_pressed():
 	self.visible = false

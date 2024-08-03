@@ -71,27 +71,22 @@ func resetAll():
 
 func displayQuestion(index :int):
 	if index > questions.size() - 1:
-		var filePath = "user://UserData.tres"
-		var fileData: UserData
+		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 		
-		fileData = load(filePath) as UserData
+		GlobalRef.fileData.WritingEPQ = writingScore
+		GlobalRef.fileData.SpeakingEPQ = speakingScore
+		GlobalRef.fileData.ReadingEPQ = readingScore
+		GlobalRef.fileData.MathsEPQ = mathsScore
+		GlobalRef.fileData.MemoryEPQ = memoryScore
 		
-		fileData.WritingEPQ = writingScore
-		fileData.SpeakingEPQ = speakingScore
-		fileData.ReadingEPQ = readingScore
-		fileData.MathsEPQ = mathsScore
-		fileData.MemoryEPQ = memoryScore
+		GlobalRef.fileData.starting_WritingEPQ = writingScore
+		GlobalRef.fileData.starting_SpeakingEPQ = speakingScore
+		GlobalRef.fileData.starting_ReadingEPQ = readingScore
+		GlobalRef.fileData.starting_MathsEPQ = mathsScore
+		GlobalRef.fileData.starting_MemoryEPQ = memoryScore
 		
-		fileData.starting_WritingEPQ = writingScore
-		fileData.starting_SpeakingEPQ = speakingScore
-		fileData.starting_ReadingEPQ = readingScore
-		fileData.starting_MathsEPQ = mathsScore
-		fileData.starting_MemoryEPQ = memoryScore
-		
-		ResourceSaver.save(fileData, filePath)
-		
-		var target_scene = "res://Scenes/tutorial_end.tscn"
-		get_tree().change_scene_to_file(target_scene)
+		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+		get_tree().change_scene_to_file(GlobalRef.scenes["tutorialend"])
 	else:
 		resetAll()
 		progress.value = index + 1

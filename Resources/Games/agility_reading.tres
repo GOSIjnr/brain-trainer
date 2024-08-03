@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://dygdhrdh38nnx" path="res://Textures/games/game_agility.webp" id="1_x2ior"]
 [ext_resource type="Texture2D" uid="uid://c6o0g4uaxr8om" path="res://Textures/games/gamefullscreen_agility.webp" id="2_rsxsd"]
 [ext_resource type="Texture2D" uid="uid://becrva5fji3cf" path="res://Icons/gi_agility.svg" id="2_xnuc2"]
-[ext_resource type="PackedScene" uid="uid://bwvahd51q73el" path="res://Scenes/agility_game.tscn" id="4_d0vrc"]
+[ext_resource type="PackedScene" uid="uid://bwvahd51q73el" path="res://Scenes/Games/agility_game.tscn" id="4_qc1xk"]
 
 [resource]
 script = ExtResource("1_mo321")
+isLocked = false
 gameColor = Color(0.54001, 0.83, 0.780195, 1)
 gameName = "Agility"
 gameIcon = ExtResource("2_xnuc2")
 gameBackground = ExtResource("1_x2ior")
 gameFullBackground = ExtResource("2_rsxsd")
 gameType = 2
-howToPlay = "Select the right option which has similar meaning with the word given"
-gameBenefits = "[img=10]res://Textures/bullet.svg[/img]	one
-[img=10]res://Textures/bullet.svg[/img]	two
-	testing
-	tingd1"
-gameScene = ExtResource("4_d0vrc")
+howToPlay = "Choose the option that has a similar meaning to the given word"
+gameBenefits = "[img=10]res://Textures/bullet.svg[/img]	Players are exposed to synonyms and related words, which helps in expanding their vocabulary and understanding of word meanings.
+
+[img=10]res://Textures/bullet.svg[/img]	Regular practice with synonyms can improve both written and spoken language skills, including grammar and usage."
+gameScene = ExtResource("4_qc1xk")

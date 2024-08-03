@@ -3,6 +3,7 @@ extends Resource
 class_name Games
 
 @export_group("Game")
+@export var isLocked := true
 @export var gameColor :Color
 
 @export var gameName :String

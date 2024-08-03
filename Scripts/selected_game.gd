@@ -11,9 +11,6 @@ extends Control
 @onready var help = %Help
 @onready var helpText = %HelpText
 
-var filePath = "user://UserData.tres"
-var fileData = load(filePath) as UserData
-
 var selected :Games:
 	set = setSelected
 
@@ -23,10 +20,13 @@ func setSelected(resource :Games):
 	gameIcon.texture = resource.gameIcon
 	gameBackground.texture = resource.gameFullBackground
 	hex.self_modulate = resource.gameColor
-	highScore.text = str(fileData.HighScores[resource.gameName.to_lower()])
+	highScore.text = str(GlobalRef.fileData.HighScores[resource.gameName.to_lower()])
 	updateStartButton(resource.gameColor)
 	updateText(benefits, "[color=#cccccc][b]BENEFITS:[/b][/color]", resource.gameBenefits, "")
 	updateText(helpText, "[b]INSTRUCTIONS[/b]", resource.howToPlay, "[center][b]Tap to close[/b][/center]")
+	
+	if resource.gameScene == null:
+		startButton.disabled = true
 	
 	var gameRef = ["Writing", "Speaking", "Reading", "Maths", "Memory"]
 	gameType.text = gameRef[resource.gameType]
@@ -73,7 +73,7 @@ func _on_help_button_gui_input(event):
 		tween.tween_property(help, "modulate", Color(1, 1, 1, 1), 0.05)
 
 func _on_start_game_pressed():
-	pass
+	get_tree().change_scene_to_packed(selected.gameScene)
 
 func _on_help_gui_input(event):
 	if event is InputEventScreenTouch and event.pressed:
