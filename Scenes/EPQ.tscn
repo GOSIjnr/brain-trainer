@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccybtrwej0f24"]
+
+[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_105pg"]
+[ext_resource type="Texture2D" uid="uid://bxxfuokpyqtoo" path="res://Textures/progress_bar.svg" id="2_1hvf7"]
+[ext_resource type="Script" path="res://Scripts/EPQManager.gd" id="2_jtclp"]
+
+[node name="EPQ" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_105pg")
+theme_override_constants/separation = 10
+script = ExtResource("2_jtclp")
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Score" type="RichTextLabel" parent="HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[color=#999999]WRITING: [/color][b]5000[/b]"
+fit_content = true
+scroll_active = false
+
+[node name="Title" type="Label" parent="HBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"Label_Mid"
+text = "Expert"
+uppercase = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 5000.0
+value = 1200.0
+nine_patch_stretch = true
+stretch_margin_left = 64
+stretch_margin_top = 15
+stretch_margin_right = 64
+stretch_margin_bottom = 15
+texture_under = ExtResource("2_1hvf7")
+texture_progress = ExtResource("2_1hvf7")
+tint_under = Color(0.8, 0.8, 0.8, 1)
+tint_progress = Color(0.19, 0.7125, 0.76, 1)
