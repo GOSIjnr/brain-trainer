@@ -73,17 +73,17 @@ func displayQuestion(index :int):
 	if index > questions.size() - 1:
 		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 		
-		GlobalRef.fileData.WritingEPQ = writingScore
-		GlobalRef.fileData.SpeakingEPQ = speakingScore
-		GlobalRef.fileData.ReadingEPQ = readingScore
-		GlobalRef.fileData.MathsEPQ = mathsScore
-		GlobalRef.fileData.MemoryEPQ = memoryScore
+		GlobalRef.fileData.WritingEPQ = clamp(writingScore, 250, 5000)
+		GlobalRef.fileData.SpeakingEPQ = clamp(speakingScore, 250, 5000)
+		GlobalRef.fileData.ReadingEPQ = clamp(readingScore, 250, 5000)
+		GlobalRef.fileData.MathsEPQ = clamp(mathsScore, 250, 5000)
+		GlobalRef.fileData.MemoryEPQ = clamp(memoryScore, 250, 5000)
 		
-		GlobalRef.fileData.starting_WritingEPQ = writingScore
-		GlobalRef.fileData.starting_SpeakingEPQ = speakingScore
-		GlobalRef.fileData.starting_ReadingEPQ = readingScore
-		GlobalRef.fileData.starting_MathsEPQ = mathsScore
-		GlobalRef.fileData.starting_MemoryEPQ = memoryScore
+		GlobalRef.fileData.starting_WritingEPQ = GlobalRef.fileData.WritingEPQ
+		GlobalRef.fileData.starting_SpeakingEPQ = GlobalRef.fileData.SpeakingEPQ
+		GlobalRef.fileData.starting_ReadingEPQ = GlobalRef.fileData.ReadingEPQ
+		GlobalRef.fileData.starting_MathsEPQ = GlobalRef.fileData.MathsEPQ
+		GlobalRef.fileData.starting_MemoryEPQ = GlobalRef.fileData.MemoryEPQ
 		
 		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
 		get_tree().change_scene_to_file(GlobalRef.scenes["tutorialend"])

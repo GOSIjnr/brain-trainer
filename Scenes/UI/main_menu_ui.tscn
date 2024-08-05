@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=43 format=3 uid="uid://blpko71pew773"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_85a00"]
+[ext_resource type="Script" path="res://Scripts/main_menu_ui_Manager.gd" id="2_6gsoc"]
 [ext_resource type="Script" path="res://Scripts/TabManager.gd" id="2_dinno"]
 [ext_resource type="Script" path="res://Scripts/Content4Manager.gd" id="2_gksrj"]
 [ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="2_qldd6"]
@@ -13,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://clqun30xsy32b" path="res://Fonts/Roboto-Light.ttf" id="5_a34cu"]
 [ext_resource type="Texture2D" uid="uid://dnu5pf0kflnxc" path="res://Textures/crossword.webp" id="6_wprc0"]
 [ext_resource type="Texture2D" uid="uid://b4e1hglsdoy46" path="res://Icons/help_fill.svg" id="9_u4605"]
+[ext_resource type="PackedScene" uid="uid://co44nr02auxaf" path="res://Scenes/UI/bar.tscn" id="11_6uyys"]
 [ext_resource type="Script" path="res://Scripts/Content3Manager.gd" id="11_bhlj0"]
 [ext_resource type="Texture2D" uid="uid://d0ifgj1klxf7e" path="res://Icons/workout.svg" id="12_dwunn"]
 [ext_resource type="ButtonGroup" uid="uid://dc61hfkgy8osu" path="res://Styles/FilterGroup.tres" id="12_mpun6"]
@@ -31,7 +33,7 @@
 [ext_resource type="Script" path="res://Scripts/DeleteAccount.gd" id="29_2t8mh"]
 
 [sub_resource type="Gradient" id="Gradient_8hb12"]
-colors = PackedColorArray(1, 0.193599, 0.273319, 0.564706, 0.326974, 0.0958471, 0.619792, 0)
+colors = PackedColorArray(1, 0, 0.35, 0.505882, 0.504163, 0.62, 0.2542, 0.121569)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hdyre"]
 gradient = SubResource("Gradient_8hb12")
@@ -40,13 +42,17 @@ fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_5jm0b"]
-colors = PackedColorArray(1, 0.975, 0.75, 0.254902, 1, 0.975, 0.75, 0)
+colors = PackedColorArray(0.254059, 0.940986, 0.98, 0.207843, 0.195288, 0.17946, 1, 0.443137)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rkmvc"]
 gradient = SubResource("Gradient_5jm0b")
 use_hdr = true
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6myek"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm40b"]
 bg_color = Color(0.44, 0.0806667, 0, 0.52549)
@@ -87,6 +93,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_85a00")
+script = ExtResource("2_6gsoc")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -110,6 +117,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Content1" type="Control" parent="VBoxContainer/Contents"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,7 +164,7 @@ size_flags_vertical = 3
 
 [node name="MarginContainer1" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer1"]
 layout_mode = 2
@@ -170,14 +178,14 @@ uppercase = true
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
-self_modulate = Color(0, 0.0823529, 0.443137, 1)
+self_modulate = Color(1, 0.875371, 0.728367, 1)
 clip_children = 2
 custom_minimum_size = Vector2(0, 650)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_uebkm")
 
 [node name="BackGround" type="TextureRect" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel"]
-self_modulate = Color(0, 0.1595, 0.87, 1)
+self_modulate = Color(1, 0.777833, 0.57, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -212,7 +220,6 @@ theme_override_constants/separation = 15
 alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel/MarginContainer/VBoxContainer"]
-self_modulate = Color(0.94, 0.925587, 0.7238, 1)
 clip_children = 2
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
@@ -233,7 +240,7 @@ vertical_alignment = 1
 [node name="Label2" type="Label" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"Label_Mid"
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_color = Color(0.901042, 0.901042, 0.901042, 1)
 theme_override_font_sizes/font_size = 35
 text = "Personalised for you"
 horizontal_alignment = 1
@@ -243,13 +250,14 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_type_variation = &"Button_Accent"
-theme_override_colors/font_color = Color(0, 0.0509804, 0.266667, 1)
-theme_override_colors/font_hover_color = Color(0, 0.0509804, 0.266667, 1)
-theme_override_colors/font_focus_color = Color(0, 0.0509804, 0.266667, 1)
+theme_override_colors/font_color = Color(0.960784, 0.54902, 0.556863, 1)
+theme_override_colors/font_hover_color = Color(0.960784, 0.54902, 0.556863, 1)
+theme_override_colors/font_focus_color = Color(0.960784, 0.54902, 0.556863, 1)
 text = "Start"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_bottom = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
@@ -260,6 +268,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 script = ExtResource("4_id6mb")
 
@@ -268,9 +277,8 @@ wait_time = 7.0
 autostart = true
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4"]
-self_modulate = Color(0.95, 0.893, 0.893, 1)
+self_modulate = Color(0.238941, 0.61407, 1, 1)
 clip_children = 2
-custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_uebkm")
 
@@ -310,12 +318,14 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"Label_Thin"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_a34cu")
+theme_override_font_sizes/font_size = 60
 text = "Word"
 vertical_alignment = 1
 
@@ -324,13 +334,12 @@ custom_minimum_size = Vector2(880, 0)
 layout_mode = 2
 theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 40
 text = "Meaning"
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Content2" type="Control" parent="VBoxContainer/Contents"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -378,52 +387,129 @@ texture = ExtResource("9_u4605")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 75
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 200
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 50
 
-[node name="EPQ1" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ1" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.17047, 0.761629, 0.661447, 1)
 
-[node name="EPQ2" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ2" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.938936, 0.14184, 0.189267, 1)
 barType = 1
 
-[node name="EPQ3" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ3" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.925998, 0.101498, 0.379234, 1)
 barType = 2
 
-[node name="EPQ4" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ4" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.613667, 0.161723, 0.659896, 1)
 barType = 3
 
-[node name="EPQ5" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ5" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.906317, 0.572681, 0.123794, 1)
 barType = 4
 
-[node name="EPQ6" parent="VBoxContainer/Contents/Content2/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
+[node name="EPQ6" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("2_qr02r")]
 layout_mode = 2
 theme = null
 progressBarColor = Color(0.412958, 0.603024, 0.98541, 1)
 barType = 5
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6myek")
+
+[node name="Label" type="Label" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Label_Thin"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Progress"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+alignment = 1
+
+[node name="Bar1" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("11_6uyys")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.168627, 0.760784, 0.662745, 1)
+
+[node name="Bar2" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("11_6uyys")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.937255, 0.141176, 0.188235, 1)
+contentType = 1
+
+[node name="Bar3" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("11_6uyys")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.92549, 0.101961, 0.380392, 1)
+contentType = 2
+
+[node name="Bar4" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("11_6uyys")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.611765, 0.160784, 0.658824, 1)
+contentType = 3
+
+[node name="Bar5" parent="VBoxContainer/Contents/Content2/VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("11_6uyys")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.905882, 0.572549, 0.12549, 1)
+contentType = 4
 
 [node name="Content3" type="Control" parent="VBoxContainer/Contents"]
 visible = false
@@ -691,8 +777,7 @@ theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
 toggle_mode = true
 action_mode = 0
-text = "Writing
-"
+text = "Writing"
 
 [node name="SpeakingCB" type="Button" parent="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer"]
 unique_name_in_owner = true
@@ -788,10 +873,10 @@ alignment = 1
 [node name="VBoxContainer1" type="VBoxContainer" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer"]
 modulate = Color(0.8, 0.8, 0.8, 1)
 layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
@@ -804,18 +889,20 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer1"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Home"
 horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer"]
 modulate = Color(0.8, 0.8, 0.8, 1)
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
@@ -828,19 +915,20 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Performance
-"
+text = "Performance"
 horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer"]
 modulate = Color(0.8, 0.8, 0.8, 1)
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
@@ -853,19 +941,20 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Games
-"
+text = "Games"
 horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer"]
 modulate = Color(0.8, 0.8, 0.8, 1)
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
@@ -878,11 +967,12 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/MarginContainer/HBoxContainer/VBoxContainer4"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Profile"
 horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="PQhelp" type="Control" parent="."]
 unique_name_in_owner = true
@@ -917,14 +1007,14 @@ theme_override_constants/margin_right = 75
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="RichTextLabel" parent="PQhelp/Panel/MarginContainer/Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PQhelp/Panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -251.5
-offset_bottom = 251.5
+offset_top = -543.0
+offset_bottom = 543.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -944,6 +1034,7 @@ Proficiency Levels correspond to your PQ: Novice [0-1250], Intermediate [1250-25
 
 [center]Tap to close[/center]"
 fit_content = true
+scroll_active = false
 
 [node name="SelectedGame" parent="." instance=ExtResource("28_n0sa0")]
 unique_name_in_owner = true
@@ -1032,7 +1123,7 @@ text = "No"
 
 [connection signal="timeout" from="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Timer" to="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4" method="_on_timer_timeout"]
 [connection signal="gui_input" from="VBoxContainer/Contents/Content2/VBoxContainer/Panel/MarginContainer/HBoxContainer/Help" to="VBoxContainer/Contents/Content2" method="_on_help_gui_input"]
-[connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/WritingCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_1_toggled"]
+[connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/WritingCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_2_toggled"]
 [connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/SpeakingCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_2_toggled"]
 [connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/ReadingCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_3_toggled"]
 [connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/MathsCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_4_toggled"]
