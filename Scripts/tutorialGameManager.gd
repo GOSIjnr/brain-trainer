@@ -28,6 +28,8 @@ var memoryScore := 0
 @onready var sfx_tick = %Sfx_Tick as AudioStreamPlayer
 
 func _ready():
+	get_tree().quit_on_go_back = false
+	
 	questions = Helper.loadAllResources(questionsPath)
 	questions.shuffle()
 	progress.max_value = questions.size()

@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://bwvahd51q73el"]
+[gd_scene load_steps=2 format=3 uid="uid://bwvahd51q73el"]
+
+[ext_resource type="Script" path="res://Scripts/agility_gameManager.gd" id="1_wpp6x"]
 
 [node name="Node" type="Node"]
+script = ExtResource("1_wpp6x")

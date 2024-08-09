@@ -1,7 +1,8 @@
 extends Node
 
-var gamefilePath = "user://UserData.tres"
+var gamefilePath := "user://UserData.tres"
 var fileData: UserData
+var isToastActive := false
 
 var scenes := {
 	"mainmenu": "res://Scenes/UI/main_menu_ui.tscn",
@@ -9,4 +10,5 @@ var scenes := {
 	"startup": "res://Scenes/UI/StartUp.tscn",
 	"tutorialgame": "res://Scenes/Games/tutorial_game.tscn",
 	"tutorialend": "res://Scenes/UI/tutorial_end.tscn",
+	"toast": "res://Scenes/UI/toast.tscn",
 } 

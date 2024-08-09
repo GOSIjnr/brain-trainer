@@ -16,6 +16,8 @@ var newScores = {
 }
 
 func _ready():
+	get_tree().quit_on_go_back = false
+	
 	var check = userDataCheck()
 	if check:
 		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
