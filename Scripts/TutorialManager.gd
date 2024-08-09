@@ -2,13 +2,15 @@ extends Control
 
 var CurrentPage
 var NextPage
-var currentPosition = 0
+var currentPosition := 0
 var scrollView
 var scrollPositions
 var previousButton
 var nextButton
 
 func _ready():
+	get_tree().quit_on_go_back = false
+	
 	previousButton = $"Page 2/MarginContainer/UI/HBoxContainer/Button1"
 	nextButton = $"Page 2/MarginContainer/UI/HBoxContainer/Button2"
 	scrollView = $"Page 2/Content"
@@ -107,3 +109,35 @@ func savePersonalization():
 # page5
 func _on_Page5NextButton_pressed():
 	get_tree().change_scene_to_file(GlobalRef.scenes["tutorialgame"])
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		go_back_request()
+
+func go_back_request():
+	if $"Page 1".visible == true:
+		get_tree().quit()
+		return
+	
+	if $"Page 2".visible == true:
+		if currentPosition == 0:
+			$"Page 2".visible = false
+			$"Page 1".visible = true
+		else :
+			_on_buttonPrevious_pressed()
+		return
+	
+	if $"Page 3".visible == true:
+		$"Page 3".visible = false
+		$"Page 2".visible = true
+		return
+	
+	if $"Page 4".visible == true:
+		$"Page 4".visible = false
+		$"Page 3".visible = true
+		return
+	
+	if $"Page 5".visible == true:
+		$"Page 5".visible = false
+		$"Page 4".visible = true
+		return

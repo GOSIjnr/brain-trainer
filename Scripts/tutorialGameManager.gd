@@ -231,11 +231,9 @@ func _on_option_5_pressed():
 	
 	wait_timer.start()
 
-
 func _on_wait_timer_timeout():
 	questionIndex += 1
 	displayQuestion(questionIndex)
-
 
 func _on_question_timer_timeout():
 	if !(questionIndex > questions.size() - 1):
@@ -249,3 +247,13 @@ func _on_question_timer_timeout():
 			getTheRightOption(_resource.pointsDistribution)
 	
 		wait_timer.start()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		go_back_request()
+
+func go_back_request():
+	var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
+	var toast = toastScene.instantiate()
+	add_child(toast)
+	toast.showMessage("Can't go back at this stage", 1.5)

@@ -60,21 +60,27 @@ func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :
 		text.add_text("\n\n")
 		text.append_text(prefix)
 
-func _on_close_button_gui_input(event):
-	if event is InputEventScreenTouch and event.pressed:
-		self.visible = false
+func _on_close_button_gui_input(event: InputEvent):
+	if event is InputEventScreenTouch and event.is_released():
+		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
+		
+		if rect.has_point(event.position):
+			self.visible = false
 
 func _on_help_button_gui_input(event):
-	if event is InputEventScreenTouch and event.pressed:
-		help.visible = true
-		help.modulate = Color(1, 1, 1, 0)
+	if event is InputEventScreenTouch and event.is_released():
+		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
 		
-		var tween = create_tween()
-		tween.tween_property(help, "modulate", Color(1, 1, 1, 1), 0.05)
+		if rect.has_point(event.position):
+			help.visible = true
+			help.modulate = Color(1, 1, 1, 0)
+		
+			var tween = create_tween()
+			tween.tween_property(help, "modulate", Color(1, 1, 1, 1), 0.05)
 
 func _on_start_game_pressed():
 	get_tree().change_scene_to_packed(selected.gameScene)
 
-func _on_help_gui_input(event):
-	if event is InputEventScreenTouch and event.pressed:
+func _on_help_gui_input(event: InputEvent):
+	if event is InputEventScreenTouch and event.is_released():
 		help.visible = false

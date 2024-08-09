@@ -1,6 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=43 format=3 uid="uid://blpko71pew773"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_85a00"]
+[ext_resource type="Script" path="res://Scripts/main_menu_uiManager.gd" id="2_0ruyx"]
 [ext_resource type="Script" path="res://Scripts/TabManager.gd" id="2_dinno"]
 [ext_resource type="Script" path="res://Scripts/Content4Manager.gd" id="2_gksrj"]
 [ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="2_qldd6"]
@@ -92,6 +93,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_85a00")
+script = ExtResource("2_0ruyx")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -338,6 +340,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Content2" type="Control" parent="VBoxContainer/Contents"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -634,7 +637,6 @@ size_flags_horizontal = 4
 columns = 2
 
 [node name="Content4" type="Control" parent="VBoxContainer/Contents"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

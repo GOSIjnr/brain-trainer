@@ -2,9 +2,11 @@ extends Control
 
 @onready var page1ProgressBar = $page1/MarginContainer/VBoxContainer/TextureProgressBar
 @onready var page1Timer = $page1/page1Timer
+
 var userName :String
 
 func _ready():
+	get_tree().quit_on_go_back = false
 	page1ProgressBar.max_value = page1Timer.wait_time
 
 func _process(_delta):
@@ -50,3 +52,25 @@ func _on_page4Button_pressed():
 
 func _on_line_edit_text_changed(new_text):
 	userName = new_text.strip_edges()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		go_back_request()
+
+func go_back_request():
+	if $page1.visible == true or $page2.visible == true:
+		var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
+		var toast = toastScene.instantiate()
+		add_child(toast)
+		toast.showMessage("Can't go back at this stage", 1.5)
+		return
+	
+	if $page3.visible == true:
+		$page2.visible = true
+		$page3.visible = false
+		return
+	
+	if $page4.visible == true:
+		$page3.visible = true
+		$page4.visible = false
+		return
