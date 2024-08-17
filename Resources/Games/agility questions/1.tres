@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="agiltyQuestion" load_steps=2 format=3 uid="uid://bslhevv4w3pqu"]
+
+[ext_resource type="Script" path="res://Scripts/agility_game.gd" id="1_ruq3b"]
+
+[resource]
+script = ExtResource("1_ruq3b")
+question = "wicked"
+option1 = "lazy"
+option2 = "evil"
+options = Array[String](["lazy", "evil"])
+pointsDistribution = Array[int]([0, 400])

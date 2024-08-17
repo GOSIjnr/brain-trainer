@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="agiltyQuestion" load_steps=2 format=3 uid="uid://c4jmaochdfxv7"]
+
+[ext_resource type="Script" path="res://Scripts/agility_game.gd" id="1_gidpp"]
+
+[resource]
+script = ExtResource("1_gidpp")
+question = "resounding"
+options = Array[String](["ringing", "quiet"])
+pointsDistribution = Array[int]([400, 0])

@@ -12,3 +12,6 @@ var scenes := {
 	"tutorialend": "res://Scenes/UI/tutorial_end.tscn",
 	"toast": "res://Scenes/UI/toast.tscn",
 } 
+
+func _ready() -> void:
+	Engine.max_fps = 60

@@ -253,7 +253,4 @@ func _notification(what):
 		go_back_request()
 
 func go_back_request():
-	var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
-	var toast = toastScene.instantiate()
-	add_child(toast)
-	toast.showMessage("Can't go back at this stage", 1.5)
+	Helper.showToast(get_tree().root, "Can't go back at this stage", 1.5)

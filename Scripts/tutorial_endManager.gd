@@ -59,10 +59,7 @@ func _notification(what):
 
 func go_back_request():
 	if $page1.visible == true or $page2.visible == true:
-		var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
-		var toast = toastScene.instantiate()
-		add_child(toast)
-		toast.showMessage("Can't go back at this stage", 1.5)
+		Helper.showToast(get_tree().root, "Can't go back at this stage", 1.5)
 		return
 	
 	if $page3.visible == true:

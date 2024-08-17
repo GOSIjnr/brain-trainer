@@ -15,6 +15,6 @@ func _on_timer_timeout():
 	randomLibary()
 
 func randomLibary():
-	var selected = libary[randi_range(0, libary.size()) - 1] as Vocabulary
+	var selected = libary.pick_random() as Vocabulary
 	word.text = selected.word
 	meaning.text = selected.meaning

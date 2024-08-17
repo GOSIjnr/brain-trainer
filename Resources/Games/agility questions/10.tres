@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="agiltyQuestion" load_steps=2 format=3 uid="uid://du2b84hstl8rl"]
+
+[ext_resource type="Script" path="res://Scripts/agility_game.gd" id="1_cqhne"]
+
+[resource]
+script = ExtResource("1_cqhne")
+question = "flourish"
+options = Array[String](["prosper", "wither"])
+pointsDistribution = Array[int]([400, 0])

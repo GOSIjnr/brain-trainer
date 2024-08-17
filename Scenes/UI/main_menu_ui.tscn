@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=44 format=3 uid="uid://blpko71pew773"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_85a00"]
 [ext_resource type="Script" path="res://Scripts/main_menu_uiManager.gd" id="2_0ruyx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="2_qldd6"]
 [ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="2_qr02r"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="2_uebkm"]
+[ext_resource type="Script" path="res://Scripts/Content1Manager.gd" id="3_ehqot"]
 [ext_resource type="Texture2D" uid="uid://rwap0figpeoj" path="res://Textures/workout.webp" id="3_wctgd"]
 [ext_resource type="ButtonGroup" uid="uid://d07incokcfi6e" path="res://Styles/TabGroup.tres" id="3_x07ne"]
 [ext_resource type="Texture2D" uid="uid://h60xsrvl2lb5" path="res://Icons/star.svg" id="4_06cdq"]
@@ -117,13 +118,13 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Content1" type="Control" parent="VBoxContainer/Contents"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_ehqot")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Contents/Content1"]
 layout_mode = 1
@@ -246,7 +247,8 @@ text = "Personalised for you"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel/MarginContainer/VBoxContainer"]
+[node name="RecommendedButton" type="Button" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_type_variation = &"Button_Accent"
@@ -637,6 +639,7 @@ size_flags_horizontal = 4
 columns = 2
 
 [node name="Content4" type="Control" parent="VBoxContainer/Contents"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1121,6 +1124,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "No"
 
+[connection signal="pressed" from="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel/MarginContainer/VBoxContainer/RecommendedButton" to="VBoxContainer/Contents/Content1" method="_on_recommended_button_pressed"]
 [connection signal="timeout" from="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Timer" to="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4" method="_on_timer_timeout"]
 [connection signal="gui_input" from="VBoxContainer/Contents/Content2/VBoxContainer/Panel/MarginContainer/HBoxContainer/Help" to="VBoxContainer/Contents/Content2" method="_on_help_gui_input"]
 [connection signal="toggled" from="VBoxContainer/Contents/Content4/VBoxContainer/Panel/Control/ScrollContainer/VBoxContainer/MarginContainer2/GridContainer/WritingCB" to="VBoxContainer/Contents/Content4" method="_on_check_button_2_toggled"]

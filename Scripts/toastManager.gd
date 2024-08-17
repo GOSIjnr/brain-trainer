@@ -1,12 +1,12 @@
 extends Control
 
-const PADDING = Vector2(100, 50)
+const PADDING = Vector2(100, 60)
 const ANIM = 0.2
 
 @onready var panel = %Panel as Panel
 @onready var toastMessage = %Label as Label
 
-func showMessage(message: String, duration: float):
+func showMessage(message: String, duration: float) -> void:
 	if GlobalRef.isToastActive == false:
 		GlobalRef.isToastActive = true
 		toastMessage.text = message

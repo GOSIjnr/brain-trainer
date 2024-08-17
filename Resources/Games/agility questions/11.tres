@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="agiltyQuestion" load_steps=2 format=3 uid="uid://cfjfpbul0h403"]
+
+[ext_resource type="Script" path="res://Scripts/agility_game.gd" id="1_ivy7m"]
+
+[resource]
+script = ExtResource("1_ivy7m")
+question = "sacrifice"
+options = Array[String](["keep", "forgo"])
+pointsDistribution = Array[int]([0, 400])

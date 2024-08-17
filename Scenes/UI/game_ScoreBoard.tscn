@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://chp4wwk2cjoi7"]
+
+[ext_resource type="Texture2D" uid="uid://cupv3t4ityl57" path="res://Icons/pause_fill.svg" id="1_e0lpi"]
+[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_q0xah"]
+[ext_resource type="Script" path="res://Scripts/game_score_board.gd" id="2_47mdv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ngs1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntmvb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3msul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vynud"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yp7pe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_35pgl"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("1_q0xah")
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("2_47mdv")
+
+[node name="Pause" type="Button" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.470588)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ngs1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ntmvb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3msul")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vynud")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yp7pe")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_35pgl")
+icon = ExtResource("1_e0lpi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Score Text" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Label_Bold"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "9990"
+vertical_alignment = 1
+
+[node name="Timer Text" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"Label_Bold"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = ":59"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]

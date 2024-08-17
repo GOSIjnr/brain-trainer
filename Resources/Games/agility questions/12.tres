@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="agiltyQuestion" load_steps=2 format=3 uid="uid://6ng0j8m3wvp"]
+
+[ext_resource type="Script" path="res://Scripts/agility_game.gd" id="1_wae0b"]
+
+[resource]
+script = ExtResource("1_wae0b")
+question = "crooked"
+options = Array[String](["bent", "straight"])
+pointsDistribution = Array[int]([400, 0])
