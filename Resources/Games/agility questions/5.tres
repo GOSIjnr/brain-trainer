@@ -6,4 +6,5 @@
 script = ExtResource("1_ux5i2")
 question = "antonym"
 options = Array[String](["opposite words", "simile"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "5"

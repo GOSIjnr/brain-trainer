@@ -3,6 +3,7 @@ extends Node
 var gamefilePath := "user://UserData.tres"
 var fileData: UserData
 var isToastActive := false
+var selectedGameResource: Games
 
 var scenes := {
 	"mainmenu": "res://Scenes/UI/main_menu_ui.tscn",

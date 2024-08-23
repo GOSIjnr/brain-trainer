@@ -6,4 +6,5 @@
 script = ExtResource("1_1ojkr")
 question = "imperative"
 options = Array[String](["required", "voluntary"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "9"

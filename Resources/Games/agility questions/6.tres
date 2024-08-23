@@ -6,4 +6,5 @@
 script = ExtResource("1_jjgbe")
 question = "thoughtful"
 options = Array[String](["reflective", "insensitive"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "6"

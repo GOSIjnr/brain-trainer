@@ -1,58 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0w6q28dhx6x"]
+[gd_scene load_steps=4 format=3 uid="uid://d0w6q28dhx6x"]
 
-[ext_resource type="Texture2D" uid="uid://20v81eybcupx" path="res://Textures/player_agilty.svg" id="1_vrd5r"]
+[ext_resource type="Script" path="res://Scripts/player(agility).gd" id="1_oxudk"]
+[ext_resource type="Texture2D" uid="uid://2pexdb6pjfsq" path="res://Textures/ship_8.png" id="1_qykdu"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_opf1e"]
-particles_animation = true
-particles_anim_h_frames = 12
-particles_anim_v_frames = 12
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_ra8nk"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8fb2i"]
-gradient = SubResource("Gradient_ra8nk")
-
-[sub_resource type="Curve" id="Curve_dfyy1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.154717), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_chgnc"]
-radius = 72.0278
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkwl6"]
+radius = 92.0
+height = 256.0
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("1_oxudk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_vrd5r")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
-material = SubResource("CanvasItemMaterial_opf1e")
-position = Vector2(0, 200)
-amount = 50
-texture = SubResource("GradientTexture2D_8fb2i")
-emission_shape = 1
-emission_sphere_radius = 50.0
-scale_amount_curve = SubResource("Curve_dfyy1")
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="Sprite2D"]
-position = Vector2(0, 200)
-emitting = false
-amount = 50
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-texture = SubResource("GradientTexture2D_8fb2i")
-emission_shape = 1
-emission_sphere_radius = 50.0
-direction = Vector2(0, 0)
-spread = 180.0
-initial_velocity_min = 500.0
-initial_velocity_max = 1000.0
-scale_amount_curve = SubResource("Curve_dfyy1")
-color = Color(1, 0, 0.0793943, 1)
+texture = ExtResource("1_qykdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_chgnc")
+shape = SubResource("CapsuleShape2D_wkwl6")

@@ -6,4 +6,5 @@
 script = ExtResource("1_wae0b")
 question = "crooked"
 options = Array[String](["bent", "straight"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "12"

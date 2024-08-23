@@ -18,8 +18,8 @@ func showMessage(message: String, duration: float) -> void:
 
 func hideMessage():
 	await animate(1, 0, ANIM)
-	GlobalRef.isToastActive = false
 	await get_tree().create_timer(ANIM).timeout
+	GlobalRef.isToastActive = false
 	queue_free()
 
 func animate(currentValue: float, newValue: float, duration: float):

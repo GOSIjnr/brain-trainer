@@ -1,6 +1,7 @@
 extends Node
 
 @onready var gameUI: CanvasLayer = %gameUI
+@onready var end_game: CanvasLayer = $EndGame
 
 @export var questionSize: int = 5
 
@@ -13,14 +14,10 @@ var playerScore: int = 0:
 
 func _ready():
 	get_tree().quit_on_go_back = false
-	setQuestion()
 
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		go_back_request()
-
-func go_back_request():
-	Helper.showToast(get_node("gameUI/Control"), "Can't go back at this stage", 1.5)
+		Helper.showToast(gameUI, "Can't go back at this stage", 1)
 
 func setQuestion():
 	if questionSize == 0:
@@ -42,8 +39,13 @@ func answerReview(button, option: String):
 	gameUI.animate(button, option, playerScore)
 
 func _on_game_ui_answer_animation_done() -> void:
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	setQuestion()
 
 func endGame():
-	print(playerScore)
+	end_game.score = playerScore
+	end_game.show()
+
+func _on_question_timer_timeout() -> void:
+	questionSize = 0
+	setQuestion()

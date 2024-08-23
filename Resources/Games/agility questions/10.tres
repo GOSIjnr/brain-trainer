@@ -6,4 +6,5 @@
 script = ExtResource("1_cqhne")
 question = "flourish"
 options = Array[String](["prosper", "wither"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "10"

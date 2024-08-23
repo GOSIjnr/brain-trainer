@@ -6,4 +6,5 @@
 script = ExtResource("1_gidpp")
 question = "resounding"
 options = Array[String](["ringing", "quiet"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "Three"

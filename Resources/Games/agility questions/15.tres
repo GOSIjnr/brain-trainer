@@ -6,4 +6,5 @@
 script = ExtResource("1_p3hlp")
 question = "bloat"
 options = Array[String](["fluffiness", "lump"])
-pointsDistribution = Array[int]([0, 400])
+pointsDistribution = Array[int]([-200, 400])
+correction = "15"

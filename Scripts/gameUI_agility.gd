@@ -4,19 +4,25 @@ extends CanvasLayer
 @onready var option1: Button = %option1
 @onready var option2: Button = %option2
 @onready var question_timer: Timer = %"Question Timer"
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var animationPlayer: AnimationPlayer = %"gameUI animator"
 @onready var score_board: HBoxContainer = %ScoreBoard
+@onready var correction_panel: Control = %"Correction Panel"
+@onready var pause_menu: Control = %"Pause Menu"
 
 var question: Array = Helper.loadAllResources("res://Resources/Games/agility questions/")
 var questionResource: agiltyQuestion
 
 signal questionDone(buttonClicked, point: int)
 signal answerAnimationDone
+signal boostSpaceShip
+
+func _ready() -> void:
+	correction_panel.hide()
+	setQuestion()
 
 func _process(_delta):
 	var time = round(question_timer.time_left)
-	var formattedTime = "%02d" % time
-	score_board.timeleft = formattedTime
+	score_board.timeleft = time
 
 func setQuestion():
 	question.shuffle()
@@ -57,9 +63,15 @@ func animate(button, option: String, score: int):
 		"good":
 			button.modulate = Color.GREEN
 			answerAnimationDone.emit()
+			boostSpaceShip.emit()
 		"bad":
 			button.modulate = Color.RED
-			answerAnimationDone.emit()
+			correction_panel.correction = questionResource.correction
+			get_tree().paused = true
+			correction_panel.show()
 
 func updateScore(score: int):
 	score_board.target_score = score
+
+func _on_correction_panel_correction_done() -> void:
+	answerAnimationDone.emit()

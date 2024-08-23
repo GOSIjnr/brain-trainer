@@ -6,4 +6,5 @@
 script = ExtResource("1_4xfys")
 question = "ruin"
 options = Array[String](["wreck", "build"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "4"

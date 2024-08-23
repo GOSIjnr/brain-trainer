@@ -47,3 +47,4 @@ func _positions(button :Button):
 func showSelectedTab(Game :Games):
 	selectedGameTab.visible = true
 	selectedGameTab.selected = Game
+	GlobalRef.selectedGameResource = Game

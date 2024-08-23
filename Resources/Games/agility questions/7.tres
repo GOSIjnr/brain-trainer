@@ -6,4 +6,5 @@
 script = ExtResource("1_ilvl3")
 question = "drab"
 options = Array[String](["cheerful", "dull"])
-pointsDistribution = Array[int]([0, 400])
+pointsDistribution = Array[int]([-200, 400])
+correction = "7"

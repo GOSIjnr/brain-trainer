@@ -1,10 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwvahd51q73el"]
+[gd_scene load_steps=24 format=3 uid="uid://bwvahd51q73el"]
 
 [ext_resource type="Script" path="res://Scripts/agility_gameManager.gd" id="1_4q4md"]
 [ext_resource type="Script" path="res://Scripts/gameUI_agility.gd" id="2_r1aq5"]
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="2_r2jbh"]
 [ext_resource type="PackedScene" uid="uid://d0w6q28dhx6x" path="res://Scenes/Games/Agility/player.tscn" id="3_lq7a2"]
 [ext_resource type="PackedScene" uid="uid://chp4wwk2cjoi7" path="res://Scenes/UI/game_ScoreBoard.tscn" id="4_s1fnj"]
+[ext_resource type="Script" path="res://Scripts/correction_Manager(agility_game).gd" id="5_0ccnp"]
+[ext_resource type="Script" path="res://Scripts/pause_menu Manager(agility_game).gd" id="5_psaav"]
+[ext_resource type="PackedScene" uid="uid://ftmpyl1oknx4" path="res://Scenes/UI/end_game.tscn" id="6_qcref"]
+[ext_resource type="Texture2D" uid="uid://b7li5kocgortx" path="res://Textures/star.svg" id="9_xrkjq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii85l"]
 
@@ -22,7 +26,7 @@ resource_name = "anim_IntroButtons"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%option1:custom_minimum_size")
+tracks/0/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%option2:custom_minimum_size")
+tracks/1/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:custom_minimum_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -46,7 +50,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%option1:modulate")
+tracks/2/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -58,7 +62,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%option2:modulate")
+tracks/3/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -75,7 +79,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%option2:custom_minimum_size")
+tracks/0/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%option2:modulate")
+tracks/1/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -104,7 +108,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%option1:custom_minimum_size")
+tracks/0/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -116,7 +120,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%option1:modulate")
+tracks/1/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -131,7 +135,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%option1:custom_minimum_size")
+tracks/0/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -143,7 +147,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%option2:custom_minimum_size")
+tracks/1/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:custom_minimum_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +159,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%option2:modulate")
+tracks/2/path = NodePath("gameUI/MarginContainer/VBoxContainer/option2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -167,7 +171,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%option1:modulate")
+tracks/3/path = NodePath("gameUI/MarginContainer/VBoxContainer/option1:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -185,6 +189,69 @@ _data = {
 "RESET": SubResource("Animation_c0tls")
 }
 
+[sub_resource type="Animation" id="Animation_57h0s"]
+resource_name = "Panel_Close"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Correction Box:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.307, 1),
+"update": 0,
+"values": [Vector2(0, 500), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eqp4o"]
+resource_name = "Panel_Open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Correction Box:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.307, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_2bfc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Correction Box:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_id40v"]
+_data = {
+"Panel_Close": SubResource("Animation_57h0s"),
+"Panel_Open": SubResource("Animation_eqp4o"),
+"RESET": SubResource("Animation_2bfc7")
+}
+
+[sub_resource type="Gradient" id="Gradient_lxwvq"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1q8u"]
+size = Vector2(2000, 250)
+
 [node name="GameManager" type="Node"]
 script = ExtResource("1_4q4md")
 questionSize = 15
@@ -199,7 +266,7 @@ wait_time = 90.0
 one_shot = true
 autostart = true
 
-[node name="Control" type="Control" parent="gameUI"]
+[node name="gameUI" type="Control" parent="gameUI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,7 +275,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_r2jbh")
 
-[node name="MarginContainer" type="MarginContainer" parent="gameUI/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="gameUI/gameUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,25 +283,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScoreBoard" parent="gameUI/Control/MarginContainer" instance=ExtResource("4_s1fnj")]
+[node name="ScoreBoard" parent="gameUI/gameUI/MarginContainer" instance=ExtResource("4_s1fnj")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="gameUI/Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="gameUI/gameUI/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 50
 alignment = 2
 
-[node name="word" type="Label" parent="gameUI/Control/MarginContainer/VBoxContainer"]
+[node name="word" type="Label" parent="gameUI/gameUI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"Label_Bold"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
 text = "word"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="option1" type="Button" parent="gameUI/Control/MarginContainer/VBoxContainer"]
+[node name="option1" type="Button" parent="gameUI/gameUI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(700, 250)
 layout_mode = 2
@@ -246,7 +316,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mg5px")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mg5px")
 text = "option 1"
 
-[node name="option2" type="Button" parent="gameUI/Control/MarginContainer/VBoxContainer"]
+[node name="option2" type="Button" parent="gameUI/gameUI/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(700, 250)
 layout_mode = 2
@@ -258,18 +328,111 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_mg5px")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mg5px")
 text = "option 2"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="gameUI"]
+[node name="gameUI animator" type="AnimationPlayer" parent="gameUI/gameUI/MarginContainer"]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_puubi")
 }
+
+[node name="Correction Panel" type="Control" parent="gameUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_r2jbh")
+script = ExtResource("5_0ccnp")
+
+[node name="Correction Box" type="Panel" parent="gameUI/Correction Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="gameUI/Correction Panel/Correction Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Correction Text" type="RichTextLabel" parent="gameUI/Correction Panel/Correction Box/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "sdasdasdasdddadasdasdasdaddadaasdasdasdasdsadasddsasdasdasdasdadsdasddadddsdada[size=40]ddasdadddadsaddsadasdsdad[/size]"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gameUI/Correction Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_id40v")
+}
+
+[node name="Pause Menu" type="Control" parent="gameUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_psaav")
+
+[node name="Panel" type="Panel" parent="gameUI/Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndGame" parent="." instance=ExtResource("6_qcref")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="game" type="Node2D" parent="."]
 
 [node name="player" parent="game" instance=ExtResource("3_lq7a2")]
+scale = Vector2(0.4, 0.4)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="game"]
+amount = 150
+randomness = 1.0
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("9_xrkjq")
+emission_shape = 3
+emission_rect_extents = Vector2(1500, 1500)
+gravity = Vector2(0, 90)
+scale_amount_min = 0.04
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_lxwvq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game/StaticBody2D"]
+position = Vector2(0, -850)
+shape = SubResource("RectangleShape2D_h1q8u")
 
 [connection signal="answerAnimationDone" from="gameUI" to="." method="_on_game_ui_answer_animation_done"]
+[connection signal="boostSpaceShip" from="gameUI" to="game/player" method="_on_game_ui_boost_space_ship"]
 [connection signal="questionDone" from="gameUI" to="." method="_on_game_ui_question_done"]
-[connection signal="pressed" from="gameUI/Control/MarginContainer/VBoxContainer/option1" to="gameUI" method="_on_option_1_pressed"]
-[connection signal="pressed" from="gameUI/Control/MarginContainer/VBoxContainer/option2" to="gameUI" method="_on_option_2_pressed"]
+[connection signal="timeout" from="gameUI/Question Timer" to="." method="_on_question_timer_timeout"]
+[connection signal="pressed" from="gameUI/gameUI/MarginContainer/VBoxContainer/option1" to="gameUI" method="_on_option_1_pressed"]
+[connection signal="pressed" from="gameUI/gameUI/MarginContainer/VBoxContainer/option2" to="gameUI" method="_on_option_2_pressed"]
+[connection signal="correctionDone" from="gameUI/Correction Panel" to="gameUI" method="_on_correction_panel_correction_done"]

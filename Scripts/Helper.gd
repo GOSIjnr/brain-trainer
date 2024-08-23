@@ -39,7 +39,8 @@ static func updateDictionary(value :Dictionary, new_value :Dictionary):
 
 #toast
 static func showToast(root, message: String, duration: float):
-	var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
-	var toast = toastScene.instantiate()
-	root.add_child(toast)
-	toast.showMessage(message, duration)
+	if GlobalRef.isToastActive == false:
+		var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
+		var toast = toastScene.instantiate()
+		root.add_child(toast)
+		toast.showMessage(message, duration)

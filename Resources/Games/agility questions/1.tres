@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_ruq3b")
 question = "wicked"
-option1 = "lazy"
-option2 = "evil"
 options = Array[String](["lazy", "evil"])
-pointsDistribution = Array[int]([0, 400])
+pointsDistribution = Array[int]([-200, 400])
+correction = "one"

@@ -54,10 +54,10 @@ func _ready():
 	growth.text = updateGrowth(int(current_pq.text), int(starting_pq.text))
 
 func updateColors():
-	back_ground.self_modulate = contentColor.lightened(0.3)
-	progress_high.tint_progress = contentColor.darkened(0.1)
-	progress_starting.tint_progress = contentColor.darkened(0.3)
-	progress_low.tint_progress = contentColor.darkened(0.6)
+	back_ground.self_modulate = contentColor.lightened(0.4)
+	progress_high.tint_progress = contentColor
+	progress_starting.tint_progress = contentColor.darkened(0.2)
+	progress_low.tint_progress = contentColor.darkened(0.4)
 
 func getTitle(value: int):
 	if value >= 4750:

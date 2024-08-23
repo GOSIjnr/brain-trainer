@@ -252,9 +252,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_type_variation = &"Button_Accent"
-theme_override_colors/font_color = Color(0.960784, 0.54902, 0.556863, 1)
 theme_override_colors/font_hover_color = Color(0.960784, 0.54902, 0.556863, 1)
 theme_override_colors/font_focus_color = Color(0.960784, 0.54902, 0.556863, 1)
+theme_override_colors/font_color = Color(0.960784, 0.54902, 0.556863, 1)
 text = "Start"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -270,7 +270,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 500)
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 script = ExtResource("4_id6mb")
 
@@ -320,14 +320,14 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"Label_Thin"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 55
 text = "Word"
 vertical_alignment = 1
 

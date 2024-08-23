@@ -6,4 +6,5 @@
 script = ExtResource("1_ivy7m")
 question = "sacrifice"
 options = Array[String](["keep", "forgo"])
-pointsDistribution = Array[int]([0, 400])
+pointsDistribution = Array[int]([-200, 400])
+correction = "11"

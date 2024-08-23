@@ -6,4 +6,5 @@
 script = ExtResource("1_utxsv")
 question = "entrench"
 options = Array[String](["establish", "halt"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "14"

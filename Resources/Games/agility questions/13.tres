@@ -6,4 +6,5 @@
 script = ExtResource("1_a2ybi")
 question = "spacious"
 options = Array[String](["cramped", "roomy"])
-pointsDistribution = Array[int]([0, 400])
+pointsDistribution = Array[int]([-200, 400])
+correction = "13"

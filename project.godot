@@ -14,7 +14,6 @@ config/name="BrainTrainer"
 config/version="0.0"
 run/main_scene="res://Scenes/UI/StartUp.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-boot_splash/show_image=false
 config/icon="res://Icons/icon.png"
 
 [autoload]

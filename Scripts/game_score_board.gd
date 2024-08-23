@@ -1,6 +1,5 @@
 extends HBoxContainer
 
-@onready var pause: Button = %Pause
 @onready var score_text: Label = %"Score Text"
 @onready var timer_text: Label = %"Timer Text"
 
@@ -17,14 +16,9 @@ var timeleft: int = 0:
 		timeleft = new_value
 		timer_text.text = ":" + str(new_value)
 
-signal pausedButtonPressed
-
 func _process(_delta):
 	score_text.text = str(score)
 
 func _on_tween_completed():
 	score = target_score
 	score_text.text = str(score)
-
-func _on_pause_pressed() -> void:
-	pausedButtonPressed.emit()

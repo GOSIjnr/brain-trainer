@@ -6,4 +6,5 @@
 script = ExtResource("1_sg4qb")
 question = "tawdry"
 options = Array[String](["tasteless", "tasteful"])
-pointsDistribution = Array[int]([400, 0])
+pointsDistribution = Array[int]([400, -200])
+correction = "8"
