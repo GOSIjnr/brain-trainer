@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_jjgbe")
-question = "thoughtful"
-options = Array[String](["reflective", "insensitive"])
+question = "Thoughtful"
+options = Array[String](["Reflective", "Insensitive"])
 pointsDistribution = Array[int]([400, -200])
-correction = "6"
+meaning = Array[String](["deeply or seriously thoughtful", "deficient in human sensibility"])

@@ -7,7 +7,6 @@ extends CanvasLayer
 @onready var animationPlayer: AnimationPlayer = %"gameUI animator"
 @onready var score_board: HBoxContainer = %ScoreBoard
 @onready var correction_panel: Control = %"Correction Panel"
-@onready var pause_menu: Control = %"Pause Menu"
 
 var question: Array = Helper.loadAllResources("res://Resources/Games/agility questions/")
 var questionResource: agiltyQuestion
@@ -21,8 +20,7 @@ func _ready() -> void:
 	setQuestion()
 
 func _process(_delta):
-	var time = round(question_timer.time_left)
-	score_board.timeleft = time
+	score_board.timeleft = question_timer.time_left
 
 func setQuestion():
 	question.shuffle()
@@ -30,14 +28,14 @@ func setQuestion():
 	questionResource = question.pick_random()
 	question.erase(questionResource)
 	
-	word.text = questionResource.question
+	word.text = questionResource.question.to_lower()
 	option1.text = ""
 	option2.text = ""
 	animationPlayer.play("Intro")
 	await animationPlayer.animation_finished
 	
-	option1.text = questionResource.options[0]
-	option2.text = questionResource.options[1]
+	option1.text = questionResource.options[0].to_lower()
+	option2.text = questionResource.options[1].to_lower()
 
 func _on_option_1_pressed() -> void:
 	if not animationPlayer.is_playing():
@@ -66,7 +64,19 @@ func animate(button, option: String, score: int):
 			boostSpaceShip.emit()
 		"bad":
 			button.modulate = Color.RED
-			correction_panel.correction = questionResource.correction
+			correction_panel.word = questionResource.question
+			match button.name:
+				"option1":
+					correction_panel.option1 = questionResource.options[1]
+					correction_panel.option2 = questionResource.options[0]
+					correction_panel.option1Meaning = questionResource.meaning[1]
+					correction_panel.option2Meaning = questionResource.meaning[0]
+				"option2":
+					correction_panel.option1 = questionResource.options[0]
+					correction_panel.option2 = questionResource.options[1]
+					correction_panel.option1Meaning = questionResource.meaning[0]
+					correction_panel.option2Meaning = questionResource.meaning[1]
+			
 			get_tree().paused = true
 			correction_panel.show()
 

@@ -8,4 +8,4 @@ question = "[center]How clearly do you enunciate your words when speaking?[/cent
 "
 QuestionType = 1
 options = Array[String](["Very clearly", "Mostly clear", "Sometimes unclear", "Often unclear"])
-pointsDistribution = Array[int]([1250, 937, 625, 312])
+pointsDistribution = Array[int]([500, 375, 250, 125])

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_utxsv")
-question = "entrench"
-options = Array[String](["establish", "halt"])
+question = "Entrench"
+options = Array[String](["Establish", "Halt"])
 pointsDistribution = Array[int]([400, -200])
-correction = "14"
+meaning = Array[String](["set up orlay the groundwork for", "cause to stop"])

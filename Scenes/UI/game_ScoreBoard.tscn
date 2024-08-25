@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chp4wwk2cjoi7"]
+[gd_scene load_steps=4 format=3 uid="uid://chp4wwk2cjoi7"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_q0xah"]
 [ext_resource type="Script" path="res://Scripts/game_score_board.gd" id="2_47mdv"]
+[ext_resource type="AudioStream" uid="uid://6x4ye6h4e2ee" path="res://Sound/countdown_warning.wav" id="3_447oi"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 anchors_preset = 10
@@ -33,3 +34,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = ":59"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_447oi")

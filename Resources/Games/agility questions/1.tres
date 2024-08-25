@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ruq3b")
-question = "wicked"
-options = Array[String](["lazy", "evil"])
+question = "Wicked"
+options = Array[String](["Lazy", "Evil"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "one"
+meaning = Array[String](["disinclined to work or exertion", "morally bad or wrong"])

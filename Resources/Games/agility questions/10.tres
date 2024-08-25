@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_cqhne")
-question = "flourish"
-options = Array[String](["prosper", "wither"])
+question = "Flourish"
+options = Array[String](["Prosper", "Wither"])
 pointsDistribution = Array[int]([400, -200])
-correction = "10"
+meaning = Array[String](["making steady progress", "lose freshness, vigour or vitality"])

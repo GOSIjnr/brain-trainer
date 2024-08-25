@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ilvl3")
-question = "drab"
-options = Array[String](["cheerful", "dull"])
+question = "Drab"
+options = Array[String](["Cheerful", "Dull"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "7"
+meaning = Array[String](["being full of or promoting cheer", "not active or brisk"])

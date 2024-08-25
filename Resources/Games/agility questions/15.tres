@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_p3hlp")
-question = "bloat"
-options = Array[String](["fluffiness", "lump"])
+question = "Bloat"
+options = Array[String](["Fluffiness", "Lump"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "15"
+meaning = Array[String](["a light softness", "an abnormal protuberance or localized enlargement"])

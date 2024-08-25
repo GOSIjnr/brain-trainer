@@ -7,4 +7,4 @@ script = ExtResource("1_7ih42")
 question = "[center]How often do you use filler words (like \"um\", \"uh\", \"you know\") when speaking?[/center]"
 QuestionType = 1
 options = Array[String](["Rarely or never", "Occasionally", "Frequently", "Constantly"])
-pointsDistribution = Array[int]([1250, 937, 625, 312])
+pointsDistribution = Array[int]([500, 375, 250, 125])

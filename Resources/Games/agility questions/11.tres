@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ivy7m")
-question = "sacrifice"
-options = Array[String](["keep", "forgo"])
+question = "Sacrifice"
+options = Array[String](["Keep", "Forgo"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "11"
+meaning = Array[String](["retain possession of", "do without or cease to hold or adhere"])

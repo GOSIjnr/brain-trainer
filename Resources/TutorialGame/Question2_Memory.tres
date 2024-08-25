@@ -7,4 +7,4 @@ script = ExtResource("1_8m7se")
 question = "[center]Rate your ability to recall details of conversations[/center]"
 QuestionType = 4
 options = Array[String](["Excellent", "Above Average", "Average", "Below Average"])
-pointsDistribution = Array[int]([1250, 937, 625, 312])
+pointsDistribution = Array[int]([500, 375, 250, 125])

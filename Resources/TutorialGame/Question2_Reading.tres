@@ -9,4 +9,4 @@ question = "[center]What is the best title for the passage?[/center]
 [b]Passage: [/b][i]\"The Amazon rainforest is home to a diverse range of species. Many plants and animals found there are not found anywhere else in the world.\"[/i]"
 QuestionType = 2
 options = Array[String](["Deserts of the World", "The Amazon Rainforest"])
-pointsDistribution = Array[int]([0, 833])
+pointsDistribution = Array[int]([0, 333])

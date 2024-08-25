@@ -34,7 +34,8 @@
 [ext_resource type="Script" path="res://Scripts/DeleteAccount.gd" id="29_2t8mh"]
 
 [sub_resource type="Gradient" id="Gradient_8hb12"]
-colors = PackedColorArray(1, 0, 0.35, 0.505882, 0.504163, 0.62, 0.2542, 0.121569)
+interpolation_mode = 2
+colors = PackedColorArray(0.208333, 0, 0.0194766, 0.505882, 0.21, 0, 0.021, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hdyre"]
 gradient = SubResource("Gradient_8hb12")
@@ -43,6 +44,7 @@ fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_5jm0b"]
+interpolation_mode = 2
 colors = PackedColorArray(0.254059, 0.940986, 0.98, 0.207843, 0.195288, 0.17946, 1, 0.443137)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rkmvc"]
@@ -179,14 +181,14 @@ uppercase = true
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2"]
-self_modulate = Color(1, 0.875371, 0.728367, 1)
+self_modulate = Color(0.697917, 0.3529, 0.318135, 1)
 clip_children = 2
 custom_minimum_size = Vector2(0, 650)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_uebkm")
 
 [node name="BackGround" type="TextureRect" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer2/Panel"]
-self_modulate = Color(1, 0.777833, 0.57, 1)
+modulate = Color(1, 0.757, 0.73, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -252,9 +254,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_type_variation = &"Button_Accent"
-theme_override_colors/font_hover_color = Color(0.960784, 0.54902, 0.556863, 1)
-theme_override_colors/font_focus_color = Color(0.960784, 0.54902, 0.556863, 1)
-theme_override_colors/font_color = Color(0.960784, 0.54902, 0.556863, 1)
+theme_override_colors/font_hover_color = Color(0.698039, 0.352941, 0.317647, 1)
+theme_override_colors/font_focus_color = Color(0.698039, 0.352941, 0.317647, 1)
+theme_override_colors/font_color = Color(0.698039, 0.352941, 0.317647, 1)
 text = "Start"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/Contents/Content1/VBoxContainer/ScrollContainer/VBoxContainer"]

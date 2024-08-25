@@ -31,8 +31,10 @@ func _on_game_ui_question_done(buttonClicked, point: int) -> void:
 	playerScore += point
 	
 	if point > 0:
+		%Sfx_Right.play()
 		answerReview(buttonClicked, "good")
 	else:
+		%Sfx_Wrong.play()
 		answerReview(buttonClicked, "bad")
 
 func answerReview(button, option: String):

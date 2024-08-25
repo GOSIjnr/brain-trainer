@@ -84,13 +84,13 @@ func page4UpdateUI():
 		$"Page 4/MarginContainer/Button".disabled = true
 
 func checkCheckedCheckboxes():
-	var checkBoxContainer = $"Page 4/MarginContainer/VBoxContainer"
+	var checkBoxContainer = $"Page 4/MarginContainer/VBoxContainer/GridContainer"
 	var num_checkboxes = checkBoxContainer.get_child_count()
 	var any_checked = false
 	
 	for i in range(num_checkboxes):
 		var checkbox = checkBoxContainer.get_child(i)
-		if checkbox is CheckButton and checkbox.button_pressed:
+		if checkbox is Button and checkbox.button_pressed:
 			any_checked = true
 			break
 	
@@ -98,11 +98,11 @@ func checkCheckedCheckboxes():
 
 func savePersonalization():
 	var data: UserData = load(GlobalRef.gamefilePath) as UserData
-	data.Writing = $"Page 4/MarginContainer/VBoxContainer/CheckButton1".button_pressed
-	data.Speaking = $"Page 4/MarginContainer/VBoxContainer/CheckButton2".button_pressed
-	data.Reading = $"Page 4/MarginContainer/VBoxContainer/CheckButton3".button_pressed
-	data.Maths = $"Page 4/MarginContainer/VBoxContainer/CheckButton4".button_pressed
-	data.Memory = $"Page 4/MarginContainer/VBoxContainer/CheckButton5".button_pressed
+	data.Writing = %WritingCB.button_pressed
+	data.Speaking = %SpeakingCB.button_pressed
+	data.Reading = %ReadingCB.button_pressed
+	data.Maths = %MathsCB.button_pressed
+	data.Memory = %MemoryCB.button_pressed
 	
 	ResourceSaver.save(data, GlobalRef.gamefilePath)
 

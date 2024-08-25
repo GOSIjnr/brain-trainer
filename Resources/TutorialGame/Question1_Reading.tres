@@ -9,4 +9,4 @@ question = "[center]What is the main idea of the passage?[/center]
 [b]Passage: [/b][i]\"Birds build nests to protect their eggs. Different birds use various materials like twigs, leaves, and feathers to make their nests.\"[/i]"
 QuestionType = 2
 options = Array[String](["Birds fly south for the winter", "Birds build nests to protect their eggs"])
-pointsDistribution = Array[int]([0, 833])
+pointsDistribution = Array[int]([0, 334])

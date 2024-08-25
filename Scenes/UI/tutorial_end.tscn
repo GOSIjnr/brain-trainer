@@ -85,6 +85,7 @@ autostart = true
 
 [node name="sfx_whoosh" type="AudioStreamPlayer" parent="page1"]
 stream = ExtResource("4_124vn")
+volume_db = 10.0
 
 [node name="page2" type="Control" parent="."]
 visible = false

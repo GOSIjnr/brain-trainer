@@ -9,4 +9,4 @@ question = "[center]Choose the most appropriate transition word to complete the 
 [center]She loves reading novels; [img=60]res://Textures/Blank_Box.svg[/img][img=60]res://Textures/Blank_Box.svg[/img][img=60]res://Textures/Blank_Box.svg[/img][img=60]res://Textures/Blank_Box.svg[/img], she enjoys writing short stories.[/center]"
 QuestionType = 0
 options = Array[String](["however", "therefore", "moreover", "similarly"])
-pointsDistribution = Array[int]([0, 0, 833, 0])
+pointsDistribution = Array[int]([0, 0, 333, 0])

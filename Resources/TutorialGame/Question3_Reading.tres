@@ -9,4 +9,4 @@ question = "[center]What can be inferred about bees from the passage?[/center]
 [b]Passage: [/b][i]\"Bees are important pollinators. They help in the reproduction of many plants by transferring pollen from one flower to another.\"[/i]"
 QuestionType = 2
 options = Array[String](["Bees help in plant reproduction.", "Bees are harmful to plants."])
-pointsDistribution = Array[int]([833, 0])
+pointsDistribution = Array[int]([333, 0])

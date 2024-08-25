@@ -7,4 +7,4 @@ script = ExtResource("1_v3ie0")
 question = "[center]How well can you remember names[/center]"
 QuestionType = 4
 options = Array[String](["Excellent", "Above Average", "Average", "Below Average"])
-pointsDistribution = Array[int]([1250, 937, 625, 312])
+pointsDistribution = Array[int]([500, 375, 250, 125])

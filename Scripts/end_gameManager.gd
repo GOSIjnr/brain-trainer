@@ -29,7 +29,7 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 func getRemark() -> String:
 	var remark: String = ""
 	
-	if score == 6000:
+	if score >= 6000:
 		remark += "excellent!"
 	elif score >= 4000:
 		remark += "goodjob."
@@ -75,11 +75,11 @@ func getProficiency() -> String:
 	return text
 
 func proficiencyScore() -> int:
-	if score == 6000:
-		return 250
+	if score >= 6000:
+		return 30
 	elif score >= 4000:
-		return 150
+		return 15
 	elif score >= 2000:
-		return 100
+		return 5
 	else:
-		return -250
+		return -20

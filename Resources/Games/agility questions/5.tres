@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ux5i2")
-question = "antonym"
-options = Array[String](["opposite words", "simile"])
+question = "Antonym"
+options = Array[String](["Opposite Words", "Simile"])
 pointsDistribution = Array[int]([400, -200])
-correction = "5"
+meaning = Array[String](["a word that expresses a meaing opposed to the meaning of another word", "a figure of speech that expresses a resemblance between things of different kinds"])

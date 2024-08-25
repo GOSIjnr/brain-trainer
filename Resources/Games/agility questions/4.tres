@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4xfys")
-question = "ruin"
-options = Array[String](["wreck", "build"])
+question = "Ruin"
+options = Array[String](["Wreck", "Build"])
 pointsDistribution = Array[int]([400, -200])
-correction = "4"
+meaning = Array[String](["smash or break forcefully", "create something from abstract"])

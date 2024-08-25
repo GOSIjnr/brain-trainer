@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_sg4qb")
-question = "tawdry"
-options = Array[String](["tasteless", "tasteful"])
+question = "Tawdry"
+options = Array[String](["Tasteless", "Tasteful"])
 pointsDistribution = Array[int]([400, -200])
-correction = "8"
+meaning = Array[String](["lacking flavour", "having, showing or conforming to good taste"])

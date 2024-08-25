@@ -6,4 +6,4 @@ class_name agiltyQuestion
 @export var options: Array[String]
 @export var pointsDistribution: Array[int]
 
-@export_multiline var correction: String
+@export_multiline var meaning: Array[String]

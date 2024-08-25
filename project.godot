@@ -14,6 +14,9 @@ config/name="BrainTrainer"
 config/version="0.0"
 run/main_scene="res://Scenes/UI/StartUp.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://Textures/esut_logo.png"
+boot_splash/fullsize=false
 config/icon="res://Icons/icon.png"
 
 [autoload]

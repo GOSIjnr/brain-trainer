@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_a2ybi")
-question = "spacious"
-options = Array[String](["cramped", "roomy"])
+question = "Spacious"
+options = Array[String](["Cramped", "Roomy"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "13"
+meaning = Array[String](["constricted in size", "having ample space"])

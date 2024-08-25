@@ -4,11 +4,7 @@
 
 [resource]
 script = ExtResource("1_bjpo1")
-question = "identical"
-options = Array[String](["exclusive", "indistinguishable"])
+question = "Identical"
+options = Array[String](["Exclusive", "Indistinguishable"])
 pointsDistribution = Array[int]([-200, 400])
-correction = "The correct answer is Indistinguishable
-
-Exclusive: Not divided or shared with others
-[i]while[/i]
-Indistinguishable: "
+meaning = Array[String](["not divided or shared with others", "not capable of being distinguished or differrntaited"])

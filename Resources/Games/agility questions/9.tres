@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_1ojkr")
-question = "imperative"
-options = Array[String](["required", "voluntary"])
+question = "Imperative"
+options = Array[String](["Paramount", "Voluntary"])
 pointsDistribution = Array[int]([400, -200])
-correction = "9"
+meaning = Array[String](["of greatest importance", "of your own free will or design"])

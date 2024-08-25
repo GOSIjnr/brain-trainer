@@ -7,4 +7,4 @@ script = ExtResource("1_1wju4")
 question = "[center]Which sentence uses punctuation correctly?[/center]"
 QuestionType = 0
 options = Array[String](["She said \"I will be there soon\".", "She said, \"I will be there soon.\""])
-pointsDistribution = Array[int]([0, 833])
+pointsDistribution = Array[int]([0, 333])

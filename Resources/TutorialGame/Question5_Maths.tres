@@ -7,4 +7,4 @@ script = ExtResource("1_gm1xg")
 question = "[center]What is the value of the expression 5²?[/center]"
 QuestionType = 3
 options = Array[String](["10", "15", "20", "25"])
-pointsDistribution = Array[int]([0, 0, 0, 500])
+pointsDistribution = Array[int]([0, 0, 0, 200])

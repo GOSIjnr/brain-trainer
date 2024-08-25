@@ -316,7 +316,7 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Page 4/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 100
 
 [node name="Label" type="Label" parent="Page 4/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -325,39 +325,60 @@ text = "How do you want to improve?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CheckButton1" type="CheckButton" parent="Page 4/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="GridContainer" type="GridContainer" parent="Page 4/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="WritingCB" type="Button" parent="Page 4/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
+toggle_mode = true
+action_mode = 0
 text = "Writing"
 
-[node name="CheckButton2" type="CheckButton" parent="Page 4/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="SpeakingCB" type="Button" parent="Page 4/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
+toggle_mode = true
+action_mode = 0
 text = "Speaking"
 
-[node name="CheckButton3" type="CheckButton" parent="Page 4/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="ReadingCB" type="Button" parent="Page 4/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
+toggle_mode = true
+action_mode = 0
 text = "Reading"
 
-[node name="CheckButton4" type="CheckButton" parent="Page 4/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="MathsCB" type="Button" parent="Page 4/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
+toggle_mode = true
+action_mode = 0
 text = "Maths"
 
-[node name="CheckButton5" type="CheckButton" parent="Page 4/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+[node name="MemoryCB" type="Button" parent="Page 4/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_type_variation = &"Button_Bubble"
 theme_override_font_sizes/font_size = 40
+toggle_mode = true
+action_mode = 0
 text = "Memory"
 
 [node name="Button" type="Button" parent="Page 4/MarginContainer"]

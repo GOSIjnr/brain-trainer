@@ -75,11 +75,11 @@ func displayQuestion(index :int):
 	if index > questions.size() - 1:
 		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
 		
-		GlobalRef.fileData.WritingEPQ = clamp(writingScore, 250, 5000)
-		GlobalRef.fileData.SpeakingEPQ = clamp(speakingScore, 250, 5000)
-		GlobalRef.fileData.ReadingEPQ = clamp(readingScore, 250, 5000)
-		GlobalRef.fileData.MathsEPQ = clamp(mathsScore, 250, 5000)
-		GlobalRef.fileData.MemoryEPQ = clamp(memoryScore, 250, 5000)
+		GlobalRef.fileData.WritingEPQ = clamp(writingScore, 10, 1000)
+		GlobalRef.fileData.SpeakingEPQ = clamp(speakingScore, 10, 1000)
+		GlobalRef.fileData.ReadingEPQ = clamp(readingScore, 10, 1000)
+		GlobalRef.fileData.MathsEPQ = clamp(mathsScore, 10, 1000)
+		GlobalRef.fileData.MemoryEPQ = clamp(memoryScore, 10, 1000)
 		
 		GlobalRef.fileData.starting_WritingEPQ = GlobalRef.fileData.WritingEPQ
 		GlobalRef.fileData.starting_SpeakingEPQ = GlobalRef.fileData.SpeakingEPQ

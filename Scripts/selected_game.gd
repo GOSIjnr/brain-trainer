@@ -66,6 +66,7 @@ func _on_close_button_gui_input(event: InputEvent):
 		
 		if rect.has_point(event.position):
 			self.visible = false
+			GlobalRef.selectedGameResource = null
 
 func _on_help_button_gui_input(event):
 	if event is InputEventScreenTouch and event.is_released():

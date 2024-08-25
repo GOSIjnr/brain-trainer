@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gidpp")
-question = "resounding"
-options = Array[String](["ringing", "quiet"])
+question = "Resounding"
+options = Array[String](["Ringing", "Quiet"])
 pointsDistribution = Array[int]([400, -200])
-correction = "Three"
+meaning = Array[String](["the giving of a ring as a token of engagement", "free of noise or uproar"])
