@@ -1,17 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2jocvnviq6yp"]
+[gd_scene load_steps=9 format=3 uid="uid://b2jocvnviq6yp"]
 
 [ext_resource type="Script" path="res://Scripts/gameList.gd" id="1_6cjeq"]
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_7bdyx"]
-[ext_resource type="Texture2D" uid="uid://rwap0figpeoj" path="res://Textures/workout.webp" id="3_4monw"]
 [ext_resource type="Texture2D" uid="uid://h60xsrvl2lb5" path="res://Icons/star.svg" id="3_d5gbr"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="3_gpi7f"]
+[ext_resource type="Shader" path="res://Shader/texture blur.gdshader" id="5_h5jrm"]
+[ext_resource type="Texture2D" uid="uid://bv74c8ikeekce" path="res://Textures/games/game_syntax.webp" id="5_xkbsu"]
 [ext_resource type="Texture2D" uid="uid://b82c7m4il2w61" path="res://Icons/lock_fill.svg" id="6_eobuw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ys46n"]
-bg_color = Color(0, 0, 0, 0.470588)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0mra"]
+resource_local_to_scene = true
+shader = ExtResource("5_h5jrm")
+shader_parameter/mix_percentage = 0.0
+shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [node name="gameList" type="Button"]
-clip_children = 2
+clip_children = 1
 custom_minimum_size = Vector2(450, 450)
 anchors_preset = -1
 anchor_right = 0.416667
@@ -31,28 +35,20 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BackGround" type="TextureRect" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_p0mra")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_4monw")
+texture = ExtResource("5_xkbsu")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Disabled" type="Panel" parent="."]
+[node name="Disabled" type="TextureRect" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ys46n")
-
-[node name="Lock" type="TextureRect" parent="Disabled"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

@@ -4,6 +4,7 @@ extends HBoxContainer
 @onready var timer_text: Label = %"Timer Text"
 @onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
+var elaspedTime: float = 0.0
 var score: int = 0
 var target_score: int = 0:
 	set(new_value):
@@ -20,15 +21,18 @@ var timeleft: float = 0:
 		timer_text.text = ":" + formattedTime
 		timeleft = new_value
 
-func _process(_delta):
+func _process(delta):
 	score_text.text = str(score)
 	
-	if timeleft <= 10:
-		timer_text.self_modulate = Color.RED
+	if round(timeleft) <= 11:
+		if round(timeleft) <= 10:
+			timer_text.self_modulate = Color.RED
 		
-		var timeDif = ceil(timeleft) - timeleft
-		if not audioPlayer.playing and timeDif <= 0.1 and timeDif > 0:
-			audioPlayer.play()
+		elaspedTime += delta
+		if elaspedTime >= 1.0:
+			if not audioPlayer.playing and not timeleft == 0:
+				elaspedTime = 0
+				audioPlayer.play()
 	else:
 		timer_text.self_modulate = Color.WHITE
 

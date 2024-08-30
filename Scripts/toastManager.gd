@@ -7,8 +7,8 @@ const ANIM = 0.2
 @onready var toastMessage = %Label as Label
 
 func showMessage(message: String, duration: float) -> void:
-	if GlobalRef.isToastActive == false:
-		GlobalRef.isToastActive = true
+	if Global.isToastActive == false:
+		Global.isToastActive = true
 		toastMessage.text = message
 		toastMessage.update_minimum_size()
 		panel.custom_minimum_size = toastMessage.get_minimum_size() + PADDING
@@ -19,7 +19,7 @@ func showMessage(message: String, duration: float) -> void:
 func hideMessage():
 	await animate(1, 0, ANIM)
 	await get_tree().create_timer(ANIM).timeout
-	GlobalRef.isToastActive = false
+	Global.isToastActive = false
 	queue_free()
 
 func animate(currentValue: float, newValue: float, duration: float):

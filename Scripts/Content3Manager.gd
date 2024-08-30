@@ -2,31 +2,32 @@ extends Control
 
 var gameLocation := "res://Resources/Games/"
 var gameLibary :Array
-var gamePlaceHolder = load("res://Scenes/UI/gameList.tscn") as PackedScene
+var gamePlaceHolder: PackedScene = preload("res://Scenes/UI/gameList.tscn")
 
 @onready var gameBar = %GameBar
-@onready var filterGroup = %Filter
-@onready var selectedGameTab = %SelectedGame
+
+@export var filterGroup: ButtonGroup
+@export var selectedGameTab: PackedScene
 
 func _ready():
-	gameLibary = Helper.loadAllResources(gameLocation)
+	gameLibary = Utils.loadAllResources(gameLocation)
 	
-	for button in filterGroup.get_children():
-		if button is Button:
-			button.pressed.connect(_on_button_pressed.bind(button, _positions(button)))
+	var setter: Array[BaseButton] = filterGroup.get_buttons()
+	for button in setter:
+		button.pressed.connect(_on_button_pressed.bind(button, setter.find(button)))
 	
-	var startTab := filterGroup.get_child(0)
-	_on_button_pressed(startTab, 0)
+	setter[0].emit_signal("pressed")
 
 func _resetLibary():
 	for content in gameBar.get_children():
 		content.queue_free()
+	
+	for button in filterGroup.get_buttons():
+		button.disabled = false
 
 func _on_button_pressed(button :Button, index :int):
 	_resetLibary()
-	
-	if not button.button_pressed:
-		button.button_pressed = true
+	button.disabled = true
 	
 	for game in gameLibary.size():
 		if index == 0:
@@ -45,6 +46,8 @@ func _positions(button :Button):
 	return button.get_index()
 
 func showSelectedTab(Game :Games):
-	selectedGameTab.visible = true
-	selectedGameTab.selected = Game
-	GlobalRef.selectedGameResource = Game
+	var scene = selectedGameTab.instantiate() as selectedGame
+	get_tree().root.add_child(scene)
+	
+	Global.selectedGameResource = Game
+	scene.selected = Game

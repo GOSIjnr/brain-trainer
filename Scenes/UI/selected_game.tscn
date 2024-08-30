@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c636q8i344dnj"]
+[gd_scene load_steps=13 format=3 uid="uid://c636q8i344dnj"]
 
 [ext_resource type="Texture2D" uid="uid://cegrvwt7fh2aa" path="res://Textures/profileBackground.webp" id="1_ijuhk"]
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_oax78"]
@@ -8,11 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://b4e1hglsdoy46" path="res://Icons/help_fill.svg" id="4_rgdjn"]
 [ext_resource type="Texture2D" uid="uid://bfkji6c7wanu8" path="res://Textures/hex.svg" id="6_bpnnc"]
 [ext_resource type="FontFile" uid="uid://b4vjcxs6xj5nl" path="res://Fonts/Roboto-Thin.ttf" id="8_ctqr2"]
+[ext_resource type="Shader" path="res://Shader/canvas blur.gdshader" id="9_sbg13"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6av0l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_top = 2
 border_width_bottom = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dqtd"]
+shader = ExtResource("9_sbg13")
+shader_parameter/amount = 1.0
+shader_parameter/mix_percentage = 0.7
+shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp864"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -198,6 +205,7 @@ expand_icon = true
 [node name="Help" type="Panel" parent="."]
 unique_name_in_owner = true
 visible = false
+material = SubResource("ShaderMaterial_5dqtd")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

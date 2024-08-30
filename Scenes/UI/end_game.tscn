@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ftmpyl1oknx4"]
+[gd_scene load_steps=9 format=3 uid="uid://ftmpyl1oknx4"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_p874t"]
 [ext_resource type="Texture2D" uid="uid://bfkji6c7wanu8" path="res://Textures/hex.svg" id="2_bixfl"]
+[ext_resource type="Shader" path="res://Shader/canvas blur.gdshader" id="2_cn0jr"]
 [ext_resource type="Script" path="res://Scripts/end_gameManager.gd" id="2_gnalk"]
 [ext_resource type="Texture2D" uid="uid://bgxaympyjpim2" path="res://Icons/game_fill.svg" id="3_sfps2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8ngy"]
+shader = ExtResource("2_cn0jr")
+shader_parameter/amount = 1.0
+shader_parameter/mix_percentage = 0.3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wvs7"]
 bg_color = Color(0, 0, 0, 0.470588)
@@ -16,6 +22,7 @@ border_width_top = 2
 script = ExtResource("2_gnalk")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_g8ngy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

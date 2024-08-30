@@ -1,4 +1,4 @@
-class_name Helper
+class_name Utils
 
 #load files from path
 static func loadAllResources(path: String): 
@@ -39,8 +39,7 @@ static func updateDictionary(value :Dictionary, new_value :Dictionary):
 
 #toast
 static func showToast(root, message: String, duration: float):
-	if GlobalRef.isToastActive == false:
-		var toastScene = load(GlobalRef.scenes["toast"]) as PackedScene
-		var toast = toastScene.instantiate()
+	if Global.isToastActive == false:
+		var toast = SceneLoader.get_resource("toast").instantiate()
 		root.add_child(toast)
 		toast.showMessage(message, duration)

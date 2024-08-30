@@ -14,10 +14,11 @@ var playerScore: int = 0:
 
 func _ready():
 	get_tree().quit_on_go_back = false
+	end_game.hide()
 
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Helper.showToast(gameUI, "Can't go back at this stage", 1)
+		Utils.showToast(gameUI, "Can't go back at this stage", 1)
 
 func setQuestion():
 	if questionSize == 0:
@@ -45,6 +46,7 @@ func _on_game_ui_answer_animation_done() -> void:
 	setQuestion()
 
 func endGame():
+	%"Question Timer".stop()
 	end_game.score = playerScore
 	end_game.show()
 

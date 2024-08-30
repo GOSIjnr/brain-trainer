@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=3 uid="uid://1r2ei0lkfp2i"]
+
+[ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="1_kwsmp"]
+[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_me5n2"]
+[ext_resource type="Texture2D" uid="uid://b4e1hglsdoy46" path="res://Icons/help_fill.svg" id="2_rwo0n"]
+[ext_resource type="PackedScene" uid="uid://dox081sf2n4hr" path="res://Scenes/UI/pq_help.tscn" id="3_tbi4o"]
+[ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="3_w4uok"]
+[ext_resource type="PackedScene" uid="uid://co44nr02auxaf" path="res://Scenes/UI/bar.tscn" id="4_4ppa0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6myek"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+
+[node name="Content2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_me5n2")
+script = ExtResource("1_kwsmp")
+help = ExtResource("3_tbi4o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Label_Bold"
+theme_override_font_sizes/font_size = 70
+text = "PQ"
+
+[node name="Help" type="TextureRect" parent="VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_rwo0n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="EPQ1" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.17047, 0.761629, 0.661447, 1)
+
+[node name="EPQ2" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.938936, 0.14184, 0.189267, 1)
+barType = 1
+
+[node name="EPQ3" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.925998, 0.101498, 0.379234, 1)
+barType = 2
+
+[node name="EPQ4" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.613667, 0.161723, 0.659896, 1)
+barType = 3
+
+[node name="EPQ5" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.906317, 0.572681, 0.123794, 1)
+barType = 4
+
+[node name="EPQ6" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
+layout_mode = 2
+theme = null
+progressBarColor = Color(0.412958, 0.603024, 0.98541, 1)
+barType = 5
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ScrollContainer/Control"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6myek")
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Label_Thin"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Analytics"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/ScrollContainer/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer"]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+alignment = 1
+
+[node name="Bar1" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("4_4ppa0")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.168627, 0.760784, 0.662745, 1)
+
+[node name="Bar2" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("4_4ppa0")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.937255, 0.141176, 0.188235, 1)
+contentType = 1
+
+[node name="Bar3" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("4_4ppa0")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.92549, 0.101961, 0.380392, 1)
+contentType = 2
+
+[node name="Bar4" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("4_4ppa0")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.611765, 0.160784, 0.658824, 1)
+contentType = 3
+
+[node name="Bar5" parent="VBoxContainer/ScrollContainer/Control/MarginContainer2/ScrollContainer/HBoxContainer" instance=ExtResource("4_4ppa0")]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+contentColor = Color(0.905882, 0.572549, 0.12549, 1)
+contentType = 4
+
+[connection signal="gui_input" from="VBoxContainer/Panel/MarginContainer/HBoxContainer/Help" to="." method="_on_help_gui_input"]

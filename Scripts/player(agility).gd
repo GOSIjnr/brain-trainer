@@ -1,27 +1,37 @@
 extends CharacterBody2D
 
 var gravity: Vector2 = Vector2(0, 15)
+var steering: bool = false
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800
 
+@onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
+@export var backgroundParticle: CPUParticles2D
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += gravity * delta
 	
 	move_and_slide()
 
 func _on_game_ui_boost_space_ship() -> void:
-	jump()
+	_jump()
 
-func jump():
+func _jump():
 	velocity.y = JUMP_VELOCITY
-	velocity.x = randf_range(-200, 200)
-	$AudioStreamPlayer.play()
+	
+	if steering:
+		velocity.x = randf_range(0, 200)
+		steering = false
+	else:
+		velocity.x = randf_range(-200, 0)
+		steering = true
+	
+	audioPlayer.play()
 	
 	var tween1 = create_tween()
-	tween1.tween_property(%"Star Particles", "gravity", Vector2(0, 500), 0.5)
+	tween1.tween_property(backgroundParticle, "gravity", Vector2(0, 500), 0.5)
 	await get_tree().create_timer(0.5).timeout
 	var tween2 = create_tween()
-	tween2.tween_property(%"Star Particles", "gravity", Vector2(0, 90), 1)
+	tween2.tween_property(backgroundParticle, "gravity", Vector2(0, 90), 1)

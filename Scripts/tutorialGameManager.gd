@@ -1,131 +1,129 @@
 extends Control
 
-@export var timerNormal :Color
-@export var timerWarning :Color
+@export var timerNormal: Color
+@export var timerWarning: Color
+@export var waitTime: float = 2.0
 
 var questionsPath := "res://Resources/TutorialGame/"
-var questions = [] as Array[tutorialGame]
-var questionIndex := 0
+var questions: Array = []
+var questionIndex: int = 0
 
-var writingScore := 0
-var speakingScore := 0
-var readingScore := 0
-var mathsScore := 0
-var memoryScore := 0
+var writingScore: int = 0
+var speakingScore: int = 0
+var readingScore: int = 0
+var mathsScore: int = 0
+var memoryScore: int = 0
 
-@onready var question = %Question as RichTextLabel
-@onready var progress = %Progress as TextureProgressBar
-@onready var option_1 = %Option1 as Button
-@onready var option_2 = %Option2 as Button
-@onready var option_3 = %Option3 as Button
-@onready var option_4 = %Option4 as Button
-@onready var option_5 = %Option5 as Button
-@onready var question_timer = %QuestionTimer as Timer
-@onready var wait_timer = %WaitTimer as Timer
-@onready var timer_countdown = %TimerCountdown as Label
-@onready var sfx_right = %Sfx_Right as AudioStreamPlayer
-@onready var sfx_wrong = %Sfx_Wrong as AudioStreamPlayer
-@onready var sfx_tick = %Sfx_Tick as AudioStreamPlayer
+var elaspedTime: float = 0.0
+
+@onready var question: RichTextLabel = %Question
+@onready var progress: TextureProgressBar = %Progress
+@onready var option_1: Button = %Option1
+@onready var option_2: Button = %Option2
+@onready var option_3: Button = %Option3
+@onready var option_4: Button = %Option4
+@onready var option_5: Button = %Option5
+@onready var question_timer: Timer = %QuestionTimer
+@onready var timer_countdown: Label = %TimerCountdown
+@onready var sfx_right: AudioStreamPlayer = %Sfx_Right
+@onready var sfx_wrong: AudioStreamPlayer = %Sfx_Wrong
+@onready var sfx_tick: AudioStreamPlayer = %Sfx_Tick
 
 func _ready():
+	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
+	var setter = get_tree().get_nodes_in_group("questions")
 	
-	questions = Helper.loadAllResources(questionsPath)
+	for button in setter:
+		if button is Button:
+			button.pressed.connect(optionClicked.bind(button	))
+	
+	questions = Utils.loadAllResources(questionsPath)
 	questions.shuffle()
 	progress.max_value = questions.size()
 	displayQuestion(questionIndex)
 
-func _process(_delta):
+func _process(delta):
 	var time = round(question_timer.time_left)
 	var formattedTime = "%02d" % time
 	timer_countdown.text = ":" + formattedTime
 	
-	if time <= 10:
-		timer_countdown.self_modulate = timerWarning
+	if time <= 11:
+		if time <= 10:
+			timer_countdown.self_modulate = timerWarning
 		
-		var timeDif = ceil(question_timer.time_left) - question_timer.time_left
-		if not sfx_tick.playing and timeDif <= 0.1 and timeDif > 0:
-			sfx_tick.play()
+		elaspedTime += delta
+		if elaspedTime >= 1.0:
+			if not sfx_tick.playing and not question_timer.time_left == 0:
+				elaspedTime = 0
+				sfx_tick.play()
 	else:
 		timer_countdown.self_modulate = timerNormal
 
 func resetAll():
-	option_1.visible = false
-	option_1.disabled = false
-	option_1.theme_type_variation = ""
+	var setters = get_tree().get_nodes_in_group("questions")
 	
-	option_2.visible = false
-	option_2.disabled = false
-	option_2.theme_type_variation = ""
-	
-	option_3.visible = false
-	option_3.disabled = false
-	option_3.theme_type_variation = ""
-	
-	option_4.visible = false
-	option_4.disabled = false
-	option_4.theme_type_variation = ""
-	
-	option_5.visible = false
-	option_5.disabled = false
-	
-	question.visible = false
+	for text in setters:
+		if text is Button:
+			text.hide()
+			text.disabled = false
+			text.theme_type_variation = ""
+		else:
+			text.hide()
 
 func displayQuestion(index :int):
 	if index > questions.size() - 1:
-		GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+		SaveManager.fileData.WritingEPQ = writingScore
+		SaveManager.fileData.SpeakingEPQ = speakingScore
+		SaveManager.fileData.ReadingEPQ = readingScore
+		SaveManager.fileData.MathsEPQ = mathsScore
+		SaveManager.fileData.MemoryEPQ = memoryScore
 		
-		GlobalRef.fileData.WritingEPQ = clamp(writingScore, 10, 1000)
-		GlobalRef.fileData.SpeakingEPQ = clamp(speakingScore, 10, 1000)
-		GlobalRef.fileData.ReadingEPQ = clamp(readingScore, 10, 1000)
-		GlobalRef.fileData.MathsEPQ = clamp(mathsScore, 10, 1000)
-		GlobalRef.fileData.MemoryEPQ = clamp(memoryScore, 10, 1000)
+		SaveManager.fileData.starting_WritingEPQ = SaveManager.fileData.WritingEPQ
+		SaveManager.fileData.starting_SpeakingEPQ = SaveManager.fileData.SpeakingEPQ
+		SaveManager.fileData.starting_ReadingEPQ = SaveManager.fileData.ReadingEPQ
+		SaveManager.fileData.starting_MathsEPQ = SaveManager.fileData.MathsEPQ
+		SaveManager.fileData.starting_MemoryEPQ = SaveManager.fileData.MemoryEPQ
 		
-		GlobalRef.fileData.starting_WritingEPQ = GlobalRef.fileData.WritingEPQ
-		GlobalRef.fileData.starting_SpeakingEPQ = GlobalRef.fileData.SpeakingEPQ
-		GlobalRef.fileData.starting_ReadingEPQ = GlobalRef.fileData.ReadingEPQ
-		GlobalRef.fileData.starting_MathsEPQ = GlobalRef.fileData.MathsEPQ
-		GlobalRef.fileData.starting_MemoryEPQ = GlobalRef.fileData.MemoryEPQ
-		
-		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
-		get_tree().change_scene_to_file(GlobalRef.scenes["tutorialend"])
+		SaveManager.saveData()
+		get_tree().change_scene_to_packed(SceneLoader.get_resource("tutorial_end"))
 	else:
 		resetAll()
 		progress.value = index + 1
-		question.visible = true
-		var _resource = questions[index] as tutorialGame
+		question.show()
+		var _resource: tutorialGame = questions[index]
 		question.text = _resource.question
 		displayOptions(_resource, _resource.options.size())
 		question_timer.start()
 
 func displayOptions(selectedRes :tutorialGame, lengthSize :int):
-	option_5.visible = true
+	option_5.show()
 	
 	match lengthSize:
 		2:
-			option_1.visible = true
-			option_2.visible = true
+			option_1.show()
+			option_2.show()
 			option_1.text = selectedRes.options[0]
 			option_2.text = selectedRes.options[1]
 		4:
-			option_1.visible = true
-			option_2.visible = true
-			option_3.visible = true
-			option_4.visible = true
+			option_1.show()
+			option_2.show()
+			option_3.show()
+			option_4.show()
 			option_1.text = selectedRes.options[0]
 			option_2.text = selectedRes.options[1]
 			option_3.text = selectedRes.options[2]
 			option_4.text = selectedRes.options[3]
 
 func disableOptions():
-	option_1.disabled = true
-	option_2.disabled = true
-	option_3.disabled = true
-	option_4.disabled = true
-	option_5.disabled = true
+	var setters = get_tree().get_nodes_in_group("questions")
+	
+	for text in setters:
+		if text is Button:
+			text.disabled = true
 
 func getTheRightOption(_resource: Array[int]):
-	var rightOption := 0
+	var rightOption: int = 0
 	
 	for number in range(_resource.size()):
 		if _resource[number] > 0:
@@ -155,102 +153,51 @@ func scorePlayer(_resource :tutorialGame, _points :int):
 		4:
 			memoryScore += _points
 
-func _on_option_1_pressed():
-	disableOptions()
-	var _clicked := 0
-	var _resource = questions[questionIndex] as tutorialGame
-	
-	if _resource.pointsDistribution[_clicked] > 0:
-		sfx_right.playing = true
-		option_1.theme_type_variation = "Button_Right"
-		scorePlayer(_resource, _resource.pointsDistribution[_clicked])
-	else:
-		sfx_wrong.playing = true
-		option_1.theme_type_variation = "Button_Wrong"
-		getTheRightOption(_resource.pointsDistribution)
-	
-	wait_timer.start()
-
-func _on_option_2_pressed():
-	disableOptions()
-	var _clicked := 1
-	var _resource = questions[questionIndex] as tutorialGame
-	
-	if _resource.pointsDistribution[_clicked] > 0:
-		sfx_right.play()
-		option_2.theme_type_variation = "Button_Right"
-		scorePlayer(_resource, _resource.pointsDistribution[_clicked])
-	else:
-		sfx_wrong.play()
-		option_2.theme_type_variation = "Button_Wrong"
-		getTheRightOption(_resource.pointsDistribution)
-	
-	wait_timer.start()
-
-func _on_option_3_pressed():
-	disableOptions()
-	var _clicked := 2
-	var _resource = questions[questionIndex] as tutorialGame
-	
-	if _resource.pointsDistribution[_clicked] > 0:
-		sfx_right.play()
-		option_3.theme_type_variation = "Button_Right"
-		scorePlayer(_resource, _resource.pointsDistribution[_clicked])
-	else:
-		sfx_wrong.play()
-		option_3.theme_type_variation = "Button_Wrong"
-		getTheRightOption(_resource.pointsDistribution)
-	
-	wait_timer.start()
-
-func _on_option_4_pressed():
-	disableOptions()
-	var _clicked := 3
-	var _resource = questions[questionIndex] as tutorialGame
-	
-	if _resource.pointsDistribution[_clicked] > 0:
-		sfx_right.play()
-		option_4.theme_type_variation = "Button_Right"
-		scorePlayer(_resource, _resource.pointsDistribution[_clicked])
-	else:
-		sfx_wrong.play()
-		option_4.theme_type_variation = "Button_Wrong"
-		getTheRightOption(_resource.pointsDistribution)
-	
-	wait_timer.start()
-
-func _on_option_5_pressed():
-	disableOptions()
-	sfx_wrong.play()
-	var _resource = questions[questionIndex] as tutorialGame
-	
-	if _resource.QuestionType == _resource.pointType.speaking or _resource.QuestionType == _resource.pointType.memory:
-		pass
-	else:
-		getTheRightOption(_resource.pointsDistribution)
-	
-	wait_timer.start()
-
-func _on_wait_timer_timeout():
-	questionIndex += 1
-	displayQuestion(questionIndex)
-
 func _on_question_timer_timeout():
-	if !(questionIndex > questions.size() - 1):
-		disableOptions()
-		sfx_wrong.play()
-		var _resource = questions[questionIndex] as tutorialGame
-	
-		if _resource.QuestionType == _resource.pointType.speaking or _resource.QuestionType == _resource.pointType.memory:
-			pass
-		else:
-			getTheRightOption(_resource.pointsDistribution)
-	
-		wait_timer.start()
+	option_5.emit_signal("pressed")
 
 func _notification(what):
-	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		go_back_request()
+	match what:
+		NOTIFICATION_WM_GO_BACK_REQUEST:
+			Utils.showToast(get_tree().root, "Can't go back at this stage", 1.5)
 
-func go_back_request():
-	Helper.showToast(get_tree().root, "Can't go back at this stage", 1.5)
+func optionClicked(_button: BaseButton):
+	disableOptions()
+	var _clicked: int = 0
+	var _resource: tutorialGame = questions[questionIndex]
+	var _questionSkipped: bool = false
+	
+	match _button.name:
+		"Option1":
+			_clicked = 0
+		"Option2":
+			_clicked = 1
+		"Option3":
+			_clicked = 2
+		"Option4":
+			_clicked = 3
+		"Option5":
+			_questionSkipped = true
+	
+	if _questionSkipped:
+		disableOptions()
+		sfx_wrong.play()
+		
+		if not _resource.QuestionType == _resource.pointType.speaking or _resource.QuestionType == _resource.pointType.memory:
+			getTheRightOption(_resource.pointsDistribution)
+	else:
+		if _resource.pointsDistribution[_clicked] > 0:
+			sfx_right.play()
+			_button.theme_type_variation = "Button_Right"
+			scorePlayer(_resource, _resource.pointsDistribution[_clicked])
+		else:
+			sfx_wrong.play()
+			_button.theme_type_variation = "Button_Wrong"
+			getTheRightOption(_resource.pointsDistribution)
+	
+	waitTimer()
+
+func waitTimer():
+	await get_tree().create_timer(waitTime).timeout
+	questionIndex += 1
+	displayQuestion(questionIndex)

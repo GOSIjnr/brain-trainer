@@ -8,7 +8,6 @@
 
 [resource]
 script = ExtResource("1_mo321")
-isLocked = false
 gameColor = Color(0.54001, 0.83, 0.780195, 1)
 gameName = "Agility"
 gameIcon = ExtResource("2_xnuc2")

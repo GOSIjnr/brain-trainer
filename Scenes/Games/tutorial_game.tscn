@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drdmgdcjvx482"]
+[gd_scene load_steps=8 format=3 uid="uid://dadb1uugr52ds"]
 
 [ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_2ojou"]
 [ext_resource type="Script" path="res://Scripts/tutorialGameManager.gd" id="1_65v5v"]
@@ -70,7 +70,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 100
 
-[node name="Question" type="RichTextLabel" parent="VBoxContainer/MarginContainer3"]
+[node name="Question" type="RichTextLabel" parent="VBoxContainer/MarginContainer3" groups=["questions"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
@@ -99,13 +99,13 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="Option1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+[node name="Option1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1" groups=["questions"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 1"
 
-[node name="Option3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1"]
+[node name="Option3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer1" groups=["questions"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -117,19 +117,19 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="Option2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Option2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" groups=["questions"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 2"
 
-[node name="Option4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Option4" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" groups=["questions"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Option 4"
 
-[node name="Option5" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Option5" type="Button" parent="MarginContainer/VBoxContainer" groups=["questions"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -149,10 +149,6 @@ unique_name_in_owner = true
 wait_time = 30.0
 one_shot = true
 
-[node name="WaitTimer" type="Timer" parent="Timers"]
-unique_name_in_owner = true
-one_shot = true
-
 [node name="Audio" type="Node" parent="."]
 
 [node name="Sfx_Right" type="AudioStreamPlayer" parent="Audio"]
@@ -167,10 +163,4 @@ stream = ExtResource("6_6ooc3")
 unique_name_in_owner = true
 stream = ExtResource("7_qyw45")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/Option1" to="." method="_on_option_1_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer1/Option3" to="." method="_on_option_3_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Option2" to="." method="_on_option_2_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Option4" to="." method="_on_option_4_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Option5" to="." method="_on_option_5_pressed"]
 [connection signal="timeout" from="Timers/QuestionTimer" to="." method="_on_question_timer_timeout"]
-[connection signal="timeout" from="Timers/WaitTimer" to="." method="_on_wait_timer_timeout"]

@@ -12,33 +12,33 @@ enum Type {writing, speaking, reading, maths, memory, average}
 func _ready():
 	progress_bar.tint_progress = progressBarColor
 	
-	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+	SaveManager.fileData = load(SaveManager.gamefilePath) as UserData
 	
 	match barType:
 		Type.writing:
-			title.text = getTitle(GlobalRef.fileData.WritingEPQ)
-			score.text = "[color=#999999]WRITING: [/color][b]" + str(GlobalRef.fileData.WritingEPQ) + "[/b]"
-			progress_bar.value = GlobalRef.fileData.WritingEPQ
+			title.text = getTitle(SaveManager.fileData.WritingEPQ)
+			score.text = "[color=#999999]WRITING: [/color][b]" + str(SaveManager.fileData.WritingEPQ) + "[/b]"
+			progress_bar.value = SaveManager.fileData.WritingEPQ
 		Type.speaking:
-			title.text = getTitle(GlobalRef.fileData.SpeakingEPQ)
-			score.text = "[color=#999999]SPEAKING: [/color][b]" + str(GlobalRef.fileData.SpeakingEPQ) + "[/b]"
-			progress_bar.value = GlobalRef.fileData.SpeakingEPQ
+			title.text = getTitle(SaveManager.fileData.SpeakingEPQ)
+			score.text = "[color=#999999]SPEAKING: [/color][b]" + str(SaveManager.fileData.SpeakingEPQ) + "[/b]"
+			progress_bar.value = SaveManager.fileData.SpeakingEPQ
 		Type.reading:
-			title.text = getTitle(GlobalRef.fileData.ReadingEPQ)
-			score.text = "[color=#999999]READING: [/color][b]" + str(GlobalRef.fileData.ReadingEPQ) + "[/b]"
-			progress_bar.value = GlobalRef.fileData.ReadingEPQ
+			title.text = getTitle(SaveManager.fileData.ReadingEPQ)
+			score.text = "[color=#999999]READING: [/color][b]" + str(SaveManager.fileData.ReadingEPQ) + "[/b]"
+			progress_bar.value = SaveManager.fileData.ReadingEPQ
 		Type.maths:
-			title.text = getTitle(GlobalRef.fileData.MathsEPQ)
-			score.text = "[color=#999999]MATHS: [/color][b]" + str(GlobalRef.fileData.MathsEPQ) + "[/b]"
-			progress_bar.value = GlobalRef.fileData.MathsEPQ
+			title.text = getTitle(SaveManager.fileData.MathsEPQ)
+			score.text = "[color=#999999]MATHS: [/color][b]" + str(SaveManager.fileData.MathsEPQ) + "[/b]"
+			progress_bar.value = SaveManager.fileData.MathsEPQ
 		Type.memory:
-			title.text = getTitle(GlobalRef.fileData.MemoryEPQ)
-			score.text = "[color=#999999]MEMORY: [/color][b]" + str(GlobalRef.fileData.MemoryEPQ) + "[/b]"
-			progress_bar.value = GlobalRef.fileData.MemoryEPQ
+			title.text = getTitle(SaveManager.fileData.MemoryEPQ)
+			score.text = "[color=#999999]MEMORY: [/color][b]" + str(SaveManager.fileData.MemoryEPQ) + "[/b]"
+			progress_bar.value = SaveManager.fileData.MemoryEPQ
 		Type.average:
 			title.visible = false
 			@warning_ignore("integer_division")
-			var average = (GlobalRef.fileData.WritingEPQ + GlobalRef.fileData.SpeakingEPQ + GlobalRef.fileData.ReadingEPQ + GlobalRef.fileData.MathsEPQ + GlobalRef.fileData.MemoryEPQ) / 5
+			var average = (SaveManager.fileData.WritingEPQ + SaveManager.fileData.SpeakingEPQ + SaveManager.fileData.ReadingEPQ + SaveManager.fileData.MathsEPQ + SaveManager.fileData.MemoryEPQ) / 5
 			score.text = "[color=#999999]AVERAGE: [/color][b]" + str(average) + "[/b]"
 			progress_bar.value = average
 

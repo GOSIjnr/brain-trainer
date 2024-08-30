@@ -8,37 +8,40 @@ extends Control
 @onready var maths_cb = %MathsCB
 @onready var memory_cb = %MemoryCB
 
+@export var deleteAccountScene: PackedScene
+
 func _ready():
-	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+	SaveManager.loadData()
 	
-	user_name.text = GlobalRef.fileData.UserName
-	workout_counter.text = str(GlobalRef.fileData.Workouts)
+	user_name.text = SaveManager.fileData.UserName
+	workout_counter.text = str(SaveManager.fileData.Workouts)
 	
-	writing_cb.button_pressed = GlobalRef.fileData.Writing
-	speaking_cb.button_pressed = GlobalRef.fileData.Speaking
-	reading_cb.button_pressed = GlobalRef.fileData.Reading
-	maths_cb.button_pressed = GlobalRef.fileData.Maths
-	memory_cb.button_pressed = GlobalRef.fileData.Memory
+	writing_cb.button_pressed = SaveManager.fileData.Writing
+	speaking_cb.button_pressed = SaveManager.fileData.Speaking
+	reading_cb.button_pressed = SaveManager.fileData.Reading
+	maths_cb.button_pressed = SaveManager.fileData.Maths
+	memory_cb.button_pressed = SaveManager.fileData.Memory
 
 func _on_check_button_1_toggled(toggled_on):
-	GlobalRef.fileData.Writing = toggled_on
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	SaveManager.fileData.Writing = toggled_on
+	SaveManager.saveData()
 
 func _on_check_button_2_toggled(toggled_on):
-	GlobalRef.fileData.Speaking = toggled_on
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	SaveManager.fileData.Speaking = toggled_on
+	SaveManager.saveData()
 
 func _on_check_button_3_toggled(toggled_on):
-	GlobalRef.fileData.Reading = toggled_on
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	SaveManager.fileData.Reading = toggled_on
+	SaveManager.saveData()
 
 func _on_check_button_4_toggled(toggled_on):
-	GlobalRef.fileData.Maths = toggled_on
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	SaveManager.fileData.Maths = toggled_on
+	SaveManager.saveData()
 
 func _on_check_button_5_toggled(toggled_on):
-	GlobalRef.fileData.Memory = toggled_on
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	SaveManager.fileData.Memory = toggled_on
+	SaveManager.saveData()
 
 func _on_delete_account_pressed():
-	%DeleteAccount.visible = true
+	var scene = deleteAccountScene.instantiate()
+	get_tree().root.add_child(scene)

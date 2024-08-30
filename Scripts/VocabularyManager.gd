@@ -8,7 +8,7 @@ var libaryPath := "res://Resources/Vocabulary/"
 @onready var meaning = $Panel/VBoxContainer/MarginContainer/VBoxContainer/Label2
 
 func _ready():
-	libary = Helper.loadAllResources(libaryPath)
+	libary = Utils.loadAllResources(libaryPath)
 	randomLibary()
 
 func _on_timer_timeout():

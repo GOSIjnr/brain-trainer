@@ -7,7 +7,6 @@
 
 [resource]
 script = ExtResource("1_efay0")
-isLocked = true
 gameColor = Color(0.802083, 0.291332, 0.323268, 1)
 gameName = "Average"
 gameIcon = ExtResource("1_e2mwu")

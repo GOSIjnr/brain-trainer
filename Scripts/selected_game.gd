@@ -1,35 +1,35 @@
 extends Control
 
-@onready var gameName = %game_name as Label
-@onready var gameType = %game_type as Label
-@onready var gameIcon = %game_icon as TextureRect
-@onready var gameBackground = %Background as TextureRect
-@onready var hex = %hex as TextureRect
-@onready var benefits = %Benefits as RichTextLabel
-@onready var startButton = %startGame as Button
-@onready var highScore = %HighScore as Label
-@onready var help = %Help
-@onready var helpText = %HelpText
+class_name selectedGame
+
+@onready var gameName: Label = %game_name
+@onready var gameType: Label = %game_type
+@onready var gameIcon: TextureRect = %game_icon
+@onready var gameBackground: TextureRect = %Background
+@onready var hex: TextureRect = %hex
+@onready var benefits: RichTextLabel = %Benefits
+@onready var startButton: Button = %startGame
+@onready var highScore: Label = %HighScore
+@onready var help: Panel = %Help
+@onready var helpText: RichTextLabel = %HelpText
 
 var selected :Games:
-	set = setSelected
-
-func setSelected(resource :Games):
-	selected = resource
-	gameName.text = resource.gameName
-	gameIcon.texture = resource.gameIcon
-	gameBackground.texture = resource.gameFullBackground
-	hex.self_modulate = resource.gameColor
-	highScore.text = str(GlobalRef.fileData.HighScores[resource.gameName.to_lower()])
-	updateStartButton(resource.gameColor)
-	updateText(benefits, "[color=#cccccc][b]BENEFITS:[/b][/color]", resource.gameBenefits, "")
-	updateText(helpText, "[b]INSTRUCTIONS[/b]", resource.howToPlay, "[center][b]Tap to close[/b][/center]")
+	set(resource):
+		selected = resource
+		gameName.text = resource.gameName
+		gameIcon.texture = resource.gameIcon
+		gameBackground.texture = resource.gameFullBackground
+		hex.self_modulate = resource.gameColor
+		highScore.text = str(SaveManager.fileData.HighScores[resource.gameName.to_lower()])
+		updateStartButton(resource.gameColor)
+		updateText(benefits, "[color=#cccccc][b]BENEFITS:[/b][/color]", resource.gameBenefits, "")
+		updateText(helpText, "[b]INSTRUCTIONS[/b]", resource.howToPlay, "[center][b]Tap to close[/b][/center]")
 	
-	if resource.gameScene == null:
-		startButton.disabled = true
+		if resource.gameScene == null:
+			startButton.disabled = true
 	
-	var gameRef = ["Writing", "Speaking", "Reading", "Maths", "Memory"]
-	gameType.text = gameRef[resource.gameType]
+		var gameRef = ["Writing", "Speaking", "Reading", "Maths", "Memory"]
+		gameType.text = gameRef[resource.gameType]
 
 func updateStartButton(color :Color):
 	var darken := 0.15
@@ -65,8 +65,8 @@ func _on_close_button_gui_input(event: InputEvent):
 		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
 		
 		if rect.has_point(event.position):
-			self.visible = false
-			GlobalRef.selectedGameResource = null
+			Global.selectedGameResource = null
+			self.queue_free()
 
 func _on_help_button_gui_input(event):
 	if event is InputEventScreenTouch and event.is_released():
@@ -84,4 +84,15 @@ func _on_start_game_pressed():
 
 func _on_help_gui_input(event: InputEvent):
 	if event is InputEventScreenTouch and event.is_released():
-		help.visible = false
+		help.hide()
+
+func _notification(what):
+	match what:
+		NOTIFICATION_WM_GO_BACK_REQUEST:
+			go_back_request()
+
+func go_back_request():
+	if help.visible == true:
+		help.hide()
+	else:
+		self.queue_free()

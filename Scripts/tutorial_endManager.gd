@@ -3,20 +3,22 @@ extends Control
 @onready var page1ProgressBar = $page1/MarginContainer/VBoxContainer/TextureProgressBar
 @onready var page1Timer = $page1/page1Timer
 
-var userName :String
+var userName: String
 
 func _ready():
 	get_tree().quit_on_go_back = false
 	page1ProgressBar.max_value = page1Timer.wait_time
+	SaveManager.loadData()
 
 func _process(_delta):
 	if $page1.visible == true:
 		updateBar()
 	
-	if userName.is_empty():
-		$page4/MarginContainer2/Button.disabled = true
-	else:
-		$page4/MarginContainer2/Button.disabled = false
+	if $page4.visible == true:
+		if userName.is_empty():
+			$page4/MarginContainer2/Button.disabled = true
+		else:
+			$page4/MarginContainer2/Button.disabled = false
 
 #page1
 func updateBar():
@@ -24,31 +26,27 @@ func updateBar():
 
 func _on_page1Timer_timeout():
 	if $page1.visible == true:
-		$page1.visible = false
-		$page2.visible = true
+		$page1.hide()
+		$page2.show()
 		$page1/sfx_whoosh.play()
 
 #page2
 func _on_page2Button_pressed():
-	$page2.visible = false
-	$page3.visible = true
+	$page2.hide()
+	$page3.show()
 
 #page3
 func _on_page3Button_pressed():
-	$page3.visible = false
-	$page4.visible = true
+	$page3.hide()
+	$page4.show()
 
 #page4
 func _on_page4Button_pressed():
-	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+	SaveManager.fileData.UserName = userName
+	SaveManager.fileData.isTutorialDone = true
 	
-	GlobalRef.fileData.UserName = userName
-	GlobalRef.fileData.isTutorialDone = true
-	
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
-	
-	var target_scene = GlobalRef.scenes["mainmenu"]
-	get_tree().change_scene_to_file(target_scene)
+	SaveManager.saveData()
+	get_tree().change_scene_to_packed(SceneLoader.get_resource("main_menu"))
 
 func _on_line_edit_text_changed(new_text):
 	userName = new_text.strip_edges()
@@ -59,15 +57,15 @@ func _notification(what):
 
 func go_back_request():
 	if $page1.visible == true or $page2.visible == true:
-		Helper.showToast(get_tree().root, "Can't go back at this stage", 1.5)
+		Utils.showToast(get_tree().root, "Can't go back at this stage", 1.5)
 		return
 	
 	if $page3.visible == true:
-		$page2.visible = true
-		$page3.visible = false
+		$page3.hide()
+		$page2.show()
 		return
 	
 	if $page4.visible == true:
-		$page3.visible = true
-		$page4.visible = false
+		$page4.hide()
+		$page3.show()
 		return

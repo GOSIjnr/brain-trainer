@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=31 format=3 uid="uid://dq4vxtwdfue5"]
 
 [ext_resource type="FontFile" uid="uid://b3h16fh8aveu6" path="res://Fonts/Roboto-Regular.ttf" id="1_ppknq"]
 [ext_resource type="StyleBox" uid="uid://s84786j2p367" path="res://Styles/Button_Normal.tres" id="2_7b5li"]
@@ -66,6 +66,26 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 12
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wij6m"]
+bg_color = Color(0.443137, 0.0823529, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntcsj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqki1"]
 bg_color = Color(0.6, 0.12, 0.12, 1)
 corner_radius_top_left = 20
@@ -129,6 +149,17 @@ Button_Right/styles/focus = SubResource("StyleBoxFlat_1p4ws")
 Button_Right/styles/hover = SubResource("StyleBoxFlat_1p4ws")
 Button_Right/styles/normal = SubResource("StyleBoxFlat_1p4ws")
 Button_Right/styles/pressed = SubResource("StyleBoxFlat_1p4ws")
+Button_Toggle/base_type = &"Button"
+Button_Toggle/colors/font_color = Color(0.8, 0.8, 0.8, 1)
+Button_Toggle/colors/font_disabled_color = Color(1, 1, 1, 1)
+Button_Toggle/colors/font_focus_color = Color(0.8, 0.8, 0.8, 1)
+Button_Toggle/colors/font_hover_color = Color(0.8, 0.8, 0.8, 1)
+Button_Toggle/colors/font_pressed_color = Color(0.8, 0.8, 0.8, 1)
+Button_Toggle/styles/disabled = SubResource("StyleBoxFlat_wij6m")
+Button_Toggle/styles/focus = null
+Button_Toggle/styles/hover = SubResource("StyleBoxFlat_ntcsj")
+Button_Toggle/styles/normal = SubResource("StyleBoxFlat_ntcsj")
+Button_Toggle/styles/pressed = SubResource("StyleBoxFlat_ntcsj")
 Button_Wrong/base_type = &"Button"
 Button_Wrong/styles/disabled = SubResource("StyleBoxFlat_qqki1")
 Button_Wrong/styles/focus = SubResource("StyleBoxFlat_qqki1")

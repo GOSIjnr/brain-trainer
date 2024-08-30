@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var score_board: HBoxContainer = %ScoreBoard
 @onready var correction_panel: Control = %"Correction Panel"
 
-var question: Array = Helper.loadAllResources("res://Resources/Games/agility questions/")
+var question: Array = Utils.loadAllResources("res://Resources/Games/agility questions/")
 var questionResource: agiltyQuestion
 
 signal questionDone(buttonClicked, point: int)

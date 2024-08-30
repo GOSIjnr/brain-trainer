@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var continueText: Label = %Continue
 
 var score: int = 0
-var gameResource: Games = GlobalRef.selectedGameResource
+var gameResource: Games = Global.selectedGameResource
 
 func _ready() -> void:
 	self.visibility_changed.connect(updateUI)
@@ -24,7 +24,7 @@ func updateUI():
 
 func _on_panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_released():
-		get_tree().change_scene_to_file(GlobalRef.scenes["mainmenu"])
+		get_tree().change_scene_to_packed(SceneLoader.get_resource("main_menu"))
 
 func getRemark() -> String:
 	var remark: String = ""
@@ -38,10 +38,10 @@ func getRemark() -> String:
 	else:
 		remark += "fail!"
 	
-	if score > GlobalRef.fileData.HighScores[gameResource.gameName.to_lower()]:
+	if score > SaveManager.fileData.HighScores[gameResource.gameName.to_lower()]:
 		remark += " highscore!"
-		GlobalRef.fileData.HighScores[gameResource.gameName.to_lower()] = score
-		ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+		SaveManager.fileData.HighScores[gameResource.gameName.to_lower()] = score
+		ResourceSaver.save(SaveManager.fileData, SaveManager.gamefilePath)
 	
 	return remark
 
@@ -51,26 +51,26 @@ func getProficiency() -> String:
 	match gameResource.gameType:
 		gameResource.Type.writing:
 			text += str(abs(proficiencyScore())) + " Writing"
-			GlobalRef.fileData.WritingEPQ += proficiencyScore()
+			SaveManager.fileData.WritingEPQ += proficiencyScore()
 		gameResource.Type.speaking:
 			text += str(abs(proficiencyScore())) + " Speaking"
-			GlobalRef.fileData.SpeakingEPQ += proficiencyScore()
+			SaveManager.fileData.SpeakingEPQ += proficiencyScore()
 		gameResource.Type.reading:
 			text += str(abs(proficiencyScore())) + " Reading"
-			GlobalRef.fileData.ReadingEPQ += proficiencyScore()
+			SaveManager.fileData.ReadingEPQ += proficiencyScore()
 		gameResource.Type.maths:
 			text += str(abs(proficiencyScore())) + " Maths"
-			GlobalRef.fileData.MathsEPQ += proficiencyScore()
+			SaveManager.fileData.MathsEPQ += proficiencyScore()
 		gameResource.Type.memory:
 			text += str(abs(proficiencyScore())) + " Memory"
-			GlobalRef.fileData.MemoryEPQ += proficiencyScore()
+			SaveManager.fileData.MemoryEPQ += proficiencyScore()
 	
 	if proficiencyScore() > 0:
 		text += " Proficiency Gained"
 	else:
 		text += " Proficiency Deducted"
 	
-	ResourceSaver.save(GlobalRef.fileData, GlobalRef.gamefilePath)
+	ResourceSaver.save(SaveManager.fileData, SaveManager.gamefilePath)
 	
 	return text
 

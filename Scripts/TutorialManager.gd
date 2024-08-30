@@ -2,18 +2,16 @@ extends Control
 
 var CurrentPage
 var NextPage
-var currentPosition := 0
-var scrollView
-var scrollPositions
-var previousButton
-var nextButton
+var currentPosition: int = 0
+var scrollPositions: Array[int]
+
+@onready var scrollView: HBoxContainer = $"Page 2/Content"
+@onready var previousButton: Button = $"Page 2/MarginContainer/UI/HBoxContainer/Button1"
+@onready var nextButton: Button = $"Page 2/MarginContainer/UI/HBoxContainer/Button2"
 
 func _ready():
+	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
-	
-	previousButton = $"Page 2/MarginContainer/UI/HBoxContainer/Button1"
-	nextButton = $"Page 2/MarginContainer/UI/HBoxContainer/Button2"
-	scrollView = $"Page 2/Content"
 	
 	var scrollSection = scrollView.size.x / 3
 	scrollPositions = [0, -scrollSection, -scrollSection * 2]
@@ -78,7 +76,7 @@ func _on_Page4NextButton_pressed():
 	savePersonalization()
 
 func page4UpdateUI():
-	if checkCheckedCheckboxes():
+	if checkCheckedCheckboxes() and $"Page 4".visible == true:
 		$"Page 4/MarginContainer/Button".disabled = false
 	else:
 		$"Page 4/MarginContainer/Button".disabled = true
@@ -97,22 +95,22 @@ func checkCheckedCheckboxes():
 	return any_checked
 
 func savePersonalization():
-	var data: UserData = load(GlobalRef.gamefilePath) as UserData
-	data.Writing = %WritingCB.button_pressed
-	data.Speaking = %SpeakingCB.button_pressed
-	data.Reading = %ReadingCB.button_pressed
-	data.Maths = %MathsCB.button_pressed
-	data.Memory = %MemoryCB.button_pressed
+	SaveManager.fileData.Writing = %WritingCB.button_pressed
+	SaveManager.fileData.Speaking = %SpeakingCB.button_pressed
+	SaveManager.fileData.Reading = %ReadingCB.button_pressed
+	SaveManager.fileData.Maths = %MathsCB.button_pressed
+	SaveManager.fileData.Memory = %MemoryCB.button_pressed
 	
-	ResourceSaver.save(data, GlobalRef.gamefilePath)
+	SaveManager.saveData()
 
 # page5
 func _on_Page5NextButton_pressed():
-	get_tree().change_scene_to_file(GlobalRef.scenes["tutorialgame"])
+	get_tree().change_scene_to_packed(SceneLoader.get_resource("tutorial_game"))
 
 func _notification(what):
-	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		go_back_request()
+	match what:
+		NOTIFICATION_WM_GO_BACK_REQUEST:
+			go_back_request()
 
 func go_back_request():
 	if $"Page 1".visible == true:
@@ -121,23 +119,23 @@ func go_back_request():
 	
 	if $"Page 2".visible == true:
 		if currentPosition == 0:
-			$"Page 2".visible = false
-			$"Page 1".visible = true
+			$"Page 2".hide()
+			$"Page 1".show()
 		else :
 			_on_buttonPrevious_pressed()
 		return
 	
 	if $"Page 3".visible == true:
-		$"Page 3".visible = false
-		$"Page 2".visible = true
+		$"Page 3".hide()
+		$"Page 2".show()
 		return
 	
 	if $"Page 4".visible == true:
-		$"Page 4".visible = false
-		$"Page 3".visible = true
+		$"Page 4".hide()
+		$"Page 3".show()
 		return
 	
 	if $"Page 5".visible == true:
-		$"Page 5".visible = false
-		$"Page 4".visible = true
+		$"Page 5".hide()
+		$"Page 4".show()
 		return

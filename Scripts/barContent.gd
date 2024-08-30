@@ -16,39 +16,39 @@ enum Type {writing, speaking, reading, maths, memory}
 @export var contentType :Type
 
 func _ready():
-	GlobalRef.fileData = load(GlobalRef.gamefilePath) as UserData
+	SaveManager.fileData = load(SaveManager.gamefilePath) as UserData
 	updateColors()
 	
 	match contentType:
 		Type.writing:
 			content_label.text = "writing pq"
-			proficiency.text = getTitle(GlobalRef.fileData.WritingEPQ)
-			current_pq.text = str(GlobalRef.fileData.WritingEPQ)
-			starting_pq.text = str(GlobalRef.fileData.starting_WritingEPQ)
+			proficiency.text = getTitle(SaveManager.fileData.WritingEPQ)
+			current_pq.text = str(SaveManager.fileData.WritingEPQ)
+			starting_pq.text = str(SaveManager.fileData.starting_WritingEPQ)
 			updateBar(int(current_pq.text), int(starting_pq.text))
 		Type.speaking:
 			content_label.text = "speaking pq"
-			proficiency.text = getTitle(GlobalRef.fileData.SpeakingEPQ)
-			current_pq.text = str(GlobalRef.fileData.SpeakingEPQ)
-			starting_pq.text = str(GlobalRef.fileData.starting_SpeakingEPQ)
+			proficiency.text = getTitle(SaveManager.fileData.SpeakingEPQ)
+			current_pq.text = str(SaveManager.fileData.SpeakingEPQ)
+			starting_pq.text = str(SaveManager.fileData.starting_SpeakingEPQ)
 			updateBar(int(current_pq.text), int(starting_pq.text))
 		Type.reading:
 			content_label.text = "reading pq"
-			proficiency.text = getTitle(GlobalRef.fileData.ReadingEPQ)
-			current_pq.text = str(GlobalRef.fileData.ReadingEPQ)
-			starting_pq.text = str(GlobalRef.fileData.starting_ReadingEPQ)
+			proficiency.text = getTitle(SaveManager.fileData.ReadingEPQ)
+			current_pq.text = str(SaveManager.fileData.ReadingEPQ)
+			starting_pq.text = str(SaveManager.fileData.starting_ReadingEPQ)
 			updateBar(int(current_pq.text), int(starting_pq.text))
 		Type.maths:
 			content_label.text = "maths pq"
-			proficiency.text = getTitle(GlobalRef.fileData.MathsEPQ)
-			current_pq.text = str(GlobalRef.fileData.MathsEPQ)
-			starting_pq.text = str(GlobalRef.fileData.starting_MathsEPQ)
+			proficiency.text = getTitle(SaveManager.fileData.MathsEPQ)
+			current_pq.text = str(SaveManager.fileData.MathsEPQ)
+			starting_pq.text = str(SaveManager.fileData.starting_MathsEPQ)
 			updateBar(int(current_pq.text), int(starting_pq.text))
 		Type.memory:
 			content_label.text = "memory pq"
-			proficiency.text = getTitle(GlobalRef.fileData.MemoryEPQ)
-			current_pq.text = str(GlobalRef.fileData.MemoryEPQ)
-			starting_pq.text = str(GlobalRef.fileData.starting_MemoryEPQ)
+			proficiency.text = getTitle(SaveManager.fileData.MemoryEPQ)
+			current_pq.text = str(SaveManager.fileData.MemoryEPQ)
+			starting_pq.text = str(SaveManager.fileData.starting_MemoryEPQ)
 			updateBar(int(current_pq.text), int(starting_pq.text))
 	
 	growth.text = updateGrowth(int(current_pq.text), int(starting_pq.text))
