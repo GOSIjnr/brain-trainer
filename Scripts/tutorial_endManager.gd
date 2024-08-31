@@ -1,7 +1,7 @@
 extends Control
 
-@onready var page1ProgressBar = $page1/MarginContainer/VBoxContainer/TextureProgressBar
-@onready var page1Timer = $page1/page1Timer
+@onready var page1ProgressBar: TextureProgressBar = %ProgressBar
+@onready var page1Timer: Timer = %page1Timer
 
 var userName: String
 

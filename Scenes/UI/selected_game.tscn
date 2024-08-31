@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c636q8i344dnj"]
+[gd_scene load_steps=12 format=3 uid="uid://c636q8i344dnj"]
 
 [ext_resource type="Texture2D" uid="uid://cegrvwt7fh2aa" path="res://Textures/profileBackground.webp" id="1_ijuhk"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_oax78"]
 [ext_resource type="Script" path="res://Scripts/selected_game.gd" id="1_r5gyq"]
 [ext_resource type="Texture2D" uid="uid://pwwd8pm7vkg7" path="res://Icons/close_fill.svg" id="4_lcjat"]
 [ext_resource type="Texture2D" uid="uid://bgxaympyjpim2" path="res://Icons/game_fill.svg" id="4_qu73w"]
@@ -31,7 +30,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_oax78")
 script = ExtResource("1_r5gyq")
 
 [node name="Background" type="TextureRect" parent="."]

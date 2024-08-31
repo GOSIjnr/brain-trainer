@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvklhkmwyvuap"]
+[gd_scene load_steps=6 format=3 uid="uid://cvklhkmwyvuap"]
 
 [ext_resource type="Script" path="res://Scripts/TutorialManager.gd" id="1_hnchj"]
 [ext_resource type="Texture2D" uid="uid://qfklefydxi6s" path="res://Textures/esut_logo.png" id="3_n4m1t"]
 [ext_resource type="Texture2D" uid="uid://vjlvl752fw38" path="res://Icons/learning.svg" id="4_mo30k"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="4_vrjvl"]
 [ext_resource type="Texture2D" uid="uid://63b1go4ro6fk" path="res://Icons/progress.svg" id="5_2ug4w"]
 [ext_resource type="Texture2D" uid="uid://dtkuxcdfao3g2" path="res://Icons/benefit.svg" id="8_sbkqe"]
 
@@ -14,7 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("4_vrjvl")
 script = ExtResource("1_hnchj")
 
 [node name="Panel" type="Panel" parent="."]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://1r2ei0lkfp2i"]
+[gd_scene load_steps=7 format=3 uid="uid://1r2ei0lkfp2i"]
 
 [ext_resource type="Script" path="res://Scripts/Content2Manager.gd" id="1_kwsmp"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_me5n2"]
 [ext_resource type="Texture2D" uid="uid://b4e1hglsdoy46" path="res://Icons/help_fill.svg" id="2_rwo0n"]
 [ext_resource type="PackedScene" uid="uid://dox081sf2n4hr" path="res://Scenes/UI/pq_help.tscn" id="3_tbi4o"]
 [ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="3_w4uok"]
@@ -18,7 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_me5n2")
 script = ExtResource("1_kwsmp")
 help = ExtResource("3_tbi4o")
 
@@ -87,36 +85,30 @@ theme_override_constants/separation = 50
 
 [node name="EPQ1" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.17047, 0.761629, 0.661447, 1)
 
 [node name="EPQ2" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.938936, 0.14184, 0.189267, 1)
 barType = 1
 
 [node name="EPQ3" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.925998, 0.101498, 0.379234, 1)
 barType = 2
 
 [node name="EPQ4" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.613667, 0.161723, 0.659896, 1)
 barType = 3
 
 [node name="EPQ5" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.906317, 0.572681, 0.123794, 1)
 barType = 4
 
 [node name="EPQ6" parent="VBoxContainer/ScrollContainer/Control/MarginContainer/VBoxContainer" instance=ExtResource("3_w4uok")]
 layout_mode = 2
-theme = null
 progressBarColor = Color(0.412958, 0.603024, 0.98541, 1)
 barType = 5
 

@@ -23,7 +23,7 @@ func _ready() -> void:
 	self.visibility_changed.connect(updateUI)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.is_released():
+	if event is InputEventScreenTouch and event.is_released() and self.visible == true:
 		if not animationPlayer.is_playing():
 			correction_text.hide()
 			animationPlayer.play("Panel_Close")

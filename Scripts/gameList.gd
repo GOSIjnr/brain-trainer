@@ -1,6 +1,6 @@
 extends Control
 
-@export var lockGamesNull: bool = true
+@export var lockNullGames: bool = true
 
 var Game: Games:
 	set = setGame
@@ -23,7 +23,7 @@ func setGame(resource :Games):
 	var gameRef = ["writing", "speaking", "reading", "maths", "memory"]
 	gameType.text = gameRef[resource.gameType]
 	
-	if lockGamesNull and resource.gameScene == null:
+	if lockNullGames and resource.gameScene == null:
 		disabledBG.show()
 		backGround.material.set_shader_parameter("mix_percentage", 0.6)
 

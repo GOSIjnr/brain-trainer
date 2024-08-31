@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dox081sf2n4hr"]
+[gd_scene load_steps=5 format=3 uid="uid://dox081sf2n4hr"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_x3ygd"]
 [ext_resource type="Script" path="res://Scripts/pq_helpManager.gd" id="2_klm1c"]
 [ext_resource type="Shader" path="res://Shader/canvas blur.gdshader" id="2_ygqjs"]
 
@@ -8,6 +7,7 @@
 shader = ExtResource("2_ygqjs")
 shader_parameter/amount = 1.0
 shader_parameter/mix_percentage = 0.8
+shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmpu2"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -19,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_x3ygd")
 script = ExtResource("2_klm1c")
 
 [node name="Panel" type="Panel" parent="."]
@@ -69,7 +68,7 @@ Proficiency Quotients tracks your performance in Writing, Speaking, Reading, Mat
 
 PQ ranges from 0-5000 and is based on game performance, consistent training and game variety.
 
-Proficiency Levels correspond to your PQ: Novice [0-1250], Intermediate [1250-2500], Advanced[2500-3750], Expert[3750-4250], Elite [4250-4750] and Master [4750-5000]
+Proficiency Levels correspond to your PQ: Novice [0-1249], Intermediate [1250-2499], Advanced[2500-3749], Expert[3750-4249], Elite [4250-4749] and Master [4750-5000]
 
 
 

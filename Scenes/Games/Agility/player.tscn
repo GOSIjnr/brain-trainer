@@ -4,18 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://2pexdb6pjfsq" path="res://Textures/ship_8.png" id="1_qykdu"]
 [ext_resource type="AudioStream" uid="uid://b5rni8uv1hfjp" path="res://Sound/whoosh.wav" id="3_r7h8f"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkwl6"]
-radius = 92.0
-height = 256.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkeyv"]
+size = Vector2(200, 200)
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_oxudk")
+gravity = Vector2(0, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qykdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wkwl6")
+position = Vector2(-2, 1)
+shape = SubResource("RectangleShape2D_xkeyv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_r7h8f")

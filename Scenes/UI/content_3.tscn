@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmtxk65luvjx5"]
+[gd_scene load_steps=4 format=3 uid="uid://bmtxk65luvjx5"]
 
 [ext_resource type="Script" path="res://Scripts/Content3Manager.gd" id="1_aegou"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_wl20q"]
 [ext_resource type="ButtonGroup" uid="uid://dc61hfkgy8osu" path="res://Styles/FilterGroup.tres" id="2_yfqme"]
 [ext_resource type="PackedScene" uid="uid://c636q8i344dnj" path="res://Scenes/UI/selected_game.tscn" id="4_45n0t"]
 
@@ -12,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_wl20q")
 script = ExtResource("1_aegou")
 filterGroup = ExtResource("2_yfqme")
 selectedGameTab = ExtResource("4_45n0t")

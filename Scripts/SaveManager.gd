@@ -11,7 +11,7 @@ var newScores: Dictionary = {
 	"memory": 0,
 	"pronunciation": 0,
 	"sound match": 0,
-	"synatx": 0,
+	"syntax": 0,
 	"tipping": 0,
 	"word part": 0,
 }

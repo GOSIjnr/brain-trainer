@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name agilityGameUI
+
 @onready var word: Label = %word
 @onready var option1: Button = %option1
 @onready var option2: Button = %option2
@@ -7,24 +9,42 @@ extends CanvasLayer
 @onready var animationPlayer: AnimationPlayer = %"gameUI animator"
 @onready var score_board: HBoxContainer = %ScoreBoard
 @onready var correction_panel: Control = %"Correction Panel"
+@onready var sfx_right: AudioStreamPlayer = %Sfx_Right
+@onready var sfx_wrong: AudioStreamPlayer = %Sfx_Wrong
+@onready var instruction: Control = %Instruction
+@onready var ui: Control = %UI
+
+@export var questionSize: int = 5
 
 var question: Array = Utils.loadAllResources("res://Resources/Games/agility questions/")
 var questionResource: agiltyQuestion
 
-signal questionDone(buttonClicked, point: int)
-signal answerAnimationDone
+var playerScore: int = 0:
+	set(new_value):
+		if new_value < 0:
+			playerScore = 0
+		else:
+			playerScore = new_value
+
 signal boostSpaceShip
+signal endGame(score: int)
 
 func _ready() -> void:
+	questionSize = clamp(questionSize, 1, question.size())
+	question.shuffle()
+	
 	correction_panel.hide()
-	setQuestion()
 
 func _process(_delta):
 	score_board.timeleft = question_timer.time_left
 
+func manageGameUI():
+	if questionSize == 0:
+		endGameUI()
+	else:
+		setQuestion()
+
 func setQuestion():
-	question.shuffle()
-	
 	questionResource = question.pick_random()
 	question.erase(questionResource)
 	
@@ -44,7 +64,7 @@ func _on_option_1_pressed() -> void:
 		await animationPlayer.animation_finished
 		
 		var point = questionResource.pointsDistribution[0]
-		questionDone.emit(option1, point)
+		_question_done(option1, point)
 
 func _on_option_2_pressed() -> void:
 	if not animationPlayer.is_playing():
@@ -53,14 +73,26 @@ func _on_option_2_pressed() -> void:
 		await animationPlayer.animation_finished
 		
 		var point = questionResource.pointsDistribution[1]
-		questionDone.emit(option2, point)
+		_question_done(option2, point)
 
-func animate(button, option: String, score: int):
+func _question_done(buttonClicked: Button, point: int):
+	questionSize -= 1
+	playerScore += point
+	
+	if point > 0:
+		sfx_right.play()
+		animate(buttonClicked, "good", playerScore)
+		
+	else:
+		sfx_wrong.play()
+		animate(buttonClicked, "bad", playerScore)
+
+func animate(button: Button, option: String, score: int):
 	updateScore(score)
 	match option:
 		"good":
 			button.modulate = Color.GREEN
-			answerAnimationDone.emit()
+			answer_animation_done()
 			boostSpaceShip.emit()
 		"bad":
 			button.modulate = Color.RED
@@ -80,8 +112,28 @@ func animate(button, option: String, score: int):
 			get_tree().paused = true
 			correction_panel.show()
 
+func answer_animation_done():
+	await get_tree().create_timer(1).timeout
+	manageGameUI()
+
 func updateScore(score: int):
 	score_board.target_score = score
 
 func _on_correction_panel_correction_done() -> void:
-	answerAnimationDone.emit()
+	answer_animation_done()
+
+func _on_question_timer_timeout() -> void:
+	questionSize = 0
+	manageGameUI()
+
+func showInstructions():
+	get_tree().paused = true
+	instruction.show()
+	ui.hide()
+
+func endGameUI():
+	question_timer.stop()
+	endGame.emit(playerScore)
+
+func _on_death_zone_player_outof_bound() -> void:
+	endGameUI()

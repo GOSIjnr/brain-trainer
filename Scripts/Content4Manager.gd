@@ -1,12 +1,12 @@
 extends Control
 
-@onready var user_name = %UserName
-@onready var workout_counter = %WorkoutCounter
-@onready var writing_cb = %WritingCB
-@onready var speaking_cb = %SpeakingCB
-@onready var reading_cb = %ReadingCB
-@onready var maths_cb = %MathsCB
-@onready var memory_cb = %MemoryCB
+@onready var user_name: Label = %UserName
+@onready var workout_counter: Label = %WorkoutCounter
+@onready var writing_cb: Button = %WritingCB
+@onready var speaking_cb: Button = %SpeakingCB
+@onready var reading_cb: Button = %ReadingCB
+@onready var maths_cb: Button = %MathsCB
+@onready var memory_cb: Button = %MemoryCB
 
 @export var deleteAccountScene: PackedScene
 

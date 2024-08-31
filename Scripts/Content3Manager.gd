@@ -1,10 +1,10 @@
 extends Control
 
-var gameLocation := "res://Resources/Games/"
-var gameLibary :Array
+var gameLocation: String = "res://Resources/Games/"
+var gameLibary: Array
 var gamePlaceHolder: PackedScene = preload("res://Scenes/UI/gameList.tscn")
 
-@onready var gameBar = %GameBar
+@onready var gameBar: GridContainer = %GameBar
 
 @export var filterGroup: ButtonGroup
 @export var selectedGameTab: PackedScene

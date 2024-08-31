@@ -35,6 +35,12 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
+[gui]
+
+theme/custom="res://Themes/LightMode.tres"
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true

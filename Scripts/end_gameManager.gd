@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name agiltyEndGame
+
 @onready var iconBackground: TextureRect = %"Icon Background"
 @onready var gameIcon: TextureRect = %"Game Icon"
 @onready var scoreText: Label = %Score

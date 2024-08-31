@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://blgrcbgkw8oif"]
+[gd_scene load_steps=5 format=3 uid="uid://blgrcbgkw8oif"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_g5yri"]
 [ext_resource type="Script" path="res://Scripts/tutorial_endManager.gd" id="2_gcetw"]
 [ext_resource type="Texture2D" uid="uid://bxxfuokpyqtoo" path="res://Textures/progress_bar.svg" id="2_uorc7"]
 [ext_resource type="PackedScene" uid="uid://ccybtrwej0f24" path="res://Scenes/UI/EPQ.tscn" id="4_026bl"]
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_g5yri")
 script = ExtResource("2_gcetw")
 
 [node name="Panel" type="Panel" parent="."]
@@ -63,7 +61,8 @@ text = "Getting your results"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="page1/MarginContainer/VBoxContainer"]
+[node name="ProgressBar" type="TextureProgressBar" parent="page1/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -79,6 +78,7 @@ tint_under = Color(0.8, 0.8, 0.8, 1)
 tint_progress = Color(0.443137, 0.0823529, 0, 1)
 
 [node name="page1Timer" type="Timer" parent="page1"]
+unique_name_in_owner = true
 wait_time = 5.0
 one_shot = true
 autostart = true
@@ -176,7 +176,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="page3/MarginContainer1"]
 layout_mode = 2
-theme = ExtResource("1_g5yri")
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -190,30 +189,36 @@ vertical_alignment = 1
 
 [node name="EPQ1" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.17047, 0.761629, 0.661447, 1)
 
 [node name="EPQ2" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.938936, 0.14184, 0.189267, 1)
 barType = 1
 
 [node name="EPQ3" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.925998, 0.101498, 0.379234, 1)
 barType = 2
 
 [node name="EPQ4" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.613667, 0.161723, 0.659896, 1)
 barType = 3
 
 [node name="EPQ5" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.906317, 0.572681, 0.123794, 1)
 barType = 4
 
 [node name="EPQ6" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
 layout_mode = 2
+theme = null
 progressBarColor = Color(0.412958, 0.603024, 0.98541, 1)
 barType = 5
 

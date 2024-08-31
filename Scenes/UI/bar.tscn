@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://co44nr02auxaf"]
+[gd_scene load_steps=5 format=3 uid="uid://co44nr02auxaf"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_bbf1e"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="2_5n2kj"]
 [ext_resource type="Texture2D" uid="uid://dc2oywla7xlix" path="res://Textures/progress_circular.svg" id="2_jn4fo"]
 [ext_resource type="Script" path="res://Scripts/barContent.gd" id="2_utggd"]
@@ -14,7 +13,6 @@ offset_bottom = -1368.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_bbf1e")
 script = ExtResource("2_utggd")
 
 [node name="BackGround" type="Panel" parent="."]

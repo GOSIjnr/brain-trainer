@@ -1,13 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt5sit6uvmj8v"]
+[gd_scene load_steps=5 format=3 uid="uid://bt5sit6uvmj8v"]
 
 [ext_resource type="Script" path="res://Scripts/DeleteAccount.gd" id="1_0px0o"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_4u8uw"]
 [ext_resource type="Shader" path="res://Shader/canvas blur.gdshader" id="3_5fjn4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vobej"]
 shader = ExtResource("3_5fjn4")
 shader_parameter/amount = 1.0
 shader_parameter/mix_percentage = 0.8
+shader_parameter/tint_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5t4gc"]
 bg_color = Color(0, 0, 0, 0.745098)
@@ -19,7 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_4u8uw")
 script = ExtResource("1_0px0o")
 
 [node name="Panel" type="Panel" parent="."]

@@ -1,10 +1,10 @@
 extends Control
 
-const PADDING = Vector2(100, 60)
-const ANIM = 0.2
+const PADDING: Vector2 = Vector2(100, 60)
+const ANIM: float = 0.2
 
-@onready var panel = %Panel as Panel
-@onready var toastMessage = %Label as Label
+@onready var panel: Panel = %Panel
+@onready var toastMessage: Label = %Label
 
 func showMessage(message: String, duration: float) -> void:
 	if Global.isToastActive == false:
@@ -20,7 +20,7 @@ func hideMessage():
 	await animate(1, 0, ANIM)
 	await get_tree().create_timer(ANIM).timeout
 	Global.isToastActive = false
-	queue_free()
+	self.queue_free()
 
 func animate(currentValue: float, newValue: float, duration: float):
 	self.modulate = Color(1, 1, 1, currentValue)

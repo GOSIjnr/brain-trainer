@@ -37,6 +37,12 @@ class_name UserData
 	set(new_value):
 		MemoryEPQ = clamp(new_value, 10, 5000)
 
+@export var Writing: bool = {}
+@export var Speaking: bool = {}
+@export var Reading: bool = {}
+@export var Maths: bool = false
+@export var Memory: bool = false
+
 @export var Workouts: int = 0
 
 @export var HighScores: Dictionary = {}

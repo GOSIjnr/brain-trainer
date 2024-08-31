@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://dadb1uugr52ds"]
+[gd_scene load_steps=7 format=3 uid="uid://dadb1uugr52ds"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_2ojou"]
 [ext_resource type="Script" path="res://Scripts/tutorialGameManager.gd" id="1_65v5v"]
 [ext_resource type="Texture2D" uid="uid://bxxfuokpyqtoo" path="res://Textures/progress_bar.svg" id="2_jwxh1"]
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://Fonts/Roboto-Bold.ttf" id="4_6tcam"]
@@ -15,7 +14,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_2ojou")
 script = ExtResource("1_65v5v")
 timerWarning = Color(0.79, 0.158, 0.2844, 1)
 

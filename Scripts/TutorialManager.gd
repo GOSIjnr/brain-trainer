@@ -1,7 +1,7 @@
 extends Control
 
-var CurrentPage
-var NextPage
+var CurrentPage: Control
+var NextPage: Control
 var currentPosition: int = 0
 var scrollPositions: Array[int]
 

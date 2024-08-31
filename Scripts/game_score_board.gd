@@ -21,6 +21,8 @@ var timeleft: float = 0:
 		timer_text.text = ":" + formattedTime
 		timeleft = new_value
 
+signal pauseGame
+
 func _process(delta):
 	score_text.text = str(score)
 	
@@ -39,3 +41,10 @@ func _process(delta):
 func _on_tween_completed():
 	score = target_score
 	score_text.text = str(score)
+
+func _on_pause_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.is_released():
+		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
+		
+		if rect.has_point(event.position):
+			pauseGame.emit()

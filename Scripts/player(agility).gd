@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var gravity: Vector2 = Vector2(0, 15)
+@export var gravity: Vector2 = Vector2(0, 15)
 var steering: bool = false
 
 const SPEED = 300.0
@@ -10,9 +10,7 @@ const JUMP_VELOCITY = -800
 @export var backgroundParticle: CPUParticles2D
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += gravity * delta
-	
+	velocity += gravity * delta
 	move_and_slide()
 
 func _on_game_ui_boost_space_ship() -> void:
@@ -22,10 +20,10 @@ func _jump():
 	velocity.y = JUMP_VELOCITY
 	
 	if steering:
-		velocity.x = randf_range(0, 200)
+		velocity.x = randf_range(50, 200)
 		steering = false
 	else:
-		velocity.x = randf_range(-200, 0)
+		velocity.x = randf_range(-200, -50)
 		steering = true
 	
 	audioPlayer.play()

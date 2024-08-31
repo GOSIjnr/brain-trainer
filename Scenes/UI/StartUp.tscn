@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6gc5la7qyhxn"]
+[gd_scene load_steps=2 format=3 uid="uid://c6gc5la7qyhxn"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_d3a61"]
 [ext_resource type="Script" path="res://Scripts/Redirect.gd" id="2_uhcw1"]
 
 [node name="StartUp" type="Panel"]
@@ -9,5 +8,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_d3a61")
 script = ExtResource("2_uhcw1")

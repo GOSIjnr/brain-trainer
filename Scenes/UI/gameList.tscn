@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2jocvnviq6yp"]
+[gd_scene load_steps=8 format=3 uid="uid://b2jocvnviq6yp"]
 
 [ext_resource type="Script" path="res://Scripts/gameList.gd" id="1_6cjeq"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_7bdyx"]
 [ext_resource type="Texture2D" uid="uid://h60xsrvl2lb5" path="res://Icons/star.svg" id="3_d5gbr"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="3_gpi7f"]
 [ext_resource type="Shader" path="res://Shader/texture blur.gdshader" id="5_h5jrm"]
@@ -24,7 +23,6 @@ offset_right = -442.0
 offset_bottom = -442.0
 size_flags_horizontal = 0
 mouse_filter = 1
-theme = ExtResource("1_7bdyx")
 theme_override_styles/focus = ExtResource("3_gpi7f")
 theme_override_styles/disabled = ExtResource("3_gpi7f")
 theme_override_styles/hover = ExtResource("3_gpi7f")

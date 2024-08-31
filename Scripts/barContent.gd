@@ -1,24 +1,27 @@
 extends MarginContainer
 
-@onready var back_ground = %BackGround as Panel
-@onready var progress_low = %progressLow as TextureProgressBar
-@onready var progress_starting = %progressStarting as TextureProgressBar
-@onready var progress_high = %progressHigh as TextureProgressBar
-@onready var starting_pq = %StartingPQ as Label
-@onready var current_pq = %CurrentPQ as Label
-@onready var proficiency = %Proficiency as Label
-@onready var content_label = %ContentLabel as Label
-@onready var growth = %Growth
+@onready var back_ground: Panel = %BackGround
+@onready var progress_low: TextureProgressBar = %progressLow
+@onready var progress_starting: TextureProgressBar = %progressStarting
+@onready var progress_high: TextureProgressBar = %progressHigh
+@onready var starting_pq: Label = %StartingPQ
+@onready var current_pq: Label = %CurrentPQ
+@onready var proficiency: Label = %Proficiency
+@onready var content_label: Label = %ContentLabel
+@onready var growth: Label = %Growth
 
 @export var contentColor: Color
 
 enum Type {writing, speaking, reading, maths, memory}
-@export var contentType :Type
+@export var contentType: Type
 
 func _ready():
-	SaveManager.fileData = load(SaveManager.gamefilePath) as UserData
-	updateColors()
+	SaveManager.loadData()
+	var current_date: Dictionary = Time.get_datetime_dict_from_system()
+	var date = "%d-%d-%d" % [current_date.year, current_date.month, current_date.day]
+	print(date + " : " + str(SaveManager.fileData.WritingEPQ))
 	
+	updateColors()
 	match contentType:
 		Type.writing:
 			content_label.text = "writing pq"

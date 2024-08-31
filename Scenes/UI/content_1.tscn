@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccm0hc1unni1b"]
+[gd_scene load_steps=12 format=3 uid="uid://ccm0hc1unni1b"]
 
 [ext_resource type="Script" path="res://Scripts/Content1Manager.gd" id="1_0fbkm"]
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_na8a2"]
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="2_pd7mu"]
 [ext_resource type="Texture2D" uid="uid://rwap0figpeoj" path="res://Textures/workout.webp" id="3_8bfkt"]
 [ext_resource type="Texture2D" uid="uid://h60xsrvl2lb5" path="res://Icons/star.svg" id="4_v8gtq"]
@@ -36,7 +35,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_na8a2")
 script = ExtResource("1_0fbkm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -236,7 +234,8 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Word" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"Label_Thin"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -244,7 +243,8 @@ theme_override_font_sizes/font_size = 55
 text = "Word"
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Meaning" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/MarginContainer4/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(880, 0)
 layout_mode = 2
 theme_type_variation = &"Label_Mid"

@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://37kjmr5xsoum"]
+[gd_scene load_steps=3 format=3 uid="uid://37kjmr5xsoum"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_86ug3"]
 [ext_resource type="Script" path="res://Scripts/toastManager.gd" id="2_bf451"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_072l8"]
@@ -19,7 +18,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_86ug3")
 script = ExtResource("2_bf451")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

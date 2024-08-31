@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=14 format=3 uid="uid://blpko71pew773"]
 
-[ext_resource type="Theme" uid="uid://dq4vxtwdfue5" path="res://Themes/LightMode.tres" id="1_85a00"]
 [ext_resource type="Script" path="res://Scripts/main_menu_uiManager.gd" id="2_0ruyx"]
 [ext_resource type="Script" path="res://Scripts/TabManager.gd" id="2_dinno"]
 [ext_resource type="ButtonGroup" uid="uid://d07incokcfi6e" path="res://Styles/TabGroup.tres" id="3_x07ne"]
@@ -25,7 +24,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_85a00")
 script = ExtResource("2_0ruyx")
 
 [node name="Panel" type="Panel" parent="."]

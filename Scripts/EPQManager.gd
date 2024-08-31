@@ -1,13 +1,13 @@
 extends VBoxContainer
 
-@export var progressBarColor :Color
+@export var progressBarColor: Color
 
 enum Type {writing, speaking, reading, maths, memory, average}
-@export var barType :Type
+@export var barType: Type
 
-@onready var score = $HBoxContainer1/Score as RichTextLabel
-@onready var title = $HBoxContainer1/Title as Label
-@onready var progress_bar = $HBoxContainer2/ProgressBar as TextureProgressBar
+@onready var score: RichTextLabel = %Score
+@onready var title: Label = %Title
+@onready var progress_bar: TextureProgressBar = %ProgressBar
 
 func _ready():
 	progress_bar.tint_progress = progressBarColor
