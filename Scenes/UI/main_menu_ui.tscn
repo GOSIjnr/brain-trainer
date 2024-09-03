@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=15 format=3 uid="uid://blpko71pew773"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_uiManager.gd" id="2_0ruyx"]
 [ext_resource type="Script" path="res://Scripts/TabManager.gd" id="2_dinno"]
+[ext_resource type="Script" path="res://Scripts/daily_manager.gd" id="2_kwfdr"]
 [ext_resource type="ButtonGroup" uid="uid://d07incokcfi6e" path="res://Styles/TabGroup.tres" id="3_x07ne"]
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://Fonts/Roboto-Bold.ttf" id="5_e7ir8"]
 [ext_resource type="Texture2D" uid="uid://clwogmojh2qrb" path="res://Icons/home.svg" id="19_qb3mx"]
@@ -25,6 +26,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_0ruyx")
+
+[node name="Daily Manager" type="Node" parent="."]
+script = ExtResource("2_kwfdr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

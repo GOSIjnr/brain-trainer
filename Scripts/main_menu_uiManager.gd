@@ -3,6 +3,7 @@ extends Control
 @onready var tabs: Panel = %Tabs
 
 func _ready():
+	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
 
 func _notification(what):

@@ -26,6 +26,7 @@ func updateUI():
 
 func _on_panel_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_released():
+		get_tree().paused = false
 		get_tree().change_scene_to_packed(SceneLoader.get_resource("main_menu"))
 
 func getRemark() -> String:
@@ -78,10 +79,10 @@ func getProficiency() -> String:
 
 func proficiencyScore() -> int:
 	if score >= 6000:
-		return 30
+		return 90
 	elif score >= 4000:
-		return 15
+		return 45
 	elif score >= 2000:
-		return 5
+		return 15
 	else:
-		return -20
+		return -45

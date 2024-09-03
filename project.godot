@@ -21,7 +21,7 @@ config/icon="res://Icons/icon.png"
 
 [autoload]
 
-Global="*res://Scripts/Global.gd"
+Global="*res://Scenes/UI/Global.tscn"
 SceneLoader="*res://Scenes/UI/Scene Loader.tscn"
 SaveManager="*res://Scripts/SaveManager.gd"
 

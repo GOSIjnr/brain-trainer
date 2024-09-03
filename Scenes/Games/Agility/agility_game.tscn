@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bwvahd51q73el"]
+[gd_scene load_steps=39 format=3 uid="uid://bwvahd51q73el"]
 
 [ext_resource type="Script" path="res://Scripts/agility_gameManager.gd" id="1_vmouq"]
 [ext_resource type="Script" path="res://Scripts/gameUI_agility.gd" id="2_r1aq5"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bbq8h3y4pl3up" path="res://Sound/correct_answer.wav" id="9_2e4p7"]
 [ext_resource type="Texture2D" uid="uid://b7li5kocgortx" path="res://Textures/star.svg" id="9_xrkjq"]
 [ext_resource type="AudioStream" uid="uid://bvw0jl2qpl3bq" path="res://Sound/incorrect_answer.wav" id="10_eddvo"]
+[ext_resource type="Texture2D" uid="uid://dmfj6brf5ipl5" path="res://Textures/bullet.svg" id="12_dofwq"]
 [ext_resource type="PackedScene" uid="uid://dnk2cpccrkewp" path="res://Scenes/Games/Agility/death_zone.tscn" id="14_j28rp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ii85l"]
@@ -285,6 +286,9 @@ fill_to = Vector2(0.541311, 0)
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Gradient" id="Gradient_ixrk3"]
+colors = PackedColorArray(1, 1, 1, 0.392157, 1, 1, 1, 1)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s63oq"]
 distance = -1024.0
 
@@ -308,10 +312,12 @@ script = ExtResource("1_vmouq")
 
 [node name="User Interface" type="Node" parent="."]
 
-[node name="GameUI" type="CanvasLayer" parent="User Interface"]
+[node name="GameUI" type="CanvasLayer" parent="User Interface" node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 layer = 2
 script = ExtResource("2_r1aq5")
+questionSize = 15
+player = NodePath("../../Level/player")
 
 [node name="Question Timer" type="Timer" parent="User Interface/GameUI"]
 unique_name_in_owner = true
@@ -527,6 +533,20 @@ scale_amount_min = 0.04
 scale_amount_max = 0.1
 color_ramp = SubResource("Gradient_lxwvq")
 
+[node name="Planet Particle" type="CPUParticles2D" parent="Level"]
+process_mode = 3
+position = Vector2(0, -1250)
+amount = 3
+lifetime = 30.0
+draw_order = 1
+texture = ExtResource("12_dofwq")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 0)
+gravity = Vector2(0, 10)
+scale_amount_min = 0.04
+scale_amount_max = 0.08
+color_initial_ramp = SubResource("Gradient_ixrk3")
+
 [node name="player" parent="Level" node_paths=PackedStringArray("backgroundParticle") instance=ExtResource("3_lq7a2")]
 scale = Vector2(0.4, 0.4)
 backgroundParticle = NodePath("../Star Particle")
@@ -563,4 +583,5 @@ shape = SubResource("RectangleShape2D_degsf")
 [connection signal="correctionDone" from="User Interface/GameUI/Correction Panel" to="User Interface/GameUI" method="_on_correction_panel_correction_done"]
 [connection signal="instructionClosed" from="User Interface/GameUI/Instruction" to="." method="_on_instruction_instruction_closed"]
 [connection signal="pressed" from="User Interface/GameUI/Instruction/Panel/MarginContainer/Continue" to="User Interface/GameUI/Instruction" method="_on_continue_pressed"]
+[connection signal="cancelTimer" from="Level/player" to="Level/DeathZone" method="_on_player_cancel_timer"]
 [connection signal="playerOutofBound" from="Level/DeathZone" to="User Interface/GameUI" method="_on_death_zone_player_outof_bound"]

@@ -21,9 +21,10 @@ func _ready():
 func _notification(what):
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
-			_on_score_board_pause_game()
+			call_deferred("_on_score_board_pause_game")
 
 func _on_game_ui_end_game(score: int) -> void:
+	get_tree().paused = true
 	gameUI.hide()
 	end_game.score = score
 	end_game.show()

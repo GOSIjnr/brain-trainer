@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 		elsapedTime += delta
 		
 		if timer.is_stopped():
-			audioPlayer.stop()
 			ca_shader.material.set_shader_parameter("r_displacement", Vector2(0, 0))
 			ca_shader.material.set_shader_parameter("b_displacement", Vector2(0, 0))
+			elsapedTime = 0.0
 		else:
 			if audioPlayer.playing == false and elsapedTime >= 2.0:
 				audioPlayer.play()
@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 			ca_shader.material.set_shader_parameter("b_displacement", Vector2(-time, 0))
 
 func _on_body_entered(_body: Node2D) -> void:
+	audioPlayer.play()
 	timer.start()
 
 func _on_body_exited(_body: Node2D) -> void:
@@ -35,3 +36,6 @@ func _on_body_exited(_body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	ca_shader.hide()
 	playerOutofBound.emit()
+
+func _on_player_cancel_timer() -> void:
+	timer.stop()

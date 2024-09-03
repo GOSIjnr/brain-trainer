@@ -42,9 +42,6 @@ func _on_button_pressed(button :Button, index :int):
 				gameScene.Game = gameLibary[game]
 				gameScene.parent = self
 
-func _positions(button :Button):
-	return button.get_index()
-
 func showSelectedTab(Game :Games):
 	var scene = selectedGameTab.instantiate() as selectedGame
 	get_tree().root.add_child(scene)

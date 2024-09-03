@@ -2,6 +2,7 @@ extends Control
 
 @onready var page1ProgressBar: TextureProgressBar = %ProgressBar
 @onready var page1Timer: Timer = %page1Timer
+@onready var epq_holder: VBoxContainer = %"EPQ Holder"
 
 var userName: String
 
@@ -9,6 +10,10 @@ func _ready():
 	get_tree().quit_on_go_back = false
 	page1ProgressBar.max_value = page1Timer.wait_time
 	SaveManager.loadData()
+	
+	for epq in epq_holder.get_children():
+		if epq is EPQ:
+			epq.progressBarColor = Global.PQColor[epq.get_index()]
 
 func _process(_delta):
 	if $page1.visible == true:

@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_ssclt")
 question = "Ignorance"
-options = Array[String](["Unenlightrment", "Ecstacy"])
+options = Array[String](["Unenlightened", "Ecstacy"])
 pointsDistribution = Array[int]([400, -200])
 meaning = Array[String](["the lack of knowledge", "a state of bliss"])

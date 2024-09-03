@@ -10,16 +10,24 @@ anchor_right = 1.0
 offset_bottom = 60.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("2_47mdv")
 
-[node name="Pause" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(40, 40)
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+
+[node name="Pause" type="TextureRect" parent="Control"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_1hnuv")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="Score Text" type="Label" parent="."]
 unique_name_in_owner = true
@@ -44,4 +52,4 @@ vertical_alignment = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_447oi")
 
-[connection signal="gui_input" from="Pause" to="." method="_on_pause_gui_input"]
+[connection signal="gui_input" from="Control/Pause" to="." method="_on_pause_gui_input"]

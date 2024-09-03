@@ -9,6 +9,8 @@ const JUMP_VELOCITY = -800
 @onready var audioPlayer: AudioStreamPlayer = $AudioStreamPlayer
 @export var backgroundParticle: CPUParticles2D
 
+signal cancelTimer
+
 func _physics_process(delta: float) -> void:
 	velocity += gravity * delta
 	move_and_slide()
@@ -17,6 +19,7 @@ func _on_game_ui_boost_space_ship() -> void:
 	_jump()
 
 func _jump():
+	cancelTimer.emit()
 	velocity.y = JUMP_VELOCITY
 	
 	if steering:

@@ -23,6 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="page1" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +156,6 @@ layout_mode = 2
 text = "Get Results"
 
 [node name="page3" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,39 +187,32 @@ text = "Your starting PQ"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EPQ1" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ Holder" type="VBoxContainer" parent="page3/MarginContainer1/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.17047, 0.761629, 0.661447, 1)
+theme_override_constants/separation = 50
 
-[node name="EPQ2" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ1" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.938936, 0.14184, 0.189267, 1)
+
+[node name="EPQ2" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
+layout_mode = 2
 barType = 1
 
-[node name="EPQ3" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ3" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.925998, 0.101498, 0.379234, 1)
 barType = 2
 
-[node name="EPQ4" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ4" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.613667, 0.161723, 0.659896, 1)
 barType = 3
 
-[node name="EPQ5" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ5" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.906317, 0.572681, 0.123794, 1)
 barType = 4
 
-[node name="EPQ6" parent="page3/MarginContainer1/VBoxContainer" instance=ExtResource("4_026bl")]
+[node name="EPQ6" parent="page3/MarginContainer1/VBoxContainer/EPQ Holder" instance=ExtResource("4_026bl")]
 layout_mode = 2
-theme = null
-progressBarColor = Color(0.412958, 0.603024, 0.98541, 1)
 barType = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="page3"]

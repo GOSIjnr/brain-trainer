@@ -1,7 +1,7 @@
 class_name Utils
 
 #load files from path
-static func loadAllResources(path: String): 
+static func loadAllResources(path: String) -> Array: 
 	var _resourceList = []
 	var dir = DirAccess.open(path)
 	
@@ -26,7 +26,7 @@ static func loadAllResources(path: String):
 	return _resourceList
 
 #update dictionary
-static func updateDictionary(value :Dictionary, new_value :Dictionary):
+static func updateDictionary(value :Dictionary, new_value :Dictionary) -> Dictionary:
 	var updatedDictionary = {}
 	
 	for key in new_value.keys():

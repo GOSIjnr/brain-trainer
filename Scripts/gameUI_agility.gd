@@ -15,6 +15,7 @@ class_name agilityGameUI
 @onready var ui: Control = %UI
 
 @export var questionSize: int = 5
+@export var player: CharacterBody2D
 
 var question: Array = Utils.loadAllResources("res://Resources/Games/agility questions/")
 var questionResource: agiltyQuestion
@@ -132,6 +133,7 @@ func showInstructions():
 	ui.hide()
 
 func endGameUI():
+	player.queue_free()
 	question_timer.stop()
 	endGame.emit(playerScore)
 

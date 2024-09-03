@@ -14,7 +14,7 @@ gameIcon = ExtResource("2_xnuc2")
 gameBackground = ExtResource("1_x2ior")
 gameFullBackground = ExtResource("2_rsxsd")
 gameType = 2
-howToPlay = "Choose the option that has a similar meaning to the given word"
+howToPlay = "Select the synonym of the given word to keep the spaceship on course"
 gameBenefits = "[img=10]res://Textures/bullet.svg[/img]	Players are exposed to synonyms and related words, which helps in expanding their vocabulary and understanding of word meanings.
 
 [img=10]res://Textures/bullet.svg[/img]	Regular practice with synonyms can improve both written and spoken language skills, including grammar and usage."

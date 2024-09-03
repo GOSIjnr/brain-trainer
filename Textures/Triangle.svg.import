@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdktkav0pjdxn"
-path="res://.godot/imported/joystick.svg-6052898657135fd95e58dd16d0c3cdb7.ctex"
+uid="uid://bq31ulbvvhjst"
+path="res://.godot/imported/Triangle.svg-148c6ce4fc518275b2c85c494940e94f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/joystick.svg"
-dest_files=["res://.godot/imported/joystick.svg-6052898657135fd95e58dd16d0c3cdb7.ctex"]
+source_file="res://Textures/Triangle.svg"
+dest_files=["res://.godot/imported/Triangle.svg-148c6ce4fc518275b2c85c494940e94f.ctex"]
 
 [params]
 
