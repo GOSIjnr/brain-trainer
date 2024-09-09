@@ -1,3 +1,4 @@
+class_name gameScoreBoard
 extends HBoxContainer
 
 @onready var score_text: Label = %"Score Text"
@@ -23,7 +24,7 @@ var timeleft: float = 0:
 
 signal pauseGame
 
-func _process(delta):
+func _process(delta) -> void:
 	score_text.text = str(score)
 	
 	if round(timeleft) <= 11:
@@ -38,7 +39,7 @@ func _process(delta):
 	else:
 		timer_text.self_modulate = Color.WHITE
 
-func _on_tween_completed():
+func _on_tween_completed() -> void:
 	score = target_score
 	score_text.text = str(score)
 

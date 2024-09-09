@@ -1,6 +1,5 @@
-extends CanvasLayer
-
 class_name agilityGameUI
+extends CanvasLayer
 
 @onready var word: Label = %word
 @onready var option1: Button = %option1
@@ -36,16 +35,16 @@ func _ready() -> void:
 	
 	correction_panel.hide()
 
-func _process(_delta):
+func _process(_delta) -> void:
 	score_board.timeleft = question_timer.time_left
 
-func manageGameUI():
+func manageGameUI() -> void:
 	if questionSize == 0:
 		endGameUI()
 	else:
 		setQuestion()
 
-func setQuestion():
+func setQuestion() -> void:
 	questionResource = question.pick_random()
 	question.erase(questionResource)
 	
@@ -76,7 +75,7 @@ func _on_option_2_pressed() -> void:
 		var point = questionResource.pointsDistribution[1]
 		_question_done(option2, point)
 
-func _question_done(buttonClicked: Button, point: int):
+func _question_done(buttonClicked: Button, point: int) -> void:
 	questionSize -= 1
 	playerScore += point
 	
@@ -88,7 +87,7 @@ func _question_done(buttonClicked: Button, point: int):
 		sfx_wrong.play()
 		animate(buttonClicked, "bad", playerScore)
 
-func animate(button: Button, option: String, score: int):
+func animate(button: Button, option: String, score: int) -> void:
 	updateScore(score)
 	match option:
 		"good":
@@ -113,11 +112,11 @@ func animate(button: Button, option: String, score: int):
 			get_tree().paused = true
 			correction_panel.show()
 
-func answer_animation_done():
+func answer_animation_done() -> void:
 	await get_tree().create_timer(1).timeout
 	manageGameUI()
 
-func updateScore(score: int):
+func updateScore(score: int) -> void:
 	score_board.target_score = score
 
 func _on_correction_panel_correction_done() -> void:
@@ -127,12 +126,12 @@ func _on_question_timer_timeout() -> void:
 	questionSize = 0
 	manageGameUI()
 
-func showInstructions():
+func showInstructions() -> void:
 	get_tree().paused = true
 	instruction.show()
 	ui.hide()
 
-func endGameUI():
+func endGameUI() -> void:
 	player.queue_free()
 	question_timer.stop()
 	endGame.emit(playerScore)

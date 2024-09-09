@@ -1,10 +1,11 @@
+class_name tutorialGameManager
 extends Control
 
 @export var timerNormal: Color
 @export var timerWarning: Color
 @export var waitTime: float = 2.0
 
-var questionsPath := "res://Resources/TutorialGame/"
+var questionsPath: String = "res://Resources/TutorialGame/"
 var questions: Array = []
 var questionIndex: int = 0
 
@@ -29,7 +30,7 @@ var elaspedTime: float = 0.0
 @onready var sfx_wrong: AudioStreamPlayer = %Sfx_Wrong
 @onready var sfx_tick: AudioStreamPlayer = %Sfx_Tick
 
-func _ready():
+func _ready() -> void:
 	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
 	var setter = get_tree().get_nodes_in_group("questions")
@@ -43,7 +44,7 @@ func _ready():
 	progress.max_value = questions.size()
 	displayQuestion(questionIndex)
 
-func _process(delta):
+func _process(delta) -> void:
 	var time = round(question_timer.time_left)
 	var formattedTime = "%02d" % time
 	timer_countdown.text = ":" + formattedTime
@@ -60,7 +61,7 @@ func _process(delta):
 	else:
 		timer_countdown.self_modulate = timerNormal
 
-func resetAll():
+func resetAll() -> void:
 	var setters = get_tree().get_nodes_in_group("questions")
 	
 	for text in setters:
@@ -71,7 +72,7 @@ func resetAll():
 		else:
 			text.hide()
 
-func displayQuestion(index :int):
+func displayQuestion(index :int) -> void:
 	if index > questions.size() - 1:
 		SaveManager.fileData.WritingEPQ = writingScore
 		SaveManager.fileData.SpeakingEPQ = speakingScore
@@ -96,7 +97,7 @@ func displayQuestion(index :int):
 		displayOptions(_resource, _resource.options.size())
 		question_timer.start()
 
-func displayOptions(selectedRes :tutorialGame, lengthSize :int):
+func displayOptions(selectedRes :tutorialGame, lengthSize :int) -> void:
 	option_5.show()
 	
 	match lengthSize:
@@ -115,14 +116,14 @@ func displayOptions(selectedRes :tutorialGame, lengthSize :int):
 			option_3.text = selectedRes.options[2]
 			option_4.text = selectedRes.options[3]
 
-func disableOptions():
+func disableOptions() -> void:
 	var setters = get_tree().get_nodes_in_group("questions")
 	
 	for text in setters:
 		if text is Button:
 			text.disabled = true
 
-func getTheRightOption(_resource: Array[int]):
+func getTheRightOption(_resource: Array[int]) -> void:
 	var rightOption: int = 0
 	
 	for number in range(_resource.size()):
@@ -140,7 +141,7 @@ func getTheRightOption(_resource: Array[int]):
 		4:
 			option_4.theme_type_variation = "Button_Right"
 
-func scorePlayer(_resource :tutorialGame, _points :int):
+func scorePlayer(_resource :tutorialGame, _points :int) -> void:
 	match _resource.QuestionType:
 		0:
 			writingScore += _points
@@ -153,15 +154,15 @@ func scorePlayer(_resource :tutorialGame, _points :int):
 		4:
 			memoryScore += _points
 
-func _on_question_timer_timeout():
+func _on_question_timer_timeout() -> void:
 	option_5.emit_signal("pressed")
 
-func _notification(what):
+func _notification(what) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			Utils.showToast(get_tree().root, "Can't go back at this stage", 1.5)
 
-func optionClicked(_button: BaseButton):
+func optionClicked(_button: BaseButton) -> void:
 	disableOptions()
 	var _clicked: int = 0
 	var _resource: tutorialGame = questions[questionIndex]
@@ -197,7 +198,7 @@ func optionClicked(_button: BaseButton):
 	
 	waitTimer()
 
-func waitTimer():
+func waitTimer() -> void:
 	await get_tree().create_timer(waitTime).timeout
 	questionIndex += 1
 	displayQuestion(questionIndex)

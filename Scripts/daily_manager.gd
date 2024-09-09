@@ -1,3 +1,4 @@
+class_name dailyManager
 extends Node
 
 func _ready() -> void:

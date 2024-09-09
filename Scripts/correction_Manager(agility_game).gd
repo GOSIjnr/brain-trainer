@@ -1,3 +1,4 @@
+class_name correctionManager
 extends Control
 
 @onready var correction_panel: Control = %"Correction Panel"
@@ -32,7 +33,7 @@ func _input(event: InputEvent) -> void:
 			self.hide()
 			correctionDone.emit()
 
-func updateUI():
+func updateUI() -> void:
 	if self.visible == true:
 		correction_text.text = updateCorrection()
 		correction_text.hide()

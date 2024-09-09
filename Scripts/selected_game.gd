@@ -1,6 +1,5 @@
-extends Control
-
 class_name selectedGame
+extends Control
 
 @onready var gameName: Label = %game_name
 @onready var gameType: Label = %game_type
@@ -31,7 +30,7 @@ var selected :Games:
 		var gameRef = ["Writing", "Speaking", "Reading", "Maths", "Memory"]
 		gameType.text = gameRef[resource.gameType]
 
-func updateStartButton(color :Color):
+func updateStartButton(color :Color) -> void:
 	var darken := 0.15
 	
 	var styleBoxflat = StyleBoxFlat.new()
@@ -50,7 +49,7 @@ func updateStartButton(color :Color):
 	startButton.add_theme_stylebox_override("normal", styleBoxflat)
 	startButton.add_theme_stylebox_override("pressed", styleBoxclicked)
 
-func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :String):
+func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :String) -> void:
 	text.clear()
 	text.append_text(suffix)
 	text.add_text("\n\n")
@@ -60,7 +59,7 @@ func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :
 		text.add_text("\n\n")
 		text.append_text(prefix)
 
-func _on_close_button_gui_input(event: InputEvent):
+func _on_close_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_released():
 		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
 		
@@ -68,7 +67,7 @@ func _on_close_button_gui_input(event: InputEvent):
 			Global.selectedGameResource = null
 			self.queue_free()
 
-func _on_help_button_gui_input(event):
+func _on_help_button_gui_input(event) -> void:
 	if event is InputEventScreenTouch and event.is_released():
 		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
 		
@@ -79,19 +78,19 @@ func _on_help_button_gui_input(event):
 			var tween = create_tween()
 			tween.tween_property(help, "modulate", Color(1, 1, 1, 1), 0.05)
 
-func _on_start_game_pressed():
+func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_packed(selected.gameScene)
 
-func _on_help_gui_input(event: InputEvent):
+func _on_help_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.is_released():
 		help.hide()
 
-func _notification(what):
+func _notification(what) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			go_back_request()
 
-func go_back_request():
+func go_back_request() -> void:
 	if help.visible == true:
 		help.hide()
 	else:

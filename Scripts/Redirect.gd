@@ -1,8 +1,9 @@
+class_name redirect
 extends Panel
 
 var File = FileAccess
 
-func _ready():
+func _ready() -> void:
 	get_tree().quit_on_go_back = false
 	
 	var check = userDataCheck()
@@ -19,14 +20,14 @@ func _ready():
 	else:
 		call_deferred("load_tutorial")
 
-func userDataCheck():
+func userDataCheck() -> bool:
 	if File.file_exists(SaveManager.gamefilePath):
 		return true
 	else:
 		return false
 
-func load_main_menu():
+func load_main_menu() -> void:
 	get_tree().change_scene_to_packed(SceneLoader.get_resource("main_menu"))
 
-func load_tutorial():
+func load_tutorial() -> void:
 	get_tree().change_scene_to_packed(SceneLoader.get_resource("tutorial_start"))

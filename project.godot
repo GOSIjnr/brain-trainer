@@ -29,7 +29,6 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
-window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"

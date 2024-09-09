@@ -1,6 +1,5 @@
-extends Resource
-
 class_name tutorialGame
+extends Resource
 
 @export_multiline var question: String
 enum pointType {writing, speaking, reading, maths, memory}

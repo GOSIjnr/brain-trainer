@@ -1,3 +1,4 @@
+class_name global
 extends Node
 
 var isToastActive: bool = false

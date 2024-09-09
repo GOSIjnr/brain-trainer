@@ -1,6 +1,5 @@
+class_name graphManager
 extends Control
-
-class_name graphDraw
 
 @export var lineWidth: int = 3
 
@@ -39,7 +38,7 @@ var data_dict: Dictionary:
 		
 		call_deferred("update_graph")
 
-func update_graph():
+func update_graph() -> void:
 	line.clear_points()
 	fill_polygon.polygon = []
 

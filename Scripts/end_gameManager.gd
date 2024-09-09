@@ -1,6 +1,5 @@
-extends CanvasLayer
-
 class_name agiltyEndGame
+extends CanvasLayer
 
 @onready var iconBackground: TextureRect = %"Icon Background"
 @onready var gameIcon: TextureRect = %"Game Icon"
@@ -15,7 +14,7 @@ var gameResource: Games = Global.selectedGameResource
 func _ready() -> void:
 	self.visibility_changed.connect(updateUI)
 
-func updateUI():
+func updateUI() -> void:
 	if not gameResource == null and self.visible == true:
 		iconBackground.self_modulate = gameResource.gameColor
 		gameIcon.texture = gameResource.gameIcon

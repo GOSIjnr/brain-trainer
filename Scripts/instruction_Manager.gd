@@ -1,3 +1,4 @@
+class_name instructionManager
 extends Control
 
 @onready var instructions: RichTextLabel = %Instructions
@@ -11,7 +12,7 @@ func _ready() -> void:
 	if not resource == null:
 		updateText(instructions, "[b]INSTRUCTIONS[/b]", resource.howToPlay, "")
 
-func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :String):
+func updateText(text :RichTextLabel, suffix :String, textToAdd :String, prefix :String) -> void:
 	text.clear()
 	text.append_text(suffix)
 	text.add_text("\n\n")

@@ -1,3 +1,4 @@
+class_name tutorialManager
 extends Control
 
 var CurrentPage: Control
@@ -9,25 +10,25 @@ var scrollPositions: Array[int]
 @onready var previousButton: Button = $"Page 2/MarginContainer/UI/HBoxContainer/Button1"
 @onready var nextButton: Button = $"Page 2/MarginContainer/UI/HBoxContainer/Button2"
 
-func _ready():
+func _ready() -> void:
 	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
 	
 	var scrollSection = scrollView.size.x / 3
 	scrollPositions = [0, -scrollSection, -scrollSection * 2]
 
-func _process(_delta):
+func _process(_delta) -> void:
 	page4UpdateUI()
 
 # page1
-func _on_page1NextButton_pressed():
+func _on_page1NextButton_pressed() -> void:
 	CurrentPage = $"Page 1"
 	NextPage = $"Page 2"
 	CurrentPage.hide()
 	NextPage.show()
 
 # page2
-func _on_buttonPrevious_pressed():
+func _on_buttonPrevious_pressed() -> void:
 	currentPosition -= 1
 	
 	if currentPosition < 0:
@@ -35,7 +36,7 @@ func _on_buttonPrevious_pressed():
 	
 	updateUI(currentPosition)
 
-func _on_buttonNext_pressed():
+func _on_buttonNext_pressed() -> void:
 	currentPosition += 1
 	
 	if currentPosition > 2:
@@ -47,7 +48,7 @@ func _on_buttonNext_pressed():
 	else:
 		updateUI(currentPosition)
 
-func updateUI(new_position):
+func updateUI(new_position) -> void:
 	var tween = create_tween()
 	tween.tween_property(scrollView, "position", Vector2(scrollPositions[new_position], 0), .15)
 	
@@ -61,27 +62,27 @@ func updateUI(new_position):
 			nextButton.text = "Continue"
 
 # page3
-func _on_Page3NextButton_pressed():
+func _on_Page3NextButton_pressed() -> void:
 	CurrentPage = $"Page 3"
 	NextPage = $"Page 4"
 	CurrentPage.hide()
 	NextPage.show()
 
 # page4
-func _on_Page4NextButton_pressed():
+func _on_Page4NextButton_pressed() -> void:
 	CurrentPage = $"Page 4"
 	NextPage = $"Page 5"
 	CurrentPage.hide()
 	NextPage.show()
 	savePersonalization()
 
-func page4UpdateUI():
+func page4UpdateUI() -> void:
 	if checkCheckedCheckboxes() and $"Page 4".visible == true:
 		$"Page 4/MarginContainer/Button".disabled = false
 	else:
 		$"Page 4/MarginContainer/Button".disabled = true
 
-func checkCheckedCheckboxes():
+func checkCheckedCheckboxes() -> bool:
 	var checkBoxContainer = $"Page 4/MarginContainer/VBoxContainer/GridContainer"
 	var num_checkboxes = checkBoxContainer.get_child_count()
 	var any_checked = false
@@ -94,7 +95,7 @@ func checkCheckedCheckboxes():
 	
 	return any_checked
 
-func savePersonalization():
+func savePersonalization() -> void:
 	SaveManager.fileData.Writing = %WritingCB.button_pressed
 	SaveManager.fileData.Speaking = %SpeakingCB.button_pressed
 	SaveManager.fileData.Reading = %ReadingCB.button_pressed
@@ -104,15 +105,15 @@ func savePersonalization():
 	SaveManager.saveData()
 
 # page5
-func _on_Page5NextButton_pressed():
+func _on_Page5NextButton_pressed() -> void:
 	get_tree().change_scene_to_packed(SceneLoader.get_resource("tutorial_game"))
 
-func _notification(what):
+func _notification(what) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			go_back_request()
 
-func go_back_request():
+func go_back_request() -> void:
 	if $"Page 1".visible == true:
 		get_tree().quit()
 		return

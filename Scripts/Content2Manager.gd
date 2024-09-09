@@ -1,3 +1,4 @@
+class_name content2Manager
 extends Control
 
 @export var help: PackedScene
@@ -18,8 +19,7 @@ func _ready() -> void:
 	
 	setter.front().emit_signal("pressed")
 
-
-func _on_help_gui_input(event):
+func _on_help_gui_input(event) -> void:
 	if event is InputEventScreenTouch and event.is_released():
 		var rect = Rect2(Vector2(0, 0), Vector2(100, 100))
 		
@@ -27,12 +27,12 @@ func _on_help_gui_input(event):
 			var scene = help.instantiate()
 			get_tree().root.add_child(scene)
 
-func _resetLibary():
+func _resetLibary() -> void:
 	for button in AnalyticGroup.get_buttons():
 		button.disabled = false
 		button.text = button.name.substr(0, 1)
 
-func _on_button_pressed(button: Button):
+func _on_button_pressed(button: Button) -> void:
 	_resetLibary()
 	var space = "     "
 	button.text = space + button.name + space

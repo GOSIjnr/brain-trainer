@@ -1,3 +1,4 @@
+class_name saveManager
 extends Node
 
 var gamefilePath: String = "user://UserData.tres"

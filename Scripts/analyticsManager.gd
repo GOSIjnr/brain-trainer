@@ -1,6 +1,5 @@
-extends Control
-
 class_name analyticsChart
+extends Control
 
 @onready var background: Panel = %Background
 @onready var title: Label = %Title
@@ -20,6 +19,7 @@ var selectedIndex: int = 0
 
 var type: String:
 	set(new_value):
+		if SaveManager.fileData == null: return 
 		type = new_value
 		title.text = new_value
 		
@@ -38,7 +38,7 @@ func _on_option_button_item_selected(index: int) -> void:
 	selectedIndex = index
 	plotGraph(int(text))
 
-func matchColor(typeName: String):
+func matchColor(typeName: String) -> void:
 	match typeName:
 		"Writing":
 			PQColor = Global.PQColor[0]
@@ -58,8 +58,8 @@ func matchColor(typeName: String):
 	progress_starting.tint_progress = PQColor.darkened(0.2)
 	progress_low.tint_progress = PQColor.darkened(0.4)
 
-func plotGraph(days: int):
-	var _ref = graph as graphDraw
+func plotGraph(days: int) -> void:
+	var _ref = graph as graphManager
 	_ref.dataRange = days
 	
 	match type:
@@ -82,7 +82,7 @@ func plotGraph(days: int):
 			_ref.dataColor = Global.PQColor[5]
 			_ref.data_dict = SaveManager.fileData.AverageDaily
 
-func updateText():
+func updateText() -> void:
 	match type:
 		"Writing":
 			proficiency.text = getTitle(SaveManager.fileData.WritingEPQ)
@@ -113,7 +113,7 @@ func updateText():
 	growth.text = updateGrowth(int(current_pq.text), int(starting_pq.text))
 
 
-func getTitle(value: int):
+func getTitle(value: int) -> String:
 	if value >= 4750:
 		return "Master"
 	elif value >= 4250:
@@ -127,7 +127,7 @@ func getTitle(value: int):
 	else:
 		return "Novice"
 
-func updateBar(current: int, starting: int):
+func updateBar(current: int, starting: int) -> void:
 	progress_starting.value = starting
 	
 	if current >= starting:

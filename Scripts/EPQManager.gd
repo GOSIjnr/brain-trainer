@@ -1,6 +1,5 @@
-extends VBoxContainer
-
 class_name EPQ
+extends VBoxContainer
 
 enum Type {writing, speaking, reading, maths, memory, average}
 @export var barType: Type
@@ -62,7 +61,7 @@ var progressBarColor: Color:
 				for progress_bar in bar:
 					progress_bar.value = round(average)
 
-func getTitle(value: int):
+func getTitle(value: int) -> String:
 	if value >= 4750:
 		return "MASTER"
 	elif value >= 4250:

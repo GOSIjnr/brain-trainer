@@ -1,6 +1,5 @@
-extends Resource
-
 class_name agiltyQuestion
+extends Resource
 
 @export var question: String
 @export var options: Array[String]

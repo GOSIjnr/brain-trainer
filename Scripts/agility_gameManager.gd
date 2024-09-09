@@ -1,10 +1,11 @@
+class_name agilityGameManger
 extends Node
 
 @onready var gameUI: agilityGameUI = %GameUI
 @onready var pause_ui: CanvasLayer = %PauseUI
 @onready var end_game: agiltyEndGame = %EndGame
 
-func _ready():
+func _ready() -> void:
 	SaveManager.loadData()
 	get_tree().quit_on_go_back = false
 	pause_ui.hide()
@@ -18,7 +19,7 @@ func _ready():
 	else:
 		gameUI.manageGameUI()
 
-func _notification(what):
+func _notification(what) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			call_deferred("_on_score_board_pause_game")

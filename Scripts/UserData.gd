@@ -1,6 +1,5 @@
-extends Resource
-
 class_name UserData
+extends Resource
 
 @export var UserName: String = "User"
 @export var isTutorialDone: bool = false

@@ -1,3 +1,4 @@
+class_name deathZoneAgility
 extends Area2D
 
 @onready var ca_shader: Panel = %"CA shader"

@@ -1,3 +1,4 @@
+class_name content4Manager
 extends Control
 
 @onready var user_name: Label = %UserName
@@ -10,7 +11,7 @@ extends Control
 
 @export var deleteAccountScene: PackedScene
 
-func _ready():
+func _ready() -> void:
 	SaveManager.loadData()
 	
 	user_name.text = SaveManager.fileData.UserName
@@ -22,26 +23,26 @@ func _ready():
 	maths_cb.button_pressed = SaveManager.fileData.Maths
 	memory_cb.button_pressed = SaveManager.fileData.Memory
 
-func _on_check_button_1_toggled(toggled_on):
+func _on_check_button_1_toggled(toggled_on) -> void:
 	SaveManager.fileData.Writing = toggled_on
 	SaveManager.saveData()
 
-func _on_check_button_2_toggled(toggled_on):
+func _on_check_button_2_toggled(toggled_on) -> void:
 	SaveManager.fileData.Speaking = toggled_on
 	SaveManager.saveData()
 
-func _on_check_button_3_toggled(toggled_on):
+func _on_check_button_3_toggled(toggled_on) -> void:
 	SaveManager.fileData.Reading = toggled_on
 	SaveManager.saveData()
 
-func _on_check_button_4_toggled(toggled_on):
+func _on_check_button_4_toggled(toggled_on) -> void:
 	SaveManager.fileData.Maths = toggled_on
 	SaveManager.saveData()
 
-func _on_check_button_5_toggled(toggled_on):
+func _on_check_button_5_toggled(toggled_on) -> void:
 	SaveManager.fileData.Memory = toggled_on
 	SaveManager.saveData()
 
-func _on_delete_account_pressed():
+func _on_delete_account_pressed() -> void:
 	var scene = deleteAccountScene.instantiate()
 	get_tree().root.add_child(scene)

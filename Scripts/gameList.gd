@@ -1,3 +1,4 @@
+class_name gameList
 extends Control
 
 @export var lockNullGames: bool = true
@@ -13,7 +14,7 @@ var parent: Node
 @onready var gameType: Label = %GameType
 @onready var disabledBG: TextureRect = %Disabled
 
-func setGame(resource :Games):
+func setGame(resource :Games)  -> void:
 	Game = resource
 	self.name = resource.gameName
 	backGround.texture = resource.gameBackground
@@ -27,6 +28,6 @@ func setGame(resource :Games):
 		disabledBG.show()
 		backGround.material.set_shader_parameter("mix_percentage", 0.6)
 
-func _on_pressed():
+func _on_pressed()  -> void:
 	if disabledBG.visible == false:
 		parent.showSelectedTab(Game)

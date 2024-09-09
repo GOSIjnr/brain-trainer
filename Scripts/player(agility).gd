@@ -1,3 +1,4 @@
+class_name playerAgilty
 extends CharacterBody2D
 
 @export var gravity: Vector2 = Vector2(0, 15)
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 func _on_game_ui_boost_space_ship() -> void:
 	_jump()
 
-func _jump():
+func _jump() -> void:
 	cancelTimer.emit()
 	velocity.y = JUMP_VELOCITY
 	

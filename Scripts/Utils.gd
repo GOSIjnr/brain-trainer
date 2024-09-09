@@ -38,7 +38,7 @@ static func updateDictionary(value :Dictionary, new_value :Dictionary) -> Dictio
 	return updatedDictionary
 
 #toast
-static func showToast(root, message: String, duration: float):
+static func showToast(root, message: String, duration: float) -> void:
 	if Global.isToastActive == false:
 		var toast = SceneLoader.get_resource("toast").instantiate()
 		root.add_child(toast)

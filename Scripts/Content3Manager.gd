@@ -1,3 +1,4 @@
+class_name content3Manager
 extends Control
 
 var gameLocation: String = "res://Resources/Games/"
@@ -9,7 +10,7 @@ var gamePlaceHolder: PackedScene = preload("res://Scenes/UI/gameList.tscn")
 @export var filterGroup: ButtonGroup
 @export var selectedGameTab: PackedScene
 
-func _ready():
+func _ready() -> void:
 	gameLibary = Utils.loadAllResources(gameLocation)
 	
 	var setter: Array[BaseButton] = filterGroup.get_buttons()
@@ -18,14 +19,14 @@ func _ready():
 	
 	setter[0].emit_signal("pressed")
 
-func _resetLibary():
+func _resetLibary() -> void:
 	for content in gameBar.get_children():
 		content.queue_free()
 	
 	for button in filterGroup.get_buttons():
 		button.disabled = false
 
-func _on_button_pressed(button :Button, index :int):
+func _on_button_pressed(button :Button, index :int) -> void:
 	_resetLibary()
 	button.disabled = true
 	
@@ -42,7 +43,7 @@ func _on_button_pressed(button :Button, index :int):
 				gameScene.Game = gameLibary[game]
 				gameScene.parent = self
 
-func showSelectedTab(Game :Games):
+func showSelectedTab(Game :Games) -> void:
 	var scene = selectedGameTab.instantiate() as selectedGame
 	get_tree().root.add_child(scene)
 	

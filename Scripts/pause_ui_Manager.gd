@@ -1,6 +1,7 @@
+class_name pauseUiManager
 extends CanvasLayer
 
-func _notification(what):
+func _notification(what) -> void:
 	match what:
 		NOTIFICATION_WM_GO_BACK_REQUEST:
 			_on_continue_pressed()

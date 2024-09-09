@@ -1,6 +1,5 @@
-extends Resource
-
 class_name Games
+extends Resource
 
 @export_group("Game")
 @export var gameColor: Color
