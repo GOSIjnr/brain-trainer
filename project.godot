@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BrainTrainer"
-config/version="0.0"
+config/version="0.0.0"
 run/main_scene="res://Scenes/UI/StartUp.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
@@ -29,6 +29,7 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"

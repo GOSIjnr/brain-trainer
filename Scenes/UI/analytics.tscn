@@ -1,22 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs1dnvgdjci53"]
+[gd_scene load_steps=6 format=3 uid="uid://bs1dnvgdjci53"]
 
 [ext_resource type="StyleBox" uid="uid://ivmclmvcwoko" path="res://Styles/FlatMask.tres" id="1_4uypc"]
 [ext_resource type="Script" path="res://Scripts/analyticsManager.gd" id="1_qoxbi"]
 [ext_resource type="Script" path="res://Scripts/graph_Manager.gd" id="1_whvnd"]
 [ext_resource type="Texture2D" uid="uid://dc2oywla7xlix" path="res://Textures/progress_circular.svg" id="4_klybe"]
-
-[sub_resource type="GDScript" id="GDScript_wvb2e"]
-script/source = "class_name LabelManager
-extends Label
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7xe3"]
 bg_color = Color(1, 1, 1, 0.0784314)
@@ -120,7 +107,6 @@ theme_type_variation = &"Label_Mid"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "Growth"
-script = SubResource("GDScript_wvb2e")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
