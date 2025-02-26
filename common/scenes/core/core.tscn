@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqta5cu6wxn60"]
+[gd_scene load_steps=10 format=3 uid="uid://dqta5cu6wxn60"]
 
 [ext_resource type="Script" uid="uid://owc54tigo5m0" path="res://common/scenes/core/Core.cs" id="1_0t0b8"]
 [ext_resource type="Script" uid="uid://jqbwu3jjleml" path="res://common/scenes/core/scripts/CrashHandler.cs" id="2_j2gx1"]
+[ext_resource type="PackedScene" uid="uid://dl4etp5kyo01l" path="res://common/scenes/crash_handler/crash_handler_scene.tscn" id="3_0t0b8"]
 [ext_resource type="Script" uid="uid://dawveby6qxq5m" path="res://common/scenes/core/scripts/Data.cs" id="3_4x8p1"]
 [ext_resource type="Script" uid="uid://b1geg6y0vxtjf" path="res://common/scenes/core/scripts/EventBus.cs" id="4_a0el1"]
 [ext_resource type="Script" uid="uid://2vj7cjj2l4hh" path="res://common/scenes/core/scripts/SceneManager.cs" id="6_jmtqy"]
+[ext_resource type="Script" uid="uid://pxbgp532345d" path="res://common/scenes/core/scripts/SaveManager.cs" id="7_8cgh0"]
+[ext_resource type="Script" uid="uid://c0hay22bli11o" path="res://common/scenes/core/scripts/ToastManager.cs" id="8_kcsr7"]
+[ext_resource type="PackedScene" uid="uid://37kjmr5xsoum" path="res://common/scenes/toast/toast.tscn" id="9_j2gx1"]
 
 [node name="Core" type="Node"]
 process_mode = 3
@@ -14,6 +18,7 @@ metadata/_custom_type_script = "uid://owc54tigo5m0"
 [node name="CrashHandler" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_j2gx1")
+_crashScene = ExtResource("3_0t0b8")
 metadata/_custom_type_script = "uid://jqbwu3jjleml"
 
 [node name="Data" type="Node" parent="."]
@@ -30,3 +35,14 @@ metadata/_custom_type_script = "uid://b1geg6y0vxtjf"
 unique_name_in_owner = true
 script = ExtResource("6_jmtqy")
 metadata/_custom_type_script = "uid://2vj7cjj2l4hh"
+
+[node name="SaveManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_8cgh0")
+metadata/_custom_type_script = "uid://pxbgp532345d"
+
+[node name="ToastManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_kcsr7")
+_toastScene = ExtResource("9_j2gx1")
+metadata/_custom_type_script = "uid://c0hay22bli11o"

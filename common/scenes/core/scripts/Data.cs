@@ -7,25 +7,40 @@ namespace GOSIjnr;
 public partial class Data : Node
 {
 	[Export]
-	public Dictionary<RarityLevel, Color> RarityColors { get; private set; } = new()
+	public Dictionary<Subjects, Color> RarityColors { get; private set; } = new()
 	{
-		{ RarityLevel.Common, new("#B0B0B0") },
-		{ RarityLevel.Uncommon, new("#1EFF00") },
-		{ RarityLevel.Rare, new("#0070DD") },
-		{ RarityLevel.Epic, new("#A335EE") },
-		{ RarityLevel.Legendary, new("#FF8000") },
-		{ RarityLevel.Mythic, new("#FF0000") },
-		{ RarityLevel.Artifact, new("#E0115F") }
+		{ Subjects.Writing, new("#2BBFA9") },
+		{ Subjects.Speaking, new("#EF2430") },
+		{ Subjects.Reading, new("#EC1A61") },
+		{ Subjects.Maths, new("#9C29A8") },
+		{ Subjects.Memory, new("#E79220") },
+		{ Subjects.Average, new("#69A0FB") },
 	};
 
-	public enum RarityLevel
+	[Export] public string UserDataSavePath { get; private set; } = "user://user_data.tres";
+
+	[Export]
+	public Dictionary<string, float> TemplateScores { get; private set; } = new()
 	{
-		Common,
-		Uncommon,
-		Rare,
-		Epic,
-		Legendary,
-		Mythic,
-		Artifact,
+		{ "agility", 0 },
+		{ "average", 0 },
+		{ "aviodance", 0 },
+		{ "collaspe", 0 },
+		{ "memory", 0 },
+		{ "pronunciation", 0 },
+		{ "sound_match", 0 },
+		{ "syntax", 0 },
+		{ "tipping", 0 },
+		{ "word_part", 0 },
+	};
+
+	public enum Subjects
+	{
+		Writing,
+		Speaking,
+		Reading,
+		Maths,
+		Memory,
+		Average,
 	}
 }

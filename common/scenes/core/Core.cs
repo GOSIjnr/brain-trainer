@@ -5,20 +5,24 @@ namespace GOSIjnr;
 [GlobalClass]
 public partial class Core : Node
 {
-	public CrashHandler CrashHandler { private set; get; }
-	public Data Data { private set; get; }
-	public EventBus EventBus { private set; get; }
-	public SceneManager SceneManager { private set; get; }
+	public CrashHandler CrashHandler { get; private set; }
+	public Data Data { get; private set; }
+	public EventBus EventBus { get; private set; }
+	public SceneManager SceneManager { get; private set; }
+	public SaveManager SaveManager { get; private set; }
+	public ToastManager ToastManager { get; private set; }
 
 	public static Core Instance { get; private set; }
 
 	public override void _EnterTree()
 	{
 		Instance = this;
-		Data = GetNodeOrNull<Data>("%Data");
-		CrashHandler = GetNodeOrNull<CrashHandler>("%CrashHandler");
-		EventBus = GetNodeOrNull<EventBus>("%EventBus");
-		SceneManager = GetNodeOrNull<SceneManager>("%SceneManager");
+		Data = GetNodeOrNull<Data>("%Data") ?? new Data();
+		CrashHandler = GetNodeOrNull<CrashHandler>("%CrashHandler") ?? new CrashHandler();
+		EventBus = GetNodeOrNull<EventBus>("%EventBus") ?? new EventBus();
+		SceneManager = GetNodeOrNull<SceneManager>("%SceneManager") ?? new SceneManager();
+		SaveManager = GetNodeOrNull<SaveManager>("%SaveManager") ?? new SaveManager();
+		ToastManager = GetNodeOrNull<ToastManager>("%ToastManager") ?? new ToastManager();
 
 		InitializeDebugMode();
 		InitializeSignals();
@@ -39,7 +43,7 @@ public partial class Core : Node
 
 	private void InitializeApp()
 	{
-		// TODO: Implement a settings manager to load these values from a file
+		GetTree().QuitOnGoBack = false;
 
 		float refreshRate = DisplayServer.ScreenGetRefreshRate();
 		refreshRate = (refreshRate < 0.0f) ? 60.0f : refreshRate;
