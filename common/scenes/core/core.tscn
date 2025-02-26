@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqta5cu6wxn60"]
+
+[ext_resource type="Script" uid="uid://owc54tigo5m0" path="res://common/scenes/core/Core.cs" id="1_0t0b8"]
+[ext_resource type="Script" uid="uid://jqbwu3jjleml" path="res://common/scenes/core/scripts/CrashHandler.cs" id="2_j2gx1"]
+[ext_resource type="Script" uid="uid://dawveby6qxq5m" path="res://common/scenes/core/scripts/Data.cs" id="3_4x8p1"]
+[ext_resource type="Script" uid="uid://b1geg6y0vxtjf" path="res://common/scenes/core/scripts/EventBus.cs" id="4_a0el1"]
+[ext_resource type="Script" uid="uid://2vj7cjj2l4hh" path="res://common/scenes/core/scripts/SceneManager.cs" id="6_jmtqy"]
+
+[node name="Core" type="Node"]
+process_mode = 3
+script = ExtResource("1_0t0b8")
+metadata/_custom_type_script = "uid://owc54tigo5m0"
+
+[node name="CrashHandler" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_j2gx1")
+metadata/_custom_type_script = "uid://jqbwu3jjleml"
+
+[node name="Data" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_4x8p1")
+metadata/_custom_type_script = "uid://dawveby6qxq5m"
+
+[node name="EventBus" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_a0el1")
+metadata/_custom_type_script = "uid://b1geg6y0vxtjf"
+
+[node name="SceneManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_jmtqy")
+metadata/_custom_type_script = "uid://2vj7cjj2l4hh"
