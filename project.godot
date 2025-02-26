@@ -13,17 +13,11 @@ config_version=5
 config/name="BrainTrainer"
 config/version="0.0.0"
 run/main_scene="res://Scenes/UI/StartUp.tscn"
-config/features=PackedStringArray("4.4", "Mobile")
+config/features=PackedStringArray("4.4", "C#", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/fullsize=false
 boot_splash/image="res://Textures/esut_logo.png"
 config/icon="res://Icons/icon.png"
-
-[autoload]
-
-Global="*res://Scenes/UI/Global.tscn"
-SceneLoader="*res://Scenes/UI/Scene Loader.tscn"
-SaveManager="*res://Scripts/SaveManager.gd"
 
 [display]
 
@@ -37,6 +31,12 @@ window/handheld/orientation=1
 [dotnet]
 
 project/assembly_name="BrainTrainer"
+
+[file_customization]
+
+folder_colors={
+"res://common/": "gray"
+}
 
 [gui]
 
