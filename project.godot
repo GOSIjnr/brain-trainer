@@ -13,10 +13,10 @@ config_version=5
 config/name="BrainTrainer"
 config/version="0.0.0"
 run/main_scene="res://Scenes/UI/StartUp.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://Textures/esut_logo.png"
 boot_splash/fullsize=false
+boot_splash/image="res://Textures/esut_logo.png"
 config/icon="res://Icons/icon.png"
 
 [autoload]
@@ -29,11 +29,14 @@ SaveManager="*res://Scripts/SaveManager.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
-window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[dotnet]
+
+project/assembly_name="BrainTrainer"
 
 [gui]
 
@@ -47,5 +50,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
