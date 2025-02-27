@@ -37,6 +37,5 @@ custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TabManager" parent="Control/VBoxContainer" node_paths=PackedStringArray("Contents") instance=ExtResource("1_vj7qe")]
+[node name="TabManager" parent="Control/VBoxContainer" instance=ExtResource("1_vj7qe")]
 layout_mode = 2
-Contents = []

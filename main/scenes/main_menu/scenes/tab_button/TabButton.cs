@@ -37,7 +37,7 @@ public partial class TabButton : BoxContainer
 		}
 	}
 
-	private void OnBoxContainerClicked()
+	public void OnBoxContainerClicked()
 	{
 		EmitSignalButtonClicked(this);
 	}
