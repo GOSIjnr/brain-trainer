@@ -6,14 +6,30 @@ public partial class StartUp : CanvasLayer
 {
 	public override void _Ready()
 	{
-		Logger.LogMessage("Hello");
-	}
+		var saveManager = Core.Instance.SaveManager;
 
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventKey keyEvent && keyEvent.Pressed && keyEvent.Keycode == Key.Space)
+		if (saveManager.IsUserSaveDataPresent)
 		{
-			Core.Instance.ToastManager.ShowToastNotification("Space key pressed!", 1.5f);
+			saveManager.LoadUserData();
+
+			var data = saveManager.userData;
+			var newScores = Utils.MergeDictionaries(data.highScores, Core.Instance.Data.TemplateScores);
+			data.highScores.Clear();
+
+			foreach (var score in newScores)
+			{
+				data.highScores.Add(score.Key, score.Value);
+			}
+
+			saveManager.SaveUserData();
 		}
+		else
+		{
+			saveManager.CreateUserData();
+			saveManager.SaveUserData();
+		}
+
+		// check if savemanager usedata is tutorial is done
+		// load mainmenu if true load tututoral if false
 	}
 }

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 namespace GOSIjnr;
 
@@ -6,7 +7,7 @@ namespace GOSIjnr;
 public partial class SaveManager : Node
 {
 	[Export] public UserData userData;
-	[Export] private bool _isUserSaveDataPresent = true;
+	[Export] public bool IsUserSaveDataPresent { get; private set; }
 
 	public override void _EnterTree()
 	{
@@ -15,7 +16,7 @@ public partial class SaveManager : Node
 
 	private void CheckUserData()
 	{
-		_isUserSaveDataPresent = FileAccess.FileExists(Core.Instance.Data.UserDataSavePath);
+		IsUserSaveDataPresent = FileAccess.FileExists(Core.Instance.Data.UserDataSavePath);
 	}
 
 	public void CreateUserData()
@@ -33,11 +34,36 @@ public partial class SaveManager : Node
 
 	public void LoadUserData()
 	{
-		userData = ResourceLoader.Load<UserData>(Core.Instance.Data.UserDataSavePath);
+		if (!FileAccess.FileExists(Core.Instance.Data.UserDataSavePath))
+		{
+			CreateUserData();
+			return;
+		}
+
+		var file = FileAccess.Open(Core.Instance.Data.UserDataSavePath, FileAccess.ModeFlags.Read);
+		var jsonString = file.GetAsText();
+		file.Close();
+
+
+		var jsonData = (Dictionary<string, Variant>)Json.ParseString(jsonString);
+
+		if (jsonData == null)
+		{
+			Logger.LogMessage("Failed to parse JSON data");
+			CreateUserData();
+			return;
+		}
+
+		userData = new UserData();
+		userData.ApplyData(jsonData);
 	}
 
 	public void SaveUserData()
 	{
-		ResourceSaver.Save(userData, Core.Instance.Data.UserDataSavePath);
+		var jsonData = Json.Stringify(userData.GetData(), "\t", false);
+		var file = FileAccess.Open(Core.Instance.Data.UserDataSavePath, FileAccess.ModeFlags.Write);
+		file.StoreString(jsonData);
+		file.Close();
+		IsUserSaveDataPresent = true;
 	}
 }
