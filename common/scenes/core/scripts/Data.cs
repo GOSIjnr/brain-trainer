@@ -18,6 +18,7 @@ public partial class Data : Node
 	};
 
 	[Export] public string UserDataSavePath { get; private set; } = "user://user_data.tres";
+	[Export] public Color AppPrimaryColor { get; private set; } = new("#CB4154");
 
 	[Export]
 	public Dictionary<string, float> TemplateScores { get; private set; } = new()

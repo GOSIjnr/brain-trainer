@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://blpko71pew773"]
+
+[ext_resource type="PackedScene" uid="uid://dum41yhd2it41" path="res://main/scenes/main_menu/scenes/tab_manager/tab_manager.tscn" id="1_vj7qe"]
+
+[node name="Main Menu UI" type="CanvasLayer"]
+
+[node name="Daily Manager" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelNormal"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="Control" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabManager" parent="Control/VBoxContainer" node_paths=PackedStringArray("Contents") instance=ExtResource("1_vj7qe")]
+layout_mode = 2
+Contents = []

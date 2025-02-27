@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dum41yhd2it41"]
+
+[ext_resource type="Script" uid="uid://e5fah6xi2twl" path="res://main/scenes/main_menu/scenes/tab_manager/TabManager.cs" id="1_2an0b"]
+[ext_resource type="PackedScene" uid="uid://b5hpdptj1xa1f" path="res://main/scenes/main_menu/scenes/tab_button/tab_button.tscn" id="1_gi6o6"]
+[ext_resource type="Texture2D" uid="uid://dsbpipr0erkl7" path="res://main/scenes/main_menu/textures/chart_fill.svg" id="2_2an0b"]
+[ext_resource type="Texture2D" uid="uid://bfc7ek1sqym2q" path="res://main/scenes/main_menu/textures/chart.svg" id="3_ar7pa"]
+[ext_resource type="Texture2D" uid="uid://bsrrgaehilbr" path="res://main/scenes/main_menu/textures/game_fill.svg" id="4_6hx50"]
+[ext_resource type="Texture2D" uid="uid://jp702gdjn5xm" path="res://main/scenes/main_menu/textures/game.svg" id="5_nrpwg"]
+[ext_resource type="Texture2D" uid="uid://gvv7nrvo6qpw" path="res://main/scenes/main_menu/textures/user_fill.svg" id="6_ce2jf"]
+[ext_resource type="Texture2D" uid="uid://c2oiq5pan86aq" path="res://main/scenes/main_menu/textures/user.svg" id="7_5ye2w"]
+
+[node name="TabManager" type="Panel" node_paths=PackedStringArray("Contents")]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_type_variation = &"PanelNormal"
+script = ExtResource("1_2an0b")
+Contents = []
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="BoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TabButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_gi6o6")]
+layout_mode = 2
+TabText = "Home"
+
+[node name="TabButton2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_gi6o6")]
+layout_mode = 2
+TabText = "Performance"
+TabSelected = ExtResource("2_2an0b")
+TabDeselected = ExtResource("3_ar7pa")
+
+[node name="TabButton3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_gi6o6")]
+layout_mode = 2
+TabText = "Games"
+TabSelected = ExtResource("4_6hx50")
+TabDeselected = ExtResource("5_nrpwg")
+
+[node name="TabButton4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_gi6o6")]
+layout_mode = 2
+TabText = "Profile"
+TabSelected = ExtResource("6_ce2jf")
+TabDeselected = ExtResource("7_5ye2w")

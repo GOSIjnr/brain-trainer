@@ -7,6 +7,7 @@ public partial class StartUp : CanvasLayer
 	public override void _Ready()
 	{
 		var saveManager = Core.Instance.SaveManager;
+		Core.Instance.SceneManager.LoadSceneSync("main_menu");
 
 		if (saveManager.IsUserSaveDataPresent)
 		{
@@ -29,7 +30,13 @@ public partial class StartUp : CanvasLayer
 			saveManager.SaveUserData();
 		}
 
-		// check if savemanager usedata is tutorial is done
-		// load mainmenu if true load tututoral if false
+		if (saveManager.userData.isTutorialDone)
+		{
+			Core.Instance.SceneManager.ChangeScene("main_menu");
+		}
+		else
+		{
+			Logger.LogMessage("Change to on boarding page");
+		}
 	}
 }

@@ -20,15 +20,16 @@ public partial class SceneManager : Node
 
 	private readonly Dictionary<string, PackedScene> _loadingUI = new()
 	{
-		{ "random", null }
+		{ "none", null }
 	};
 
 	private readonly Dictionary<string, string> _scenePaths = new()
 	{
-		{ "welcome_page", "uid://cvklhkmwyvuap" }
+		{ "welcome_page", "uid://cvklhkmwyvuap" },
+		{ "main_menu", "uid://blpko71pew773" },
 	};
 
-	public async void ChangeScene(string sceneKey, string loadingKey = "none")
+	public async void ChangeScene(string sceneKey)
 	{
 		lock (this)
 		{
@@ -62,10 +63,8 @@ public partial class SceneManager : Node
 			_currentLoadingScene = sceneKey;
 		}
 
-		ShowLoadingUI();
 		await LoadScene(sceneKey);
 		SwitchToScene(sceneKey);
-		HideLoadingUI();
 
 		lock (this)
 		{
@@ -74,12 +73,12 @@ public partial class SceneManager : Node
 		}
 	}
 
-	private async Task LoadScene(string sceneKey)
+	private async Task LoadScene(string sceneKey, bool waitForLoad = true)
 	{
-		if (!_scenePaths.ContainsKey(sceneKey) || _loadedScenes.ContainsKey(sceneKey))
+		if (!_scenePaths.TryGetValue(sceneKey, out string value) || _loadedScenes.ContainsKey(sceneKey))
 			return;
 
-		string scenePath = _scenePaths[sceneKey];
+		string scenePath = value;
 
 		if (!IsValidResource(scenePath))
 		{
@@ -90,12 +89,14 @@ public partial class SceneManager : Node
 		if (_loadedScenes.Count >= SceneMemoryLimit)
 			UnloadLeastRecentlyUsedScene();
 
-
 		ResourceLoader.LoadThreadedRequest(scenePath);
 
-		while (ResourceLoader.LoadThreadedGetStatus(scenePath) == ResourceLoader.ThreadLoadStatus.InProgress)
+		if (waitForLoad)
 		{
-			await ToSignal(GetTree(), "process_frame");
+			while (ResourceLoader.LoadThreadedGetStatus(scenePath) == ResourceLoader.ThreadLoadStatus.InProgress)
+			{
+				await ToSignal(GetTree(), "process_frame");
+			}
 		}
 
 		var sceneResource = ResourceLoader.LoadThreadedGet(scenePath) as PackedScene;
@@ -104,13 +105,17 @@ public partial class SceneManager : Node
 		{
 			_loadedScenes[sceneKey] = sceneResource;
 			_sceneUsage[sceneKey] = (int)Time.GetTicksMsec();
-			Logger.LogMessage($"Scene loaded: {scenePath}");
+			Logger.LogMessage($"Scene loaded: {sceneKey}");
 		}
 		else
 		{
-			Logger.LogMessage($"Failed to load scene: {scenePath}");
+			Logger.LogMessage($"Failed to load scene: {sceneKey}");
 		}
+	}
 
+	public void LoadSceneSync(string sceneKey)
+	{
+		LoadScene(sceneKey, false).Wait();
 	}
 
 	private bool IsValidResource(string path)
@@ -120,17 +125,17 @@ public partial class SceneManager : Node
 
 	private void SwitchToScene(string sceneKey)
 	{
-		if (!_loadedScenes.ContainsKey(sceneKey))
+		if (!_loadedScenes.TryGetValue(sceneKey, out PackedScene value))
 		{
 			Logger.LogMessage($"Scene not loaded: {sceneKey}");
 			return;
 		}
 
-		_currentActiveScene = _loadedScenes[sceneKey];
+		_currentActiveScene = value;
 		_sceneUsage[sceneKey] = (int)Time.GetTicksMsec();
-		Logger.LogMessage($"Switching to scene: {_scenePaths[sceneKey]}");
+		Logger.LogMessage($"Switching to scene: {sceneKey}");
 
-		GetTree().ChangeSceneToPacked(_currentActiveScene);
+		GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToPacked, _currentActiveScene);
 	}
 
 	private void UnloadLeastRecentlyUsedScene()
@@ -143,20 +148,5 @@ public partial class SceneManager : Node
 		_sceneUsage.Remove(leastUsedKey);
 
 		Logger.LogMessage($"Unloaded least recently used scene: {leastUsedKey}");
-	}
-
-	private void ShowLoadingUI()
-	{
-		if (_loadingUI["random"] == null)
-			return;
-
-		if (_loadingIndicator != null)
-			GetTree().Root.AddChild(_loadingIndicator);
-	}
-
-	private void HideLoadingUI()
-	{
-		_loadingIndicator?.QueueFree();
-		_loadingIndicator = null;
 	}
 }
