@@ -1,8 +1,54 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dq4vxtwdfue5"]
+
+[ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://common/fonts/Roboto-Bold.ttf" id="1_kwyvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwyvp"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq5nv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx4gk"]
+bg_color = Color(0.796078, 0.254902, 0.329412, 1)
+border_width_bottom = 5
+border_color = Color(0.6, 0.192157, 0.247059, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s55l"]
+bg_color = Color(0.6, 0.192157, 0.247059, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq5nv"]
 bg_color = Color(0.98, 0.98, 0.98, 1)
 
 [resource]
+ButtonNormal/base_type = &"Button"
+ButtonNormal/colors/font_color = Color(1, 1, 1, 1)
+ButtonNormal/font_sizes/font_size = 25
+ButtonNormal/fonts/font = ExtResource("1_kwyvp")
+ButtonNormal/styles/disabled = SubResource("StyleBoxFlat_kwyvp")
+ButtonNormal/styles/disabled_mirrored = SubResource("StyleBoxFlat_kwyvp")
+ButtonNormal/styles/focus = SubResource("StyleBoxEmpty_jq5nv")
+ButtonNormal/styles/hover = SubResource("StyleBoxFlat_lx4gk")
+ButtonNormal/styles/hover_mirrored = SubResource("StyleBoxFlat_lx4gk")
+ButtonNormal/styles/hover_pressed = SubResource("StyleBoxFlat_6s55l")
+ButtonNormal/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_6s55l")
+ButtonNormal/styles/normal = SubResource("StyleBoxFlat_lx4gk")
+ButtonNormal/styles/normal_mirrored = SubResource("StyleBoxFlat_lx4gk")
+ButtonNormal/styles/pressed = SubResource("StyleBoxFlat_6s55l")
+ButtonNormal/styles/pressed_mirrored = SubResource("StyleBoxFlat_6s55l")
+MarginContainerNormal/base_type = &"MarginContainer"
+MarginContainerNormal/constants/margin_bottom = 20
+MarginContainerNormal/constants/margin_left = 20
+MarginContainerNormal/constants/margin_right = 20
+MarginContainerNormal/constants/margin_top = 20
 PanelNormal/base_type = &"Panel"
 PanelNormal/styles/panel = SubResource("StyleBoxFlat_jq5nv")
