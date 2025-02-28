@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blpko71pew773"]
+[gd_scene load_steps=3 format=3 uid="uid://blpko71pew773"]
 
 [ext_resource type="PackedScene" uid="uid://dum41yhd2it41" path="res://main/scenes/main_menu/scenes/tab_manager/tab_manager.tscn" id="1_vj7qe"]
+[ext_resource type="PackedScene" uid="uid://dy4j34s4i52fj" path="res://pq_help.tscn" id="2_ee4mf"]
 
 [node name="Main Menu UI" type="CanvasLayer"]
 
@@ -32,10 +33,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Contents" type="Control" parent="Control/VBoxContainer"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TabManager" parent="Control/VBoxContainer" instance=ExtResource("1_vj7qe")]
+[node name="TabManager" parent="Control/VBoxContainer" node_paths=PackedStringArray("Contents") instance=ExtResource("1_vj7qe")]
 layout_mode = 2
+Contents = [null, null, null, null]
+
+[node name="PQhelp" parent="." instance=ExtResource("2_ee4mf")]

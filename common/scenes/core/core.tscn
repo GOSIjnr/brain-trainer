@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqta5cu6wxn60"]
+[gd_scene load_steps=11 format=3 uid="uid://dqta5cu6wxn60"]
 
 [ext_resource type="Script" uid="uid://owc54tigo5m0" path="res://common/scenes/core/Core.cs" id="1_0t0b8"]
 [ext_resource type="Script" uid="uid://jqbwu3jjleml" path="res://common/scenes/core/scripts/CrashHandler.cs" id="2_j2gx1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://pxbgp532345d" path="res://common/scenes/core/scripts/SaveManager.cs" id="7_8cgh0"]
 [ext_resource type="Script" uid="uid://c0hay22bli11o" path="res://common/scenes/core/scripts/ToastManager.cs" id="8_kcsr7"]
 [ext_resource type="PackedScene" uid="uid://37kjmr5xsoum" path="res://common/scenes/toast/toast.tscn" id="9_j2gx1"]
+[ext_resource type="Script" uid="uid://bll67gvas6w6a" path="res://common/scenes/core/scripts/DailyManager.cs" id="10_4x8p1"]
 
 [node name="Core" type="Node"]
 process_mode = 3
@@ -46,3 +47,8 @@ unique_name_in_owner = true
 script = ExtResource("8_kcsr7")
 _toastScene = ExtResource("9_j2gx1")
 metadata/_custom_type_script = "uid://c0hay22bli11o"
+
+[node name="DailyManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_4x8p1")
+metadata/_custom_type_script = "uid://bll67gvas6w6a"

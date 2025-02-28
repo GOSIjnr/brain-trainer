@@ -11,6 +11,7 @@ public partial class Core : Node
 	public SceneManager SceneManager { get; private set; }
 	public SaveManager SaveManager { get; private set; }
 	public ToastManager ToastManager { get; private set; }
+	public DailyManager DailyManager { get; private set; }
 
 	public static Core Instance { get; private set; }
 
@@ -23,6 +24,7 @@ public partial class Core : Node
 		SceneManager = GetNodeOrNull<SceneManager>("%SceneManager") ?? new SceneManager();
 		SaveManager = GetNodeOrNull<SaveManager>("%SaveManager") ?? new SaveManager();
 		ToastManager = GetNodeOrNull<ToastManager>("%ToastManager") ?? new ToastManager();
+		DailyManager = GetNodeOrNull<DailyManager>("%DailyManager") ?? new DailyManager();
 
 		InitializeDebugMode();
 		InitializeSignals();

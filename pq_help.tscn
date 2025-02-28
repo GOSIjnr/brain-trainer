@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy4j34s4i52fj"]
+
+[ext_resource type="Shader" uid="uid://bq8ta08xrq5sd" path="res://common/shaders/canvas_blur.gdshader" id="2_ygqjs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftaja"]
+shader = ExtResource("2_ygqjs")
+shader_parameter/amount = 1.0
+shader_parameter/mix_percentage = 0.75
+shader_parameter/tint_color = Color(0, 0, 0, 1)
+
+[node name="PQhelp" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_ftaja")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelNormal"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]Proficiency Quotients[/b]
+
+Proficiency Quotients tracks your performance in Writing, Speaking, Reading, Math and Memory.
+
+PQ ranges from 0-5000 and is based on game performance, consistent training and game variety.
+
+Proficiency Levels correspond to your PQ: Novice [0-1249], Intermediate [1250-2499], Advanced[2500-3749], Expert[3750-4249], Elite [4250-4749] and Master [4750-5000]
+
+
+
+[center]Tap to close[/center]"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
