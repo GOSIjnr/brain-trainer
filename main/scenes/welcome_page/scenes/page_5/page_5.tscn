@@ -1,39 +1,38 @@
-[gd_scene format=3 uid="uid://bg0ljo4i1t47s"]
+[gd_scene load_steps=2 format=3 uid="uid://bg0ljo4i1t47s"]
 
-[node name="Page 5" type="Control"]
-layout_mode = 3
+[ext_resource type="Script" uid="uid://dqqds606ynto4" path="res://main/scenes/welcome_page/scenes/page_5/Page5.cs" id="1_j3q2f"]
+
+[node name="Page 5" type="CanvasLayer"]
+script = ExtResource("1_j3q2f")
+metadata/_custom_type_script = "uid://broj3ubf2wrgu"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"MarginContainerNormal"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -206.0
-offset_bottom = 206.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="BoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 100
+alignment = 1
+vertical = true
 
-[node name="Label1" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
-text = "Now, take this quick test to personalise your skill level."
+theme_type_variation = &"LabelNormal"
+text = "Almost Done!
+Now, take a quick test to personalise your skill level."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(350, 210)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-toggle_mode = true
-text = "Continue"
+theme_type_variation = &"ButtonNormal"
+text = "CONTINUE"

@@ -9,7 +9,7 @@
 
 [node name="WelcomePage" type="CanvasLayer" node_paths=PackedStringArray("_contentPages")]
 script = ExtResource("1_8jg57")
-_contentPages = [NodePath("Page 1"), NodePath("Page 2"), NodePath("Page 3")]
+_contentPages = [NodePath("Page 1"), NodePath("Page 2"), NodePath("Page 3"), NodePath("Page 4"), NodePath("Page 5")]
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15

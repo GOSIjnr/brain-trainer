@@ -45,7 +45,8 @@ public partial class Core : Node
 
 	private void InitializeApp()
 	{
-		GetTree().QuitOnGoBack = false;
+		//TODO: make it false then add backbutton implementation to navigate backwards
+		GetTree().QuitOnGoBack = true;
 
 		float refreshRate = DisplayServer.ScreenGetRefreshRate();
 		refreshRate = (refreshRate < 0.0f) ? 60.0f : refreshRate;
