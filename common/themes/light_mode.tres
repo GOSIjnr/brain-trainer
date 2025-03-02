@@ -1,20 +1,21 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dq4vxtwdfue5"]
 
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://common/fonts/Roboto-Bold.ttf" id="1_kwyvp"]
 [ext_resource type="FontFile" uid="uid://b3h16fh8aveu6" path="res://common/fonts/Roboto-Regular.ttf" id="2_lx4gk"]
 [ext_resource type="FontFile" uid="uid://clqun30xsy32b" path="res://common/fonts/Roboto-Light.ttf" id="2_xr2ad"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xr2ad"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwyvp"]
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq5nv"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx4gk"]
 bg_color = Color(0.796078, 0.254902, 0.329412, 1)
-border_width_bottom = 5
+border_width_bottom = 10
 border_color = Color(0.6, 0.192157, 0.247059, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
@@ -23,6 +24,30 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s55l"]
 bg_color = Color(0.6, 0.192157, 0.247059, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc3v8"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 10
+border_color = Color(0.74902, 0.74902, 0.74902, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hngqk"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.796078, 0.254902, 0.329412, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -47,12 +72,12 @@ Button/colors/font_focus_color = Color(0.98, 0.98, 0.98, 1)
 Button/colors/font_hover_color = Color(0.98, 0.98, 0.98, 1)
 Button/colors/font_hover_pressed_color = Color(0.98, 0.98, 0.98, 1)
 Button/colors/font_pressed_color = Color(0.98, 0.98, 0.98, 1)
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_kwyvp")
+Button/styles/focus = SubResource("StyleBoxEmpty_xr2ad")
 ButtonNormal/base_type = &"Button"
-ButtonNormal/font_sizes/font_size = 30
-ButtonNormal/fonts/font = ExtResource("1_kwyvp")
 ButtonNormal/styles/disabled = SubResource("StyleBoxFlat_kwyvp")
 ButtonNormal/styles/disabled_mirrored = SubResource("StyleBoxFlat_kwyvp")
-ButtonNormal/styles/focus = SubResource("StyleBoxEmpty_jq5nv")
 ButtonNormal/styles/hover = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/hover_mirrored = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/hover_pressed = SubResource("StyleBoxFlat_6s55l")
@@ -61,6 +86,20 @@ ButtonNormal/styles/normal = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/normal_mirrored = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/pressed = SubResource("StyleBoxFlat_6s55l")
 ButtonNormal/styles/pressed_mirrored = SubResource("StyleBoxFlat_6s55l")
+ButtonToggle/base_type = &"Button"
+ButtonToggle/colors/font_color = Color(0.45098, 0.45098, 0.45098, 1)
+ButtonToggle/colors/font_focus_color = Color(0.45098, 0.45098, 0.45098, 1)
+ButtonToggle/colors/font_hover_color = Color(0.45098, 0.45098, 0.45098, 1)
+ButtonToggle/colors/font_hover_pressed_color = Color(0.796078, 0.254902, 0.329412, 1)
+ButtonToggle/colors/font_pressed_color = Color(0.796078, 0.254902, 0.329412, 1)
+ButtonToggle/styles/hover = SubResource("StyleBoxFlat_uc3v8")
+ButtonToggle/styles/hover_mirrored = SubResource("StyleBoxFlat_uc3v8")
+ButtonToggle/styles/hover_pressed = SubResource("StyleBoxFlat_hngqk")
+ButtonToggle/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_hngqk")
+ButtonToggle/styles/normal = SubResource("StyleBoxFlat_uc3v8")
+ButtonToggle/styles/normal_mirrored = SubResource("StyleBoxFlat_uc3v8")
+ButtonToggle/styles/pressed = SubResource("StyleBoxFlat_hngqk")
+ButtonToggle/styles/pressed_mirrored = SubResource("StyleBoxFlat_hngqk")
 Label/colors/font_color = Color(0.05, 0.05, 0.05, 1)
 LabelBold/base_type = &"Label"
 LabelBold/font_sizes/font_size = 30

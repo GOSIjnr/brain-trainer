@@ -53,7 +53,7 @@ public partial class Page2Player : Control
 		var positionNodePath = new NodePath(PropertyName.Position).GetAsPropertyPath();
 
 		var tween = CreateTween();
-		tween.TweenProperty(this, positionNodePath, new Vector2(targetPosition, 0), 0.25f).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(this, positionNodePath, new Vector2(targetPosition, 0), 0.15f).SetEase(Tween.EaseType.Out);
 		await ToSignal(tween, Tween.SignalName.Finished);
 		EmitSignalAnimationPlaying(false);
 	}
