@@ -8,37 +8,56 @@ public partial class TabButton : BoxContainer
 	[Export] public Texture2D TabSelected { get; private set; }
 	[Export] public Texture2D TabDeselected { get; private set; }
 
-	public TextureButton TabTextureButton { get; private set; }
-	public Label label;
+	private TextureButton _tabTextureButton;
+	private Label _tabLabel;
+	private TouchInputHandler _touchHandler;
 
 	[Signal] public delegate void ButtonClickedEventHandler(TabButton currentButton);
 
 	public override void _EnterTree()
 	{
-		TabTextureButton = GetNodeOrNull<TextureButton>("%TextureButton");
-		label = GetNodeOrNull<Label>("%Label");
+		_tabTextureButton = GetNodeOrNull<TextureButton>("%TextureButton");
+		_tabLabel = GetNodeOrNull<Label>("%Label");
+
+		_touchHandler = new(new Vector2(100, 100));
+		_touchHandler.TouchCompleted += OnBoxContainerClicked;
+		AddChild(_touchHandler);
+	}
+
+	public override void _ExitTree()
+	{
+		_touchHandler.TouchCompleted -= OnBoxContainerClicked;
 	}
 
 	public override void _Ready()
 	{
-		if (TabTextureButton == null || label == null) return;
+		if (_tabTextureButton == null || _tabLabel == null) return;
 
-		label.Text = TabText.Trim();
+		_tabLabel.Text = TabText.Trim();
 
-		TabTextureButton.TextureNormal = TabDeselected;
-		TabTextureButton.TexturePressed = TabSelected;
+		_tabTextureButton.TextureNormal = TabDeselected;
+		_tabTextureButton.TexturePressed = TabSelected;
 	}
 
 	public override void _GuiInput(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
-		{
-			OnBoxContainerClicked();
-		}
+		_touchHandler.ProcessTouchInput(@event);
 	}
 
 	public void OnBoxContainerClicked()
 	{
 		EmitSignalButtonClicked(this);
+	}
+
+	public void SelectTab(Color color)
+	{
+		Modulate = color;
+		_tabTextureButton.ButtonPressed = true;
+	}
+
+	public void DeselectTab(Color color)
+	{
+		Modulate = color;
+		_tabTextureButton.ButtonPressed = false;
 	}
 }

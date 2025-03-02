@@ -11,7 +11,7 @@ public partial class CrashHandlerScene : CanvasLayer
 		if (closeButton != null) closeButton.Pressed += OnCloseButtonPressed;
 	}
 
-	public void OnCloseButtonPressed()
+	private void OnCloseButtonPressed()
 	{
 		GetTree().Quit();
 	}

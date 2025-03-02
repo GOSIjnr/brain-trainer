@@ -25,7 +25,7 @@ public partial class SceneManager : Node
 
 	private readonly Dictionary<string, string> _scenePaths = new()
 	{
-		{ "welcome_page", "uid://cvklhkmwyvuap" },
+		{ "welcome_page", "uid://5v24jc0gxja7" },
 		{ "main_menu", "uid://blpko71pew773" },
 	};
 
@@ -140,10 +140,9 @@ public partial class SceneManager : Node
 
 	private void UnloadLeastRecentlyUsedScene()
 	{
-		if (_sceneUsage.Count == 0)
-			return;
+		if (_sceneUsage.Count == 0) return;
 
-		var leastUsedKey = _sceneUsage.OrderBy(kv => kv.Value).First().Key;
+		var leastUsedKey = _sceneUsage.OrderBy(sceneData => sceneData.Value).First().Key;
 		_loadedScenes.Remove(leastUsedKey);
 		_sceneUsage.Remove(leastUsedKey);
 

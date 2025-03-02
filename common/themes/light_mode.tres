@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dq4vxtwdfue5"]
 
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://common/fonts/Roboto-Bold.ttf" id="1_kwyvp"]
+[ext_resource type="FontFile" uid="uid://b3h16fh8aveu6" path="res://common/fonts/Roboto-Regular.ttf" id="2_lx4gk"]
+[ext_resource type="FontFile" uid="uid://clqun30xsy32b" path="res://common/fonts/Roboto-Light.ttf" id="2_xr2ad"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwyvp"]
 corner_radius_top_left = 20
@@ -26,13 +28,27 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr2ad"]
+bg_color = Color(0.98, 0.98, 0.98, 1)
+border_width_top = 2
+border_color = Color(0.74902, 0.74902, 0.74902, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq5nv"]
 bg_color = Color(0.98, 0.98, 0.98, 1)
 
 [resource]
+BoxContainerNormalSpaced/base_type = &"BoxContainer"
+BoxContainerNormalSpaced/constants/separation = 20
+BoxContainerSmallSpaced/base_type = &"BoxContainer"
+BoxContainerSmallSpaced/constants/separation = 10
+Button/colors/font_color = Color(0.98, 0.98, 0.98, 1)
+Button/colors/font_disabled_color = Color(0.45, 0.45, 0.45, 1)
+Button/colors/font_focus_color = Color(0.98, 0.98, 0.98, 1)
+Button/colors/font_hover_color = Color(0.98, 0.98, 0.98, 1)
+Button/colors/font_hover_pressed_color = Color(0.98, 0.98, 0.98, 1)
+Button/colors/font_pressed_color = Color(0.98, 0.98, 0.98, 1)
 ButtonNormal/base_type = &"Button"
-ButtonNormal/colors/font_color = Color(1, 1, 1, 1)
-ButtonNormal/font_sizes/font_size = 25
+ButtonNormal/font_sizes/font_size = 30
 ButtonNormal/fonts/font = ExtResource("1_kwyvp")
 ButtonNormal/styles/disabled = SubResource("StyleBoxFlat_kwyvp")
 ButtonNormal/styles/disabled_mirrored = SubResource("StyleBoxFlat_kwyvp")
@@ -45,10 +61,22 @@ ButtonNormal/styles/normal = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/normal_mirrored = SubResource("StyleBoxFlat_lx4gk")
 ButtonNormal/styles/pressed = SubResource("StyleBoxFlat_6s55l")
 ButtonNormal/styles/pressed_mirrored = SubResource("StyleBoxFlat_6s55l")
+Label/colors/font_color = Color(0.05, 0.05, 0.05, 1)
+LabelBold/base_type = &"Label"
+LabelBold/font_sizes/font_size = 30
+LabelBold/fonts/font = ExtResource("1_kwyvp")
+LabelLight/base_type = &"Label"
+LabelLight/font_sizes/font_size = 30
+LabelLight/fonts/font = ExtResource("2_xr2ad")
+LabelNormal/base_type = &"Label"
+LabelNormal/font_sizes/font_size = 22
+LabelNormal/fonts/font = ExtResource("2_lx4gk")
 MarginContainerNormal/base_type = &"MarginContainer"
 MarginContainerNormal/constants/margin_bottom = 20
 MarginContainerNormal/constants/margin_left = 20
 MarginContainerNormal/constants/margin_right = 20
 MarginContainerNormal/constants/margin_top = 20
+PanelBorderUp/base_type = &"Panel"
+PanelBorderUp/styles/panel = SubResource("StyleBoxFlat_xr2ad")
 PanelNormal/base_type = &"Panel"
 PanelNormal/styles/panel = SubResource("StyleBoxFlat_jq5nv")

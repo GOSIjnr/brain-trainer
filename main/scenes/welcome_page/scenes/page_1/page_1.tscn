@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://btpbj8i3warpv"]
+
+[ext_resource type="Script" uid="uid://bkeit0f28utnn" path="res://main/scenes/welcome_page/scenes/page_1/Page1.cs" id="1_fpb4j"]
+[ext_resource type="Texture2D" uid="uid://c4mwer022d40c" path="res://main/scenes/welcome_page/scenes/page_1/textures/esut_logo.png" id="1_l8p1c"]
+
+[node name="Page 1" type="CanvasLayer"]
+script = ExtResource("1_fpb4j")
+metadata/_custom_type_script = "uid://broj3ubf2wrgu"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginContainerNormal"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 350)
+layout_mode = 2
+texture = ExtResource("1_l8p1c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label1" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"LabelBold"
+theme_override_font_sizes/font_size = 60
+text = "ESUT BRAIN TRAINER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelNormal"
+theme_override_colors/font_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_font_sizes/font_size = 32
+text = "PERSONALIZED BRAIN TRAINING GAMES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"ButtonNormal"
+theme_override_font_sizes/font_size = 30
+text = "GET STARTED"
