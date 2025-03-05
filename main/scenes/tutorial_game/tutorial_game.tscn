@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1aldnojdsmso"]
 
-[ext_resource type="Script" uid="uid://gc3blxamcts2" path="res://TutorialGameManager.cs" id="1_uwj70"]
-[ext_resource type="PackedScene" uid="uid://c2rplpob1f7ag" path="res://question_controller.tscn" id="2_uwj70"]
+[ext_resource type="Script" uid="uid://gc3blxamcts2" path="res://main/scenes/tutorial_game/TutorialGameManager.cs" id="1_uwj70"]
+[ext_resource type="PackedScene" uid="uid://c2rplpob1f7ag" path="res://main/scenes/tutorial_game/scenes/question_controller/question_controller.tscn" id="2_uwj70"]
 
 [node name="TutorialGame" type="CanvasLayer"]
 script = ExtResource("1_uwj70")

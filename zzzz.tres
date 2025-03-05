@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Vocabulary" load_steps=2 format=3 uid="uid://dqjmayk7ap2hu"]
-
-[ext_resource type="Script" uid="uid://b43p151qpuary" path="res://common/scripts/Vocabulary.cs" id="1_yf81c"]
-
-[resource]
-script = ExtResource("1_yf81c")
-Word = ""
-Meaning = ""
-metadata/_custom_type_script = "uid://b43p151qpuary"

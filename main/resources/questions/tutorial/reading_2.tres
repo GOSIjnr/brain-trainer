@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TutorialQuestion" load_steps=5 format=3 uid="uid://hf6i4rfmb86x"]
 
-[ext_resource type="Script" uid="uid://clxr5bdh303ac" path="res://TutorialOption.cs" id="1_lnu4o"]
-[ext_resource type="Script" uid="uid://h5ht246ublmk" path="res://TutorialQuestion.cs" id="2_lsr2y"]
+[ext_resource type="Script" uid="uid://clxr5bdh303ac" path="res://main/scenes/tutorial_game/scripts/TutorialOption.cs" id="1_lnu4o"]
+[ext_resource type="Script" uid="uid://h5ht246ublmk" path="res://main/scenes/tutorial_game/scripts/TutorialQuestion.cs" id="2_lsr2y"]
 
 [sub_resource type="Resource" id="Resource_lnu4o"]
 script = ExtResource("1_lnu4o")

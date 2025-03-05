@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2rplpob1f7ag"]
 
 [ext_resource type="Texture2D" uid="uid://de47bwronj5jj" path="res://main/textures/progress_bar.svg" id="1_8f4yh"]
-[ext_resource type="Script" uid="uid://cf6h1bab3km7g" path="res://QuestionController.cs" id="1_q5uwf"]
+[ext_resource type="Script" uid="uid://cf6h1bab3km7g" path="res://main/scenes/tutorial_game/scenes/question_controller/QuestionController.cs" id="1_q5uwf"]
 
 [node name="QuestionManager" type="MarginContainer"]
 anchors_preset = 15
