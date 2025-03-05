@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1aldnojdsmso"]
+
+[ext_resource type="Script" uid="uid://gc3blxamcts2" path="res://TutorialGameManager.cs" id="1_uwj70"]
+[ext_resource type="PackedScene" uid="uid://c2rplpob1f7ag" path="res://question_controller.tscn" id="2_uwj70"]
+
+[node name="TutorialGame" type="CanvasLayer"]
+script = ExtResource("1_uwj70")
+_questionPath = "res://main/resources/questions/tutorial/"
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelNormal"
+
+[node name="QuestionManager" parent="." instance=ExtResource("2_uwj70")]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="QuestionTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 30.0
+one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Sfx_Right" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+
+[node name="Sfx_Wrong" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+
+[node name="Sfx_Tick" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timers/QuestionTimer" to="." method="_on_question_timer_timeout"]

@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 using Godot.Collections;
 
 namespace GOSIjnr;
@@ -60,6 +61,18 @@ public partial class SaveManager : Node
 
 	public void SaveUserData()
 	{
+		var scores = new System.Collections.Generic.List<float>
+		{
+			userData.writing.CurrentPoints,
+			userData.reading.CurrentPoints,
+			userData.speaking.CurrentPoints,
+			userData.maths.CurrentPoints,
+			userData.memory.CurrentPoints
+		};
+
+		var averageScore = scores.Sum() / scores.Count;
+		userData.average.CurrentPoints = averageScore;
+
 		var jsonData = Json.Stringify(userData.GetData(), "\t", false);
 		var file = FileAccess.Open(Core.Instance.Data.UserDataSavePath, FileAccess.ModeFlags.Write);
 		file.StoreString(jsonData);

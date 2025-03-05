@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2rplpob1f7ag"]
+
+[ext_resource type="Texture2D" uid="uid://de47bwronj5jj" path="res://main/textures/progress_bar.svg" id="1_8f4yh"]
+[ext_resource type="Script" uid="uid://cf6h1bab3km7g" path="res://QuestionController.cs" id="1_q5uwf"]
+
+[node name="QuestionManager" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginContainerNormal"
+script = ExtResource("1_q5uwf")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BoxContainerNormalSpaced"
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Progress" type="TextureProgressBar" parent="BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 64
+stretch_margin_top = 15
+stretch_margin_right = 64
+stretch_margin_bottom = 15
+texture_under = ExtResource("1_8f4yh")
+texture_progress = ExtResource("1_8f4yh")
+tint_under = Color(0.74902, 0.74902, 0.74902, 1)
+tint_progress = Color(0.796078, 0.254902, 0.329412, 1)
+
+[node name="TimerCountdown" type="Label" parent="BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"LabelBold"
+theme_override_font_sizes/font_size = 40
+text = ":00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Question" type="RichTextLabel" parent="BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "7 + 8  = [img]uid://cc0bwohu7tv04[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="Option1" type="Button" parent="BoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+text = "Option 1"
+autowrap_mode = 3
+
+[node name="Option2" type="Button" parent="BoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+text = "Option 2"
+
+[node name="Option3" type="Button" parent="BoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+text = "Option 3"
+
+[node name="Option4" type="Button" parent="BoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+text = "Option 4"
+
+[node name="Control" type="Control" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Skip" type="Button" parent="BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+text = "SKIP"
+flat = true

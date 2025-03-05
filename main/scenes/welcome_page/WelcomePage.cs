@@ -40,7 +40,7 @@ public partial class WelcomePage : CanvasLayer
 		if (_currentPage >= _contentPages.Count)
 		{
 			Core.Instance.SaveManager.SaveUserData();
-			Core.Instance.SceneManager.ChangeScene("main_menu");
+			Core.Instance.SceneManager.ChangeScene("tutorial_game");
 		}
 	}
 

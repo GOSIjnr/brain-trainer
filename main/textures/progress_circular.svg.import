@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc0bwohu7tv04"
-path="res://.godot/imported/Blank_Box.svg-d49c764a12b2aa49c473c2a7b7a0ecbe.ctex"
+uid="uid://bti8u0nuu0hlo"
+path="res://.godot/imported/progress_circular.svg-140314e9bd80c33e33e3ebc24d0193e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/Blank_Box.svg"
-dest_files=["res://.godot/imported/Blank_Box.svg-d49c764a12b2aa49c473c2a7b7a0ecbe.ctex"]
+source_file="res://main/textures/progress_circular.svg"
+dest_files=["res://.godot/imported/progress_circular.svg-140314e9bd80c33e33e3ebc24d0193e1.ctex"]
 
 [params]
 

@@ -10,8 +10,8 @@ public partial class SceneManager : Node
 {
 	private PackedScene _currentActiveScene;
 
-	private Dictionary<string, PackedScene> _loadedScenes = new();
-	private Dictionary<string, int> _sceneUsage = new();
+	private Dictionary<string, PackedScene> _loadedScenes = [];
+	private Dictionary<string, int> _sceneUsage = [];
 	private const int SceneMemoryLimit = 3;
 
 	private bool _isLoading = false;
@@ -27,6 +27,7 @@ public partial class SceneManager : Node
 	{
 		{ "welcome_page", "uid://5v24jc0gxja7" },
 		{ "main_menu", "uid://blpko71pew773" },
+		{ "tutorial_game", "uid://c1aldnojdsmso" },
 	};
 
 	public async void ChangeScene(string sceneKey)

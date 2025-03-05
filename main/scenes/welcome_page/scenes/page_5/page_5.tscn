@@ -25,7 +25,7 @@ custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 theme_type_variation = &"LabelNormal"
 text = "Almost Done!
-Now, take a quick test to personalise your skill level."
+Now, take a quick test to personalise your skill level"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
