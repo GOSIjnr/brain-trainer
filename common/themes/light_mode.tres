@@ -53,10 +53,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr2ad"]
-bg_color = Color(0.98, 0.98, 0.98, 1)
-border_width_top = 2
-border_color = Color(0.74902, 0.74902, 0.74902, 1)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xr2ad"]
+color = Color(0.74902, 0.74902, 0.74902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq5nv"]
 bg_color = Color(0.98, 0.98, 0.98, 1)
@@ -100,6 +98,8 @@ ButtonToggle/styles/normal = SubResource("StyleBoxFlat_uc3v8")
 ButtonToggle/styles/normal_mirrored = SubResource("StyleBoxFlat_uc3v8")
 ButtonToggle/styles/pressed = SubResource("StyleBoxFlat_hngqk")
 ButtonToggle/styles/pressed_mirrored = SubResource("StyleBoxFlat_hngqk")
+HSeparator/constants/separation = 10
+HSeparator/styles/separator = SubResource("StyleBoxLine_xr2ad")
 Label/colors/font_color = Color(0.05, 0.05, 0.05, 1)
 LabelBold/base_type = &"Label"
 LabelBold/font_sizes/font_size = 30
@@ -115,8 +115,6 @@ MarginContainerNormal/constants/margin_bottom = 20
 MarginContainerNormal/constants/margin_left = 20
 MarginContainerNormal/constants/margin_right = 20
 MarginContainerNormal/constants/margin_top = 20
-PanelBorderUp/base_type = &"Panel"
-PanelBorderUp/styles/panel = SubResource("StyleBoxFlat_xr2ad")
 PanelNormal/base_type = &"Panel"
 PanelNormal/styles/panel = SubResource("StyleBoxFlat_jq5nv")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)

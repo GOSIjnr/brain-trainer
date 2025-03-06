@@ -9,7 +9,7 @@ public partial class TutorialGameManager : CanvasLayer
 
 	private QuestionController _questionController;
 	private Array<TutorialQuestion> _questions = [];
-	private int _currentQuestionIndex = 0;
+	private int _currentQuestionIndex = -1;
 	private Dictionary<Data.Subjects, float> _questionScores = new()
 	{
 		{Data.Subjects.Writing, 0 },
@@ -19,6 +19,11 @@ public partial class TutorialGameManager : CanvasLayer
 		{Data.Subjects.Memory, 0 },
 	};
 
+	public override void _EnterTree()
+	{
+		_questionController = GetNodeOrNull<QuestionController>("QuestionController");
+	}
+
 	public override void _Ready()
 	{
 		var loadedQuestion = Utils.GetResources<TutorialQuestion>(_questionPath);
@@ -27,16 +32,25 @@ public partial class TutorialGameManager : CanvasLayer
 		{
 			_questions.Add(question);
 		}
+
+		StartQuiz();
 	}
 
 	private void StartQuiz()
 	{
 		_questions.Shuffle();
+		NextQuestion();
 	}
 
 	private void NextQuestion()
 	{
+		_currentQuestionIndex++;
 
+		if (_currentQuestionIndex >= _questions.Count - 1)
+		{
+			QuizOver();
+			return;
+		}
 	}
 
 	private void CheckAnswer()
