@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://2dbf20btsw7t"]
+
+[ext_resource type="Script" uid="uid://bhi1oxlgyqthg" path="res://main/scenes/tutorial_game/scenes/timer_countdown/TimerCountdown.cs" id="1_daqr5"]
+[ext_resource type="AudioStream" uid="uid://d1t8qaegoj5at" path="res://common/sounds/countdown_warning.wav" id="2_we5ib"]
+
+[node name="TimerCountdown" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelBold"
+theme_override_font_sizes/font_size = 40
+text = ":000"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_daqr5")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+ignore_time_scale = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_we5ib")

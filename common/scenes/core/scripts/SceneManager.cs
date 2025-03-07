@@ -28,6 +28,7 @@ public partial class SceneManager : Node
 		{ "welcome_page", "uid://5v24jc0gxja7" },
 		{ "main_menu", "uid://blpko71pew773" },
 		{ "tutorial_game", "uid://c1aldnojdsmso" },
+		{ "onboarding_page", "uid://blgrcbgkw8oif" },
 	};
 
 	public async void ChangeScene(string sceneKey)

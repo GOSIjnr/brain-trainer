@@ -1,59 +1,129 @@
-using System;
 using Godot;
 using Godot.Collections;
 
 namespace GOSIjnr;
 
-public partial class QuestionController : MarginContainer
+public partial class QuestionController : BoxContainer
 {
-	private Question _question;
-	private Array<Button> _questionButtons;
-	private bool isAnsweredPicked;
+	private TutorialQuestion _question;
+	private Array<TutorialOption> _questionOptions;
+	private ButtonGroup _questionButtons;
 
-	private TextureProgressBar _progressBar;
-	private Label _timerCountDown;
 	private RichTextLabel _questionText;
 	private GridContainer _buttonHolder;
 	private Button _skipButton;
 	private Button _submitButton;
 
-	[Signal] public delegate void QuestionAnsweredEventHandler(float score);
+	private bool _isNextButtonLocked;
+	private Button _selectedButton;
+
+	[Signal] public delegate void QuestionAnsweredEventHandler(Data.Subjects subject, float score);
+
+	public bool IsNextButtonLocked
+	{
+		get => _isNextButtonLocked;
+		private set
+		{
+			_isNextButtonLocked = value;
+
+			if (_isNextButtonLocked)
+			{
+				_selectedButton = null;
+				_skipButton.Disabled = false;
+				_submitButton.Disabled = true;
+				return;
+			}
+
+			_skipButton.Disabled = true;
+			_submitButton.Disabled = false;
+		}
+	}
 
 	public override void _EnterTree()
 	{
-		_progressBar = GetNodeOrNull<TextureProgressBar>("%Progress");
-		_timerCountDown = GetNodeOrNull<Label>("%TimerCountdown");
-		_questionText = GetNodeOrNull<RichTextLabel>("%Question");
-		_buttonHolder = GetNodeOrNull<GridContainer>("%GridContainer");
-		_skipButton = GetNodeOrNull<Button>("%Skip");
-		_submitButton = GetNodeOrNull<Button>("%Submit");
+		_questionText = GetNode<RichTextLabel>("%QuestionText");
+		_buttonHolder = GetNode<GridContainer>("%GridContainer");
+		_skipButton = GetNode<Button>("%Skip");
+		_submitButton = GetNode<Button>("%Submit");
 
-		_skipButton.Pressed += NextQuestion;
+		_skipButton.Pressed += SkipQuestion;
+		_submitButton.Pressed += SubmitAnswer;
 	}
 
 	public override void _Ready()
 	{
-		var group = new ButtonGroup();
-		group.AllowUnpress = true;
-		isAnsweredPicked = false;
+		_questionButtons = new();
+		_questionButtons.Pressed += AnswerButtonPressed;
+		_questionButtons.AllowUnpress = true;
+
 
 		foreach (var item in _buttonHolder.GetChildren())
 		{
 			if (item is Button option)
 			{
-				option.ToggleMode = true;
-				option.ButtonGroup = group;
+				option.ButtonGroup = _questionButtons;
 			}
 		}
 	}
 
-	private void UpdateUI()
+	private void AnswerButtonPressed(BaseButton button)
 	{
-
+		_selectedButton = (Button)button;
+		IsNextButtonLocked = !button.ButtonPressed;
 	}
 
-	private void NextQuestion()
+	public void SetQuestion(TutorialQuestion question)
 	{
-		EmitSignalQuestionAnswered(0);
+		_question = question;
+
+		_questionText.Text = _question.QuestionText;
+		_questionOptions = _question.QuestionOptions.Duplicate(true);
+		_questionOptions.Shuffle();
+
+		IsNextButtonLocked = true;
+
+		foreach (var button in _questionButtons.GetButtons())
+		{
+			button.ButtonPressed = false;
+		}
+
+		if (_questionOptions.Count <= 2)
+		{
+			_buttonHolder.Columns = 1;
+		}
+		else
+		{
+			_buttonHolder.Columns = 2;
+		}
+
+		var optionCount = _questionOptions.Count;
+
+		for (int index = 0; index < _questionButtons.GetButtons().Count; index++)
+		{
+			if (index >= 0 && index < optionCount)
+			{
+				var button = _questionButtons.GetButtons()[index] as Button;
+				button.Visible = true;
+				button.Text = _questionOptions[index].OptionText;
+			}
+			else
+			{
+				var button = _questionButtons.GetButtons()[index];
+				button.Visible = false;
+			}
+		}
+	}
+
+	private void SkipQuestion()
+	{
+		EmitSignalQuestionAnswered(_question.QuestionType, 0);
+	}
+
+	private void SubmitAnswer()
+	{
+
+		var selectedOptionIndex = _selectedButton.GetIndex();
+		var selectedOptionPoints = _questionOptions[selectedOptionIndex].Points;
+		EmitSignalQuestionAnswered(_question.QuestionType, selectedOptionPoints);
 	}
 }

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1aldnojdsmso"]
+[gd_scene load_steps=5 format=3 uid="uid://c1aldnojdsmso"]
 
 [ext_resource type="Script" uid="uid://gc3blxamcts2" path="res://main/scenes/tutorial_game/TutorialGameManager.cs" id="1_uwj70"]
-[ext_resource type="PackedScene" uid="uid://c2rplpob1f7ag" path="res://main/scenes/tutorial_game/scenes/question_controller/question_controller.tscn" id="2_uwj70"]
+[ext_resource type="Texture2D" uid="uid://de47bwronj5jj" path="res://main/textures/progress_bar.svg" id="3_bffyo"]
+[ext_resource type="PackedScene" uid="uid://2dbf20btsw7t" path="res://main/scenes/tutorial_game/scenes/timer_countdown/timer_countdown.tscn" id="3_eeyo6"]
+[ext_resource type="PackedScene" uid="uid://ct467a3eqe8p2" path="res://main/scenes/tutorial_game/scenes/question_controller/question_controller.tscn" id="4_waop4"]
 
 [node name="TutorialGame" type="CanvasLayer"]
 script = ExtResource("1_uwj70")
@@ -15,24 +17,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelNormal"
 
-[node name="QuestionManager" parent="." instance=ExtResource("2_uwj70")]
+[node name="QuestionManager" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginContainerNormal"
 
-[node name="Timers" type="Node" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="QuestionManager"]
+layout_mode = 2
+vertical = true
 
-[node name="QuestionTimer" type="Timer" parent="Timers"]
+[node name="BoxContainer" type="BoxContainer" parent="QuestionManager/BoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BoxContainerNormalSpaced"
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="QuestionProgress" type="TextureProgressBar" parent="QuestionManager/BoxContainer/BoxContainer"]
 unique_name_in_owner = true
-wait_time = 30.0
-one_shot = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 64
+stretch_margin_top = 15
+stretch_margin_right = 64
+stretch_margin_bottom = 15
+texture_under = ExtResource("3_bffyo")
+texture_progress = ExtResource("3_bffyo")
+tint_under = Color(0.74902, 0.74902, 0.74902, 1)
+tint_progress = Color(0.796078, 0.254902, 0.329412, 1)
 
-[node name="Audio" type="Node" parent="."]
-
-[node name="Sfx_Right" type="AudioStreamPlayer" parent="Audio"]
+[node name="TimerCountdown" parent="QuestionManager/BoxContainer/BoxContainer" instance=ExtResource("3_eeyo6")]
 unique_name_in_owner = true
+layout_mode = 2
+_waitTime = 120.0
 
-[node name="Sfx_Wrong" type="AudioStreamPlayer" parent="Audio"]
+[node name="QuestionController" parent="QuestionManager/BoxContainer" instance=ExtResource("4_waop4")]
 unique_name_in_owner = true
-
-[node name="Sfx_Tick" type="AudioStreamPlayer" parent="Audio"]
-unique_name_in_owner = true
-
-[connection signal="timeout" from="Timers/QuestionTimer" to="." method="_on_question_timer_timeout"]
+layout_mode = 2
+size_flags_vertical = 3

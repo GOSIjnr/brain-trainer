@@ -81,7 +81,6 @@ public static class Utils
 	/// The folder path (for example, "res://path/to/folder") to search for resources.
 	/// </param>
 	/// <returns>An array of loaded resources of type T.</returns>
-	/// <exception cref="ArgumentException">Thrown if the provided folder path is null or empty.</exception>
 	public static T[] GetResources<T>(string folderPath) where T : Resource
 	{
 		List<T> resources = [];
