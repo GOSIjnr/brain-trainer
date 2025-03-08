@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct467a3eqe8p2"]
+
+[ext_resource type="Script" uid="uid://cf6h1bab3km7g" path="res://main/scenes/tutorial_game/scenes/question_controller/QuestionController.cs" id="1_d3yki"]
+
+[node name="QuestionController" type="BoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+script = ExtResource("1_d3yki")
+
+[node name="QuestionText" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "7 + 8  = [img]uid://cc0bwohu7tv04[/img]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"MarginContainerNormal"
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 2
+
+[node name="Option1" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+toggle_mode = true
+text = "Option 1"
+autowrap_mode = 3
+
+[node name="Option2" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+toggle_mode = true
+text = "Option 2"
+
+[node name="Option3" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+toggle_mode = true
+text = "Option 3"
+
+[node name="Option4" type="Button" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonToggle"
+toggle_mode = true
+text = "Option 4"
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"BoxContainerNormalSpaced"
+
+[node name="Skip" type="Button" parent="BoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+text = "SKIP"
+flat = true
+
+[node name="Submit" type="Button" parent="BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"ButtonNormal"
+text = "NEXT"

@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dq4vxtwdfue5"]
 
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://common/fonts/Roboto-Bold.ttf" id="1_kwyvp"]
 [ext_resource type="FontFile" uid="uid://b3h16fh8aveu6" path="res://common/fonts/Roboto-Regular.ttf" id="2_lx4gk"]
 [ext_resource type="FontFile" uid="uid://clqun30xsy32b" path="res://common/fonts/Roboto-Light.ttf" id="2_xr2ad"]
+[ext_resource type="FontFile" uid="uid://bdlrob4puyxib" path="res://common/fonts/Roboto-BoldItalic.ttf" id="4_uc3v8"]
+[ext_resource type="FontFile" uid="uid://bb78ogxarnqeg" path="res://common/fonts/Roboto-Italic.ttf" id="5_hngqk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xr2ad"]
 
@@ -53,10 +55,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr2ad"]
-bg_color = Color(0.98, 0.98, 0.98, 1)
-border_width_top = 2
-border_color = Color(0.74902, 0.74902, 0.74902, 1)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xr2ad"]
+color = Color(0.74902, 0.74902, 0.74902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq5nv"]
 bg_color = Color(0.98, 0.98, 0.98, 1)
@@ -100,6 +100,8 @@ ButtonToggle/styles/normal = SubResource("StyleBoxFlat_uc3v8")
 ButtonToggle/styles/normal_mirrored = SubResource("StyleBoxFlat_uc3v8")
 ButtonToggle/styles/pressed = SubResource("StyleBoxFlat_hngqk")
 ButtonToggle/styles/pressed_mirrored = SubResource("StyleBoxFlat_hngqk")
+HSeparator/constants/separation = 10
+HSeparator/styles/separator = SubResource("StyleBoxLine_xr2ad")
 Label/colors/font_color = Color(0.05, 0.05, 0.05, 1)
 LabelBold/base_type = &"Label"
 LabelBold/font_sizes/font_size = 30
@@ -108,14 +110,22 @@ LabelLight/base_type = &"Label"
 LabelLight/font_sizes/font_size = 30
 LabelLight/fonts/font = ExtResource("2_xr2ad")
 LabelNormal/base_type = &"Label"
-LabelNormal/font_sizes/font_size = 22
+LabelNormal/font_sizes/font_size = 30
 LabelNormal/fonts/font = ExtResource("2_lx4gk")
 MarginContainerNormal/base_type = &"MarginContainer"
 MarginContainerNormal/constants/margin_bottom = 20
 MarginContainerNormal/constants/margin_left = 20
 MarginContainerNormal/constants/margin_right = 20
 MarginContainerNormal/constants/margin_top = 20
-PanelBorderUp/base_type = &"Panel"
-PanelBorderUp/styles/panel = SubResource("StyleBoxFlat_xr2ad")
 PanelNormal/base_type = &"Panel"
 PanelNormal/styles/panel = SubResource("StyleBoxFlat_jq5nv")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 30
+RichTextLabel/font_sizes/bold_italics_font_size = 30
+RichTextLabel/font_sizes/italics_font_size = 30
+RichTextLabel/font_sizes/mono_font_size = 30
+RichTextLabel/font_sizes/normal_font_size = 30
+RichTextLabel/fonts/bold_font = ExtResource("1_kwyvp")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_uc3v8")
+RichTextLabel/fonts/italics_font = ExtResource("5_hngqk")
+RichTextLabel/fonts/normal_font = ExtResource("2_lx4gk")

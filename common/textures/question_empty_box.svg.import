@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh4o6pjj2tnrq"
-path="res://.godot/imported/progress_start.svg-8a8f8c2b113ff2023dd11ae0cdbd4782.ctex"
+uid="uid://cc0bwohu7tv04"
+path="res://.godot/imported/question_empty_box.svg-14f0908dcb2d9fcb062480b6def5d930.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/progress_start.svg"
-dest_files=["res://.godot/imported/progress_start.svg-8a8f8c2b113ff2023dd11ae0cdbd4782.ctex"]
+source_file="res://common/textures/question_empty_box.svg"
+dest_files=["res://.godot/imported/question_empty_box.svg-14f0908dcb2d9fcb062480b6def5d930.ctex"]
 
 [params]
 

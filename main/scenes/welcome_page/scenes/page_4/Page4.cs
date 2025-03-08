@@ -76,14 +76,13 @@ public partial class Page4 : WelcomeContentPage
 	{
 		var userData = Core.Instance.SaveManager.userData;
 
-		foreach (var button in _toggleButtons)
-		{
-			userData.writing.isRecommendedByUser = _toggleButtons[0].ButtonPressed;
-			userData.speaking.isRecommendedByUser = _toggleButtons[1].ButtonPressed;
-			userData.reading.isRecommendedByUser = _toggleButtons[2].ButtonPressed;
-			userData.maths.isRecommendedByUser = _toggleButtons[3].ButtonPressed;
-			userData.memory.isRecommendedByUser = _toggleButtons[4].ButtonPressed;
-		}
+		userData.writing.isRecommendedByUser = _toggleButtons[0].ButtonPressed;
+		userData.speaking.isRecommendedByUser = _toggleButtons[1].ButtonPressed;
+		userData.reading.isRecommendedByUser = _toggleButtons[2].ButtonPressed;
+		userData.maths.isRecommendedByUser = _toggleButtons[3].ButtonPressed;
+		userData.memory.isRecommendedByUser = _toggleButtons[4].ButtonPressed;
+
+		Core.Instance.SaveManager.SaveUserData();
 	}
 
 	private void CheckValidSelection(bool isToogled)

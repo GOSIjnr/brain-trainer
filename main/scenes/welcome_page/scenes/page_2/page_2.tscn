@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://qeehwsnjmbn"]
+[gd_scene load_steps=8 format=3 uid="uid://qeehwsnjmbn"]
 
 [ext_resource type="Script" uid="uid://ckhhqghi5fxqr" path="res://main/scenes/welcome_page/scenes/page_2/Page2.cs" id="1_grvxr"]
+[ext_resource type="Script" uid="uid://c7r8ek5cwhnnd" path="res://main/scenes/welcome_page/scenes/page_2/scripts/IntroPage.cs" id="2_0fg4a"]
 [ext_resource type="Resource" uid="uid://u1dx20pfc27l" path="res://main/scenes/welcome_page/scenes/page_2/resources/benefits.tres" id="2_vk73n"]
 [ext_resource type="Resource" uid="uid://dac3dbr6ml515" path="res://main/scenes/welcome_page/scenes/page_2/resources/progress.tres" id="3_x2njp"]
 [ext_resource type="Resource" uid="uid://blum7yohio5ky" path="res://main/scenes/welcome_page/scenes/page_2/resources/challenge.tres" id="4_0d4vs"]
@@ -9,7 +10,7 @@
 
 [node name="Page 2" type="CanvasLayer"]
 script = ExtResource("1_grvxr")
-_introPages = [ExtResource("4_0d4vs"), ExtResource("2_vk73n"), ExtResource("3_x2njp")]
+_introPages = Array[ExtResource("2_0fg4a")]([ExtResource("4_0d4vs"), ExtResource("2_vk73n"), ExtResource("3_x2njp")])
 metadata/_custom_type_script = "uid://broj3ubf2wrgu"
 
 [node name="Page2Player" parent="." instance=ExtResource("5_0d4vs")]

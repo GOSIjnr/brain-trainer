@@ -41,6 +41,14 @@ public partial class Core : Node
 	{
 		if (!OS.HasFeature("debug")) return;
 		Logger.SetLogLevel(Logger.LogLevel.Debug);
+
+		if (OS.GetName() != "Windows") return;
+		Logger.LogMessage("Changed the Window Size Beacuse it is on Windows");
+		var screenSize = DisplayServer.WindowGetSize();
+		var newSize = new Vector2I(1080, 1920) / 3;
+
+		GetWindow().Position = new Vector2I(screenSize.X / 2, (screenSize - newSize).Y / 2);
+		DisplayServer.WindowSetSize(newSize);
 	}
 
 	private void InitializeApp()
