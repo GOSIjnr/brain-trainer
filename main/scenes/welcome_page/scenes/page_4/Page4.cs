@@ -81,6 +81,8 @@ public partial class Page4 : WelcomeContentPage
 		userData.reading.isRecommendedByUser = _toggleButtons[2].ButtonPressed;
 		userData.maths.isRecommendedByUser = _toggleButtons[3].ButtonPressed;
 		userData.memory.isRecommendedByUser = _toggleButtons[4].ButtonPressed;
+
+		Core.Instance.SaveManager.SaveUserData();
 	}
 
 	private void CheckValidSelection(bool isToogled)

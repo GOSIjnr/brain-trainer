@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dq4vxtwdfue5"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dq4vxtwdfue5"]
 
 [ext_resource type="FontFile" uid="uid://btkim3ryv071i" path="res://common/fonts/Roboto-Bold.ttf" id="1_kwyvp"]
 [ext_resource type="FontFile" uid="uid://b3h16fh8aveu6" path="res://common/fonts/Roboto-Regular.ttf" id="2_lx4gk"]
 [ext_resource type="FontFile" uid="uid://clqun30xsy32b" path="res://common/fonts/Roboto-Light.ttf" id="2_xr2ad"]
+[ext_resource type="FontFile" uid="uid://bdlrob4puyxib" path="res://common/fonts/Roboto-BoldItalic.ttf" id="4_uc3v8"]
+[ext_resource type="FontFile" uid="uid://bb78ogxarnqeg" path="res://common/fonts/Roboto-Italic.ttf" id="5_hngqk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xr2ad"]
 
@@ -118,9 +120,12 @@ MarginContainerNormal/constants/margin_top = 20
 PanelNormal/base_type = &"Panel"
 PanelNormal/styles/panel = SubResource("StyleBoxFlat_jq5nv")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/font_sizes/bold_font_size = 35
-RichTextLabel/font_sizes/bold_italics_font_size = 35
+RichTextLabel/font_sizes/bold_font_size = 30
+RichTextLabel/font_sizes/bold_italics_font_size = 30
 RichTextLabel/font_sizes/italics_font_size = 30
 RichTextLabel/font_sizes/mono_font_size = 30
 RichTextLabel/font_sizes/normal_font_size = 30
-RichTextLabelNormal/base_type = &"RichTextLabel"
+RichTextLabel/fonts/bold_font = ExtResource("1_kwyvp")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_uc3v8")
+RichTextLabel/fonts/italics_font = ExtResource("5_hngqk")
+RichTextLabel/fonts/normal_font = ExtResource("2_lx4gk")

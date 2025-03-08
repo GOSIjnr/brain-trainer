@@ -64,7 +64,7 @@ public partial class TutorialGameManager : CanvasLayer
 			_questionController.SetQuestion(_questions[_currentQuestionIndex]);
 		}
 
-		if (_currentQuestionIndex > _questions.Count)
+		if (_currentQuestionIndex >= _questions.Count)
 		{
 			QuizOver();
 			return;
@@ -86,6 +86,8 @@ public partial class TutorialGameManager : CanvasLayer
 	private void GradeUser()
 	{
 		var saveManager = Core.Instance.SaveManager;
+		saveManager.LoadUserData();
+
 		var userData = saveManager.userData;
 
 		userData.writing.CurrentPoints = _questionScores[Data.Subjects.Writing];
